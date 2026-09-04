@@ -1,0 +1,12 @@
+[
+  {"id": 1,  "type": "直白", "question": "病假連續請幾天以上需要附診斷證明？",           "expected": "第 4 條"},
+  {"id": 2,  "type": "直白", "question": "特休假最晚要在幾天前提出申請？",             "expected": "第 2 條"},
+  {"id": 3,  "type": "直白", "question": "婚假總共有幾天？",                         "expected": "第 7 條"},
+  {"id": 4,  "type": "直白", "question": "請假幾天以上需要指定職務代理人？",           "expected": "第 10 條"},
+  {"id": 5,  "type": "直白", "question": "事假一年最多可以請幾天？",                  "expected": "第 5 條"},
+  {"id": 6,  "type": "口語", "question": "加班換的假放到過期會怎樣？",                "expected": "第 6 條"},
+  {"id": 7,  "type": "口語", "question": "特休沒休完會怎樣？",                       "expected": "第 3 條"},
+  {"id": 8,  "type": "口語", "question": "早上突然掛急診，來不及先請假怎麼辦？",       "expected": "第 11 條"},
+  {"id": 9,  "type": "口語", "question": "沒來上班也沒跟任何人講，會有什麼後果？",     "expected": "第 12 條"},
+  {"id": 10, "type": "口語", "question": "小孩要打疫苗需要我帶去，可以請什麼假？",     "expected": "第 9 條"}
+]

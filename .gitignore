@@ -1,0 +1,7 @@
+# 金鑰檔：絕對不能進版本控制
+.env
+
+# 衍生檔案
+__pycache__/
+*.pyc
+embeddings_cache.json
