@@ -56,3 +56,4 @@ token 數與金額。
 
 - [`PRD.md`](PRD.md)：專案現況的需求與技術規格文件（功能說明、資料結構、函式介面、環境設定）
 - [`CHANGELOG.md`](CHANGELOG.md)：版本變更紀錄
+- [`article_template.md`](article_template.md)：系列寫作模板，每天的文章草稿都從這個骨架長出來
