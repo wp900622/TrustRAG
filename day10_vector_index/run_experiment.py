@@ -264,11 +264,13 @@ def main() -> None:
     lines.append(f"\n本次 API 計費：{total_billed} tokens"
                  f" ≈ {usd:.6f} 美元 ≈ 新台幣 {usd * rag_core.USD_TO_TWD:.4f} 元"
                  f"（快取命中 {index_cached + question_cached} 筆未計費；"
-                 f"50,000 個合成向量由本機生成，0 元）")
+                 f"50,000 個合成向量由本機生成，0 元；"
+                 f"刪除 embeddings_cache.json 重跑即可重現無快取的完整成本）")
 
     report_text = "\n".join(lines)
-    print(report_text)
+    # 先寫檔再印：報表含 ✅/❌，stdout 被重導向時可能因編碼炸掉，別讓檔案陪葬
     RESULT_PATH.write_text(report_text + "\n", encoding="utf-8")
+    print(report_text)
     print(f"\n結果已寫入 {RESULT_PATH.name}，表格可直接貼進文章")
 
 
