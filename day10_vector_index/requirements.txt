@@ -1,0 +1,5 @@
+openai>=1.40
+numpy>=1.26
+python-dotenv>=1.0
+# faiss 釘死版本：本日文章的延遲數字在這個版本實測，換版本數字會漂移
+faiss-cpu==1.15.0
