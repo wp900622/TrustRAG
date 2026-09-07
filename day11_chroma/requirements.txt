@@ -1,0 +1,9 @@
+# Day 11 需求：Chroma 只用「內嵌模式」（PersistentClient），不跑 server
+openai>=1.40
+numpy>=1.26
+python-dotenv>=1.0
+# 釘死版本：向量資料庫是本日主角，版本變動會動到索引行為與 API。
+# 資安注意：CVE-2026-45829（未修補，CVSS 10.0）只影響把 Chroma 當
+# Python server 對外服務的部署；本資料夾為內嵌模式、不開網路埠，不受影響。
+# 詳見 README「資安注意」一節。
+chromadb==1.5.9

@@ -12,6 +12,7 @@
 | [`day08_embedding/`](day08_embedding/) | Embedding + 餘弦相似度檢索 | 不用向量資料庫，問「特休沒休完會怎樣」，讓程式從 12 條規章裡找出該看哪一條，並用 10 題實測命中率 |
 | [`day09_chunking/`](day09_chunking/) | Chunking 三種切法對比 | 同一份 59 條的規章、同一組 15 題，比較固定字數／固定字數+overlap／依條文結構化三種切法的 top-1 命中率與命中品質 |
 | [`day10_vector_index/`](day10_vector_index/) | FAISS 向量索引：Flat vs HNSW | 用 0 元合成向量把索引灌到 50,059 塊，實測精確與近似檢索的延遲差（5～43 倍）與近似的掉題代價 |
+| [`day11_chroma/`](day11_chroma/) | Chroma 向量資料庫 | 同語料同 15 題換庫（top-1 一致 15/15），實測 metadata 章別過濾（10→12→0/15）、增量 add 75ms vs 重建 265 秒，以及預設參數在 5 萬塊下的掉題 |
 
 每個資料夾內都有自己的 `README.md`，寫著該天的檔案說明、跑法與成本。
 
@@ -31,7 +32,7 @@ OPENAI_API_KEY=sk-...
 ```
 
 - 需要 Python 3（開發與實測環境為 3.13）。
-- 套件版本以各資料夾的 `requirements.txt` 為準（共通為 `openai`、`numpy`、`python-dotenv`；`day10_vector_index/` 起另需 `faiss-cpu`）。
+- 套件版本以各資料夾的 `requirements.txt` 為準（共通為 `openai`、`numpy`、`python-dotenv`；`day10_vector_index/` 另需 `faiss-cpu`、`day11_chroma/` 另需 `chromadb`）。
 - `.env` 要放在**該天的資料夾內**，不是專案根目錄；已被 `.gitignore` 排除，不會進版本控制。
 - 若系統環境變數已有 `OPENAI_API_KEY`，則以環境變數優先，不必另外建 `.env`。
 

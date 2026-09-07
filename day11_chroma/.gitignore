@@ -1,0 +1,3 @@
+# chroma_db/ 是 build_db.py 的產物（本機持久化資料庫），不進版控——
+# clone 後執行 python build_db.py 即可重建
+chroma_db/

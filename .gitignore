@@ -5,3 +5,6 @@
 __pycache__/
 *.pyc
 embeddings_cache.json
+
+# Chroma 持久化資料庫（二進位，讀者以 build_db.py 自建）
+chroma_db/
