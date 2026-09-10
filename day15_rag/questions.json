@@ -1,0 +1,17 @@
+[
+  {"id": 1,  "group": "沿用", "type": "直白", "question": "病假連續請幾天以上需要附診斷證明？",         "expected": "第 24 條", "facts": ["三日", "診斷證明"],           "forbid": []},
+  {"id": 2,  "group": "沿用", "type": "直白", "question": "特休假最晚要在幾天前提出申請？",           "expected": "第 22 條", "facts": ["三個工作日"],                 "forbid": []},
+  {"id": 3,  "group": "沿用", "type": "直白", "question": "婚假總共有幾天？",                       "expected": "第 27 條", "facts": ["八日"],                       "forbid": []},
+  {"id": 4,  "group": "沿用", "type": "直白", "question": "請假幾天以上需要指定職務代理人？",         "expected": "第 30 條", "facts": ["一日", "職務代理人"],         "forbid": []},
+  {"id": 5,  "group": "沿用", "type": "直白", "question": "事假一年最多可以請幾天？",                "expected": "第 25 條", "facts": ["十四日"],                     "forbid": ["三十日"]},
+  {"id": 6,  "group": "沿用", "type": "口語", "question": "加班換的假放到過期會怎樣？",              "expected": "第 26 條", "facts": ["六個月", "加班費"],           "forbid": []},
+  {"id": 7,  "group": "沿用", "type": "口語", "question": "特休沒休完會怎樣？",                     "expected": "第 23 條", "facts": ["三月三十一日", "工資"],       "forbid": []},
+  {"id": 8,  "group": "沿用", "type": "口語", "question": "早上突然掛急診，來不及先請假怎麼辦？",     "expected": "第 31 條", "facts": ["通知", "三個工作日"],         "forbid": []},
+  {"id": 9,  "group": "沿用", "type": "口語", "question": "沒來上班也沒跟任何人講，會有什麼後果？",   "expected": "第 32 條", "facts": ["曠職"],                       "forbid": []},
+  {"id": 10, "group": "沿用", "type": "口語", "question": "小孩要打疫苗需要我帶去，可以請什麼假？",   "expected": "第 29 條", "facts": ["家庭照顧假", "七日"],         "forbid": []},
+  {"id": 11, "group": "新增", "type": "直白", "question": "每月加班時數上限是多少小時？",            "expected": "第 18 條", "facts": ["四十六小時"],                 "forbid": []},
+  {"id": 12, "group": "新增", "type": "口語", "question": "忘記打卡要怎麼補救？會有事嗎？",          "expected": "第 11 條", "facts": ["補登", "三次"],               "forbid": []},
+  {"id": 13, "group": "新增", "type": "直白", "question": "國內出差住宿費每晚上限是多少？",          "expected": "第 40 條", "facts": ["三千元"],                     "forbid": []},
+  {"id": 14, "group": "新增", "type": "口語", "question": "把公司內部資料傳給外面的人會受到什麼處分？", "expected": "第 47 條", "facts": ["記大過"],                     "forbid": []},
+  {"id": 15, "group": "新增", "type": "口語", "question": "不想做了，要提前多久跟公司講？",          "expected": "第 54 條", "facts": ["十日", "二十日", "三十日"],   "forbid": []}
+]

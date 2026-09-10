@@ -1,0 +1,8 @@
+# chroma_db/ 是 build_db.py 的產物（本機持久化資料庫），不進版控——
+# clone 後執行 python build_db.py 即可重建
+chroma_db/
+
+# 快取檔也是衍生物，不進版控。留在本機可以讓「改判定邏輯後重跑」不再付費，
+# 但讀者第一次跑要自己付一次（成本寫在 experiment_result_day15.md）
+embeddings_cache.json
+chat_cache.json
