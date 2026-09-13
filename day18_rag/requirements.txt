@@ -1,0 +1,11 @@
+# Day 14 需求：Chroma 只用「內嵌模式」（PersistentClient），不跑 server
+openai>=1.40
+numpy>=1.26
+python-dotenv>=1.0
+# 釘死版本：與 Day 11 同版，確保檢索側條件不變——今天要比的是生成端。
+# 資安注意：CVE-2026-45829（未修補，CVSS 10.0）只影響把 Chroma 當
+# Python server 對外服務的部署；本資料夾為內嵌模式、不開網路埠，不受影響。
+chromadb==1.5.9
+# Day 16 起用來離線重數 token（measure_cost.py、run_experiment_day17.py）：
+# 快取全命中時 API 不回報 usage，成本表只能自己數
+tiktoken>=0.7
