@@ -1,0 +1,21 @@
+# 金鑰：絕對不進版控
+.env
+.env.local
+
+# 向量資料庫（build_db.py 產物，讀者自己重建）
+chroma_db/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# 快取：以下兩行預設「不」忽略——本系列刻意把快取進版控，
+# 讀者重跑才拿得到跟文章一樣的數字（見 Day 14 README「兩層快取」）。
+# 如果檔案大到不想進版控，把下面兩行的 # 拿掉。
+# embeddings_cache.json
+# chat_cache.json
+
+# Day 24 服務的執行期產物
+day24_jobs*.sqlite3*
+service_day24_*.log
+*.json.tmp*

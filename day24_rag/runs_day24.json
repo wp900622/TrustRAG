@@ -1,0 +1,6753 @@
+{
+ "n": 28,
+ "k": 3,
+ "boot_ms": 3960.6,
+ "health": {
+  "chunks": 59,
+  "boot_ms": 715.8,
+  "retrievers": [
+   "chroma",
+   "numpy"
+  ],
+  "default_retriever": "chroma",
+  "middleware": "asgi"
+ },
+ "warm": {
+  "summary": {
+   "n": 28,
+   "ok": 28,
+   "p50": 480.2,
+   "p95": 832.9,
+   "max": 854.7,
+   "mean": 498.9,
+   "wall_p50": 488.6,
+   "stages": {
+    "embed": 468.053,
+    "retrieve": 7.649,
+    "llm": 3.206,
+    "serialize": 0.088,
+    "overhead": 0.326
+   },
+   "share": {
+    "embed": 97.47,
+    "retrieve": 1.59,
+    "llm": 0.67,
+    "serialize": 0.02,
+    "overhead": 0.07
+   }
+  },
+  "rows": [
+   {
+    "key": "單條文-1",
+    "status": 200,
+    "wall_ms": 529.614799990668,
+    "answer": "病假連續請三天（含）以上需要附診斷證明。",
+    "retriever": "chroma",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 496.353,
+     "retrieve_ms": 11.293,
+     "llm_ms": 9.647,
+     "serialize_ms": 0.156,
+     "total_ms": 517.86,
+     "overhead_ms": 0.411
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "520.93",
+    "header_llm": "9.65"
+   },
+   {
+    "key": "單條文-2",
+    "status": 200,
+    "wall_ms": 532.8192000015406,
+    "answer": "特休假應於預定休假日之三個工作日前提出申請。",
+    "retriever": "chroma",
+    "cited": [
+     23,
+     22,
+     26
+    ],
+    "timing": {
+     "embed_ms": 520.756,
+     "retrieve_ms": 4.816,
+     "llm_ms": 2.557,
+     "serialize_ms": 0.064,
+     "total_ms": 528.544,
+     "overhead_ms": 0.352
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "529.79",
+    "header_llm": "2.56"
+   },
+   {
+    "key": "單條文-3",
+    "status": 200,
+    "wall_ms": 361.7019000084838,
+    "answer": "婚假總共有八天。",
+    "retriever": "chroma",
+    "cited": [
+     27,
+     22,
+     25
+    ],
+    "timing": {
+     "embed_ms": 351.188,
+     "retrieve_ms": 4.162,
+     "llm_ms": 2.379,
+     "serialize_ms": 0.047,
+     "total_ms": 357.949,
+     "overhead_ms": 0.173
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "358.98",
+    "header_llm": "2.38"
+   },
+   {
+    "key": "單條文-4",
+    "status": 200,
+    "wall_ms": 344.1378999996232,
+    "answer": "請假一日（含）以上者需要指定職務代理人。",
+    "retriever": "chroma",
+    "cited": [
+     30,
+     25,
+     22
+    ],
+    "timing": {
+     "embed_ms": 308.138,
+     "retrieve_ms": 25.133,
+     "llm_ms": 6.199,
+     "serialize_ms": 0.154,
+     "total_ms": 340.092,
+     "overhead_ms": 0.468
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "341.46",
+    "header_llm": "6.20"
+   },
+   {
+    "key": "單條文-5",
+    "status": 200,
+    "wall_ms": 451.9403999875067,
+    "answer": "事假一年最多可以請十四天。",
+    "retriever": "chroma",
+    "cited": [
+     25,
+     27,
+     22
+    ],
+    "timing": {
+     "embed_ms": 424.298,
+     "retrieve_ms": 9.419,
+     "llm_ms": 8.662,
+     "serialize_ms": 0.152,
+     "total_ms": 442.917,
+     "overhead_ms": 0.386
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "445.48",
+    "header_llm": "8.66"
+   },
+   {
+    "key": "單條文-6",
+    "status": 200,
+    "wall_ms": 869.6877000038512,
+    "answer": "加班換的假必須在加班事實發生日起六個月內休畢，若屆期未休畢，公司將依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "chroma",
+    "cited": [
+     20,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 821.202,
+     "retrieve_ms": 20.657,
+     "llm_ms": 11.699,
+     "serialize_ms": 0.322,
+     "total_ms": 854.72,
+     "overhead_ms": 0.84
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "860.60",
+    "header_llm": "11.70"
+   },
+   {
+    "key": "單條文-7",
+    "status": 200,
+    "wall_ms": 501.1242999898968,
+    "answer": "特休假應於年度終結前休畢，若未能休畢可申請遞延至次年三月三十一日止。屆期仍未休畢之日數，公司將按日折算工資發給，不再遞延。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 484.559,
+     "retrieve_ms": 4.425,
+     "llm_ms": 2.795,
+     "serialize_ms": 0.058,
+     "total_ms": 492.032,
+     "overhead_ms": 0.196
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "495.09",
+    "header_llm": "2.79"
+   },
+   {
+    "key": "單條文-8",
+    "status": 200,
+    "wall_ms": 800.7486999995308,
+    "answer": "您可以先以電話或即時通訊軟體通知直屬主管，並於復工後三個工作日內至差勤系統補辦請假手續。若逾期未補辦，將依第 32 條曠職論處。",
+    "retriever": "chroma",
+    "cited": [
+     31,
+     24,
+     25
+    ],
+    "timing": {
+     "embed_ms": 786.214,
+     "retrieve_ms": 7.486,
+     "llm_ms": 3.206,
+     "serialize_ms": 0.081,
+     "total_ms": 797.199,
+     "overhead_ms": 0.212
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "798.39",
+    "header_llm": "3.21"
+   },
+   {
+    "key": "單條文-9",
+    "status": 200,
+    "wall_ms": 302.6413000043249,
+    "answer": "根據第 47 條，員工未經核准擅自缺勤可視情節輕重予以申誡、記過或記大過。若情節重大，可能不經預告終止勞動契約並請求損害賠償。建議儘快與主管聯繫以解釋情況。",
+    "retriever": "chroma",
+    "cited": [
+     47,
+     12,
+     49
+    ],
+    "timing": {
+     "embed_ms": 284.062,
+     "retrieve_ms": 10.705,
+     "llm_ms": 3.315,
+     "serialize_ms": 0.116,
+     "total_ms": 298.428,
+     "overhead_ms": 0.229
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "299.78",
+    "header_llm": "3.31"
+   },
+   {
+    "key": "單條文-10",
+    "status": 200,
+    "wall_ms": 344.03089999977965,
+    "answer": "可以請家庭照顧假，全年以七日為限，請假期間依事假規定不支薪。",
+    "retriever": "chroma",
+    "cited": [
+     29,
+     24,
+     25
+    ],
+    "timing": {
+     "embed_ms": 330.165,
+     "retrieve_ms": 7.649,
+     "llm_ms": 2.274,
+     "serialize_ms": 0.048,
+     "total_ms": 340.349,
+     "overhead_ms": 0.213
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "341.56",
+    "header_llm": "2.27"
+   },
+   {
+    "key": "單條文-11",
+    "status": 200,
+    "wall_ms": 158.73239999928046,
+    "answer": "每月加班時數上限為四十六小時，經工會或勞資會議同意可調整為五十四小時。",
+    "retriever": "chroma",
+    "cited": [
+     18,
+     19,
+     17
+    ],
+    "timing": {
+     "embed_ms": 152.554,
+     "retrieve_ms": 2.386,
+     "llm_ms": 1.132,
+     "serialize_ms": 0.037,
+     "total_ms": 156.232,
+     "overhead_ms": 0.123
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "157.05",
+    "header_llm": "1.13"
+   },
+   {
+    "key": "單條文-12",
+    "status": 200,
+    "wall_ms": 164.6277999971062,
+    "answer": "未依規定刷卡者，應於當日或次一工作日內至差勤系統申請補登，並經直屬主管核准；每月補登以三次為限。逾次數且無正當理由者，將依遲到或曠職相關規定處理。",
+    "retriever": "chroma",
+    "cited": [
+     11,
+     31,
+     53
+    ],
+    "timing": {
+     "embed_ms": 158.474,
+     "retrieve_ms": 2.627,
+     "llm_ms": 1.459,
+     "serialize_ms": 0.034,
+     "total_ms": 162.703,
+     "overhead_ms": 0.109
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "163.27",
+    "header_llm": "1.46"
+   },
+   {
+    "key": "單條文-13",
+    "status": 200,
+    "wall_ms": 148.79340000334196,
+    "answer": "國內出差住宿費每人每晚以新臺幣三千元為上限。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 142.557,
+     "retrieve_ms": 2.64,
+     "llm_ms": 1.538,
+     "serialize_ms": 0.036,
+     "total_ms": 146.888,
+     "overhead_ms": 0.118
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "147.46",
+    "header_llm": "1.54"
+   },
+   {
+    "key": "單條文-14",
+    "status": 200,
+    "wall_ms": 384.8543000058271,
+    "answer": "將公司內部文件、客戶資料或營業秘密攜出、傳送或洩漏予第三人者，將記大過；若致公司受有損害或情節重大者，得不經預告終止勞動契約，並依法請求損害賠償。",
+    "retriever": "chroma",
+    "cited": [
+     7,
+     53,
+     47
+    ],
+    "timing": {
+     "embed_ms": 374.806,
+     "retrieve_ms": 5.156,
+     "llm_ms": 2.152,
+     "serialize_ms": 0.074,
+     "total_ms": 382.363,
+     "overhead_ms": 0.175
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "383.15",
+    "header_llm": "2.15"
+   },
+   {
+    "key": "單條文-15",
+    "status": 200,
+    "wall_ms": 485.6874999968568,
+    "answer": "根據規章條文，自請離職者需提前預告公司：三個月以上未滿一年者，十天；一年以上未滿三年者，二十天；三年以上者，三十天。",
+    "retriever": "chroma",
+    "cited": [
+     54,
+     12,
+     17
+    ],
+    "timing": {
+     "embed_ms": 460.472,
+     "retrieve_ms": 13.81,
+     "llm_ms": 5.487,
+     "serialize_ms": 0.12,
+     "total_ms": 480.235,
+     "overhead_ms": 0.345
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "482.00",
+    "header_llm": "5.49"
+   },
+   {
+    "key": "多條文-301",
+    "status": 200,
+    "wall_ms": 824.8995000030845,
+    "answer": "平日加班3小時，前2小時按每小時工資額加給三分之一以上，第三小時按加給三分之二以上。具體加班費計算基準為本薪加計經常性給與。請依據上述標準計算您的加班費。",
+    "retriever": "chroma",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 774.129,
+     "retrieve_ms": 23.333,
+     "llm_ms": 13.859,
+     "serialize_ms": 0.248,
+     "total_ms": 812.284,
+     "overhead_ms": 0.716
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "817.23",
+    "header_llm": "13.86"
+   },
+   {
+    "key": "多條文-302",
+    "status": 200,
+    "wall_ms": 443.4278999979142,
+    "answer": "選擇補休後，該筆加班不得再變更為加班費。若六個月內未休畢，則公司應依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "chroma",
+    "cited": [
+     20,
+     26,
+     19
+    ],
+    "timing": {
+     "embed_ms": 424.466,
+     "retrieve_ms": 4.128,
+     "llm_ms": 2.984,
+     "serialize_ms": 0.08,
+     "total_ms": 431.996,
+     "overhead_ms": 0.337
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "437.13",
+    "header_llm": "2.98"
+   },
+   {
+    "key": "多條文-303",
+    "status": 200,
+    "wall_ms": 836.5629000036279,
+    "answer": "住宿費用超過上限的 3,000 元，員工需自行負擔 200 元。由於住宿發票遺失，需填具「單據遺失切結書」，並經權責主管核准後才能報支。報支金額為 0 元，因為未檢附住宿發票。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     42
+    ],
+    "timing": {
+     "embed_ms": 824.734,
+     "retrieve_ms": 5.911,
+     "llm_ms": 1.899,
+     "serialize_ms": 0.065,
+     "total_ms": 832.936,
+     "overhead_ms": 0.326
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "834.39",
+    "header_llm": "1.90"
+   },
+   {
+    "key": "多條文-304",
+    "status": 200,
+    "wall_ms": 426.31900000560563,
+    "answer": "公司因員工無故連續曠職三天而終止契約，依規章條文可不發給資遣費。",
+    "retriever": "chroma",
+    "cited": [
+     56,
+     32,
+     23
+    ],
+    "timing": {
+     "embed_ms": 376.831,
+     "retrieve_ms": 24.28,
+     "llm_ms": 14.652,
+     "serialize_ms": 0.35,
+     "total_ms": 417.346,
+     "overhead_ms": 1.232
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "419.73",
+    "header_llm": "14.65"
+   },
+   {
+    "key": "多條文-305",
+    "status": 200,
+    "wall_ms": 650.4559000022709,
+    "answer": "到職滿三個月的試用期員工尚未滿六個月，因此沒有特休假。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     6,
+     26
+    ],
+    "timing": {
+     "embed_ms": 632.792,
+     "retrieve_ms": 4.478,
+     "llm_ms": 2.151,
+     "serialize_ms": 0.092,
+     "total_ms": 639.746,
+     "overhead_ms": 0.234
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "644.75",
+    "header_llm": "2.15"
+   },
+   {
+    "key": "多條文-306",
+    "status": 200,
+    "wall_ms": 625.0298999948427,
+    "answer": "會被書面提醒，但不會直接記過。若情節重大或經提醒仍未改善，則可能依獎懲規定處理。",
+    "retriever": "chroma",
+    "cited": [
+     12,
+     46,
+     23
+    ],
+    "timing": {
+     "embed_ms": 593.774,
+     "retrieve_ms": 11.304,
+     "llm_ms": 11.325,
+     "serialize_ms": 0.371,
+     "total_ms": 617.3,
+     "overhead_ms": 0.527
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "619.50",
+    "header_llm": "11.32"
+   },
+   {
+    "key": "多條文-307",
+    "status": 200,
+    "wall_ms": 683.0183999991277,
+    "answer": "是的，未交還公司財物或留存複本的情況下，公司得暫緩發給離職相關文件，包括服務證明書。",
+    "retriever": "chroma",
+    "cited": [
+     57,
+     53,
+     55
+    ],
+    "timing": {
+     "embed_ms": 658.301,
+     "retrieve_ms": 8.356,
+     "llm_ms": 3.64,
+     "serialize_ms": 0.203,
+     "total_ms": 670.891,
+     "overhead_ms": 0.39
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "674.02",
+    "header_llm": "3.64"
+   },
+   {
+    "key": "多條文-308",
+    "status": 200,
+    "wall_ms": 722.2758999996586,
+    "answer": "遇到颱風宣布停止上班，具備遠距工作條件之職務可經主管同意改採居家辦公，該日以正常出勤論。因此，當天不需要簽到，算作正常出勤。",
+    "retriever": "chroma",
+    "cited": [
+     16,
+     12,
+     25
+    ],
+    "timing": {
+     "embed_ms": 670.126,
+     "retrieve_ms": 22.028,
+     "llm_ms": 16.57,
+     "serialize_ms": 0.198,
+     "total_ms": 709.867,
+     "overhead_ms": 0.945
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "714.96",
+    "header_llm": "16.57"
+   },
+   {
+    "key": "陷阱-101",
+    "status": 200,
+    "wall_ms": 488.55200000980403,
+    "answer": "規章條文中並未提及育嬰留職停薪的相關規定，因此無法提供具體的留職停薪最長時間。請參考其他相關規章或政策。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     27,
+     18
+    ],
+    "timing": {
+     "embed_ms": 468.053,
+     "retrieve_ms": 4.948,
+     "llm_ms": 3.06,
+     "serialize_ms": 0.053,
+     "total_ms": 476.342,
+     "overhead_ms": 0.228
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "482.44",
+    "header_llm": "3.06"
+   },
+   {
+    "key": "陷阱-102",
+    "status": 200,
+    "wall_ms": 278.019299992593,
+    "answer": "根據提供的規章條文，沒有提及公司有健身房或運動補助的相關內容。",
+    "retriever": "chroma",
+    "cited": [
+     38,
+     20,
+     37
+    ],
+    "timing": {
+     "embed_ms": 267.768,
+     "retrieve_ms": 4.648,
+     "llm_ms": 1.652,
+     "serialize_ms": 0.046,
+     "total_ms": 274.297,
+     "overhead_ms": 0.183
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "275.50",
+    "header_llm": "1.65"
+   },
+   {
+    "key": "陷阱-103",
+    "status": 200,
+    "wall_ms": 450.49699999799486,
+    "answer": "規章條文中並未提及遠端工作的相關規定，因此無法提供具體的天數。",
+    "retriever": "chroma",
+    "cited": [
+     43,
+     22,
+     18
+    ],
+    "timing": {
+     "embed_ms": 429.185,
+     "retrieve_ms": 11.895,
+     "llm_ms": 4.102,
+     "serialize_ms": 0.088,
+     "total_ms": 445.592,
+     "overhead_ms": 0.322
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "447.43",
+    "header_llm": "4.10"
+   },
+   {
+    "key": "陷阱-104",
+    "status": 200,
+    "wall_ms": 636.8559999973513,
+    "answer": "國外出差住宿費上限依公司「國外出差辦法」另行規定，未規定事項準用國內出差的規定。國內出差住宿費上限為每人每晚新臺幣三千元。具體的國外住宿費上限需查閱相關辦法。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 623.36,
+     "retrieve_ms": 5.094,
+     "llm_ms": 2.996,
+     "serialize_ms": 0.057,
+     "total_ms": 631.693,
+     "overhead_ms": 0.186
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "634.01",
+    "header_llm": "3.00"
+   },
+   {
+    "key": "陷阱-105",
+    "status": 200,
+    "wall_ms": 715.762599997106,
+    "answer": "平日加班3小時的計算方式為：前2小時按每小時工資額加給三分之二，第三小時則按每小時工資額加給三分之一。具體金額需依據您的本薪及經常性給與計算。請提供您的每小時工資額以便計算具體金額。",
+    "retriever": "chroma",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 680.513,
+     "retrieve_ms": 19.42,
+     "llm_ms": 9.255,
+     "serialize_ms": 0.177,
+     "total_ms": 709.955,
+     "overhead_ms": 0.59
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "711.95",
+    "header_llm": "9.25"
+   }
+  ]
+ },
+ "numpy": {
+  "summary": {
+   "n": 28,
+   "ok": 28,
+   "p50": 466.0,
+   "p95": 766.5,
+   "max": 784.5,
+   "mean": 493.0,
+   "wall_p50": 472.0,
+   "stages": {
+    "embed": 461.854,
+    "retrieve": 0.2,
+    "llm": 2.869,
+    "serialize": 0.079,
+    "overhead": 0.226
+   },
+   "share": {
+    "embed": 99.11,
+    "retrieve": 0.04,
+    "llm": 0.62,
+    "serialize": 0.02,
+    "overhead": 0.05
+   }
+  },
+  "rows": [
+   {
+    "key": "單條文-1",
+    "status": 200,
+    "wall_ms": 399.316999988514,
+    "answer": "病假連續請三天（含）以上需要附診斷證明。",
+    "retriever": "numpy",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 362.384,
+     "retrieve_ms": 1.778,
+     "llm_ms": 13.108,
+     "serialize_ms": 0.217,
+     "total_ms": 378.33,
+     "overhead_ms": 0.843
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "383.83",
+    "header_llm": "13.11"
+   },
+   {
+    "key": "單條文-2",
+    "status": 200,
+    "wall_ms": 513.7444000138203,
+    "answer": "特休假應於預定休假日之三個工作日前提出申請。",
+    "retriever": "numpy",
+    "cited": [
+     23,
+     22,
+     26
+    ],
+    "timing": {
+     "embed_ms": 498.96,
+     "retrieve_ms": 0.437,
+     "llm_ms": 4.695,
+     "serialize_ms": 0.058,
+     "total_ms": 504.675,
+     "overhead_ms": 0.524
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "508.11",
+    "header_llm": "4.70"
+   },
+   {
+    "key": "單條文-3",
+    "status": 200,
+    "wall_ms": 385.91189999715425,
+    "answer": "婚假總共有八天。",
+    "retriever": "numpy",
+    "cited": [
+     27,
+     22,
+     25
+    ],
+    "timing": {
+     "embed_ms": 377.33,
+     "retrieve_ms": 0.212,
+     "llm_ms": 2.931,
+     "serialize_ms": 0.069,
+     "total_ms": 380.863,
+     "overhead_ms": 0.321
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "382.82",
+    "header_llm": "2.93"
+   },
+   {
+    "key": "單條文-4",
+    "status": 200,
+    "wall_ms": 462.80330000445247,
+    "answer": "請假一日（含）以上者需要指定職務代理人。",
+    "retriever": "numpy",
+    "cited": [
+     30,
+     25,
+     22
+    ],
+    "timing": {
+     "embed_ms": 456.761,
+     "retrieve_ms": 0.141,
+     "llm_ms": 2.249,
+     "serialize_ms": 0.066,
+     "total_ms": 459.433,
+     "overhead_ms": 0.215
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "460.52",
+    "header_llm": "2.25"
+   },
+   {
+    "key": "單條文-5",
+    "status": 200,
+    "wall_ms": 430.42760000389535,
+    "answer": "事假一年最多可以請十四天。",
+    "retriever": "numpy",
+    "cited": [
+     25,
+     27,
+     22
+    ],
+    "timing": {
+     "embed_ms": 420.227,
+     "retrieve_ms": 0.273,
+     "llm_ms": 4.945,
+     "serialize_ms": 0.167,
+     "total_ms": 425.904,
+     "overhead_ms": 0.293
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "427.87",
+    "header_llm": "4.94"
+   },
+   {
+    "key": "單條文-6",
+    "status": 200,
+    "wall_ms": 617.6855999947293,
+    "answer": "加班換的假必須在加班事實發生日起六個月內休畢，若屆期未休畢，公司將依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "numpy",
+    "cited": [
+     20,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 608.506,
+     "retrieve_ms": 0.178,
+     "llm_ms": 2.801,
+     "serialize_ms": 0.078,
+     "total_ms": 611.775,
+     "overhead_ms": 0.212
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "614.25",
+    "header_llm": "2.80"
+   },
+   {
+    "key": "單條文-7",
+    "status": 200,
+    "wall_ms": 279.0603000030387,
+    "answer": "特休假應於年度終結前休畢，若未能休畢可申請遞延至次年三月三十一日止。屆期仍未休畢之日數，公司將按日折算工資發給，不再遞延。",
+    "retriever": "numpy",
+    "cited": [
+     22,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 270.676,
+     "retrieve_ms": 0.2,
+     "llm_ms": 2.556,
+     "serialize_ms": 0.057,
+     "total_ms": 273.725,
+     "overhead_ms": 0.235
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "274.95",
+    "header_llm": "2.56"
+   },
+   {
+    "key": "單條文-8",
+    "status": 200,
+    "wall_ms": 289.24719999486115,
+    "answer": "您可以先以電話或即時通訊軟體通知直屬主管，並於復工後三個工作日內至差勤系統補辦請假手續。若逾期未補辦，將依第 32 條曠職論處。",
+    "retriever": "numpy",
+    "cited": [
+     31,
+     24,
+     25
+    ],
+    "timing": {
+     "embed_ms": 282.527,
+     "retrieve_ms": 0.212,
+     "llm_ms": 2.988,
+     "serialize_ms": 0.051,
+     "total_ms": 285.963,
+     "overhead_ms": 0.185
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "287.15",
+    "header_llm": "2.99"
+   },
+   {
+    "key": "單條文-9",
+    "status": 200,
+    "wall_ms": 608.9120999968145,
+    "answer": "根據第 47 條，員工未經核准擅自缺勤可視情節輕重予以申誡、記過或記大過。若情節重大，可能不經預告終止勞動契約並請求損害賠償。建議儘快與主管聯繫以解釋情況。",
+    "retriever": "numpy",
+    "cited": [
+     47,
+     12,
+     49
+    ],
+    "timing": {
+     "embed_ms": 601.364,
+     "retrieve_ms": 0.299,
+     "llm_ms": 3.587,
+     "serialize_ms": 0.062,
+     "total_ms": 605.52,
+     "overhead_ms": 0.208
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "606.52",
+    "header_llm": "3.59"
+   },
+   {
+    "key": "單條文-10",
+    "status": 200,
+    "wall_ms": 382.1983000088949,
+    "answer": "可以請家庭照顧假，全年以七日為限，請假期間依事假規定不支薪。",
+    "retriever": "numpy",
+    "cited": [
+     29,
+     24,
+     25
+    ],
+    "timing": {
+     "embed_ms": 366.387,
+     "retrieve_ms": 0.492,
+     "llm_ms": 8.596,
+     "serialize_ms": 0.123,
+     "total_ms": 376.086,
+     "overhead_ms": 0.487
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "378.04",
+    "header_llm": "8.60"
+   },
+   {
+    "key": "單條文-11",
+    "status": 200,
+    "wall_ms": 430.77949999133125,
+    "answer": "每月加班時數上限為四十六小時，經工會或勞資會議同意可調整為五十四小時。",
+    "retriever": "numpy",
+    "cited": [
+     18,
+     19,
+     17
+    ],
+    "timing": {
+     "embed_ms": 410.004,
+     "retrieve_ms": 0.457,
+     "llm_ms": 8.677,
+     "serialize_ms": 0.295,
+     "total_ms": 420.154,
+     "overhead_ms": 0.72
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "423.11",
+    "header_llm": "8.68"
+   },
+   {
+    "key": "單條文-12",
+    "status": 200,
+    "wall_ms": 796.7337000009138,
+    "answer": "未依規定刷卡者，應於當日或次一工作日內至差勤系統申請補登，並經直屬主管核准；每月補登以三次為限。逾次數且無正當理由者，將依遲到或曠職相關規定處理。",
+    "retriever": "numpy",
+    "cited": [
+     11,
+     31,
+     53
+    ],
+    "timing": {
+     "embed_ms": 780.141,
+     "retrieve_ms": 0.158,
+     "llm_ms": 3.882,
+     "serialize_ms": 0.059,
+     "total_ms": 784.466,
+     "overhead_ms": 0.226
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "789.56",
+    "header_llm": "3.88"
+   },
+   {
+    "key": "單條文-13",
+    "status": 200,
+    "wall_ms": 632.4196999921696,
+    "answer": "國內出差住宿費每人每晚以新臺幣三千元為上限。",
+    "retriever": "numpy",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 621.234,
+     "retrieve_ms": 0.318,
+     "llm_ms": 4.758,
+     "serialize_ms": 0.093,
+     "total_ms": 626.72,
+     "overhead_ms": 0.317
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "628.45",
+    "header_llm": "4.76"
+   },
+   {
+    "key": "單條文-14",
+    "status": 200,
+    "wall_ms": 448.2993000128772,
+    "answer": "將公司內部文件、客戶資料或營業秘密攜出、傳送或洩漏予第三人者，將記大過；若致公司受有損害或情節重大者，得不經預告終止勞動契約，並依法請求損害賠償。",
+    "retriever": "numpy",
+    "cited": [
+     7,
+     53,
+     47
+    ],
+    "timing": {
+     "embed_ms": 441.333,
+     "retrieve_ms": 0.129,
+     "llm_ms": 1.597,
+     "serialize_ms": 0.039,
+     "total_ms": 443.248,
+     "overhead_ms": 0.148
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "444.65",
+    "header_llm": "1.60"
+   },
+   {
+    "key": "單條文-15",
+    "status": 200,
+    "wall_ms": 679.5326999999816,
+    "answer": "根據規章條文，自請離職者需提前預告公司：三個月以上未滿一年者，十天；一年以上未滿三年者，二十天；三年以上者，三十天。",
+    "retriever": "numpy",
+    "cited": [
+     54,
+     12,
+     17
+    ],
+    "timing": {
+     "embed_ms": 665.67,
+     "retrieve_ms": 0.291,
+     "llm_ms": 6.24,
+     "serialize_ms": 0.17,
+     "total_ms": 672.798,
+     "overhead_ms": 0.427
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "675.20",
+    "header_llm": "6.24"
+   },
+   {
+    "key": "多條文-301",
+    "status": 200,
+    "wall_ms": 639.2477999906987,
+    "answer": "平日加班3小時，前2小時按每小時工資額加給三分之一以上，第三小時按加給三分之二以上。具體加班費計算基準為本薪加計經常性給與。請依據上述標準計算您的加班費。",
+    "retriever": "numpy",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 628.578,
+     "retrieve_ms": 0.189,
+     "llm_ms": 2.768,
+     "serialize_ms": 0.12,
+     "total_ms": 631.979,
+     "overhead_ms": 0.323
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "634.84",
+    "header_llm": "2.77"
+   },
+   {
+    "key": "多條文-302",
+    "status": 200,
+    "wall_ms": 633.9869000075851,
+    "answer": "選擇補休後，該筆加班不得再變更為加班費。若六個月內未休畢，則公司應依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "numpy",
+    "cited": [
+     20,
+     26,
+     19
+    ],
+    "timing": {
+     "embed_ms": 627.933,
+     "retrieve_ms": 0.169,
+     "llm_ms": 2.259,
+     "serialize_ms": 0.063,
+     "total_ms": 630.612,
+     "overhead_ms": 0.188
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "631.87",
+    "header_llm": "2.26"
+   },
+   {
+    "key": "多條文-303",
+    "status": 200,
+    "wall_ms": 431.7882999894209,
+    "answer": "住宿費用超過上限的 3,000 元，員工需自行負擔 200 元。由於住宿發票遺失，需填具「單據遺失切結書」，並經權責主管核准後才能報支。報支金額為 0 元，因為未檢附住宿發票。",
+    "retriever": "numpy",
+    "cited": [
+     40,
+     41,
+     42
+    ],
+    "timing": {
+     "embed_ms": 425.338,
+     "retrieve_ms": 0.187,
+     "llm_ms": 2.409,
+     "serialize_ms": 0.067,
+     "total_ms": 428.18,
+     "overhead_ms": 0.179
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "429.23",
+    "header_llm": "2.41"
+   },
+   {
+    "key": "多條文-304",
+    "status": 200,
+    "wall_ms": 287.62709999864455,
+    "answer": "公司因員工無故連續曠職三天而終止契約，依規章條文可不發給資遣費。",
+    "retriever": "numpy",
+    "cited": [
+     56,
+     32,
+     23
+    ],
+    "timing": {
+     "embed_ms": 281.456,
+     "retrieve_ms": 0.153,
+     "llm_ms": 2.481,
+     "serialize_ms": 0.099,
+     "total_ms": 284.355,
+     "overhead_ms": 0.166
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "285.34",
+    "header_llm": "2.48"
+   },
+   {
+    "key": "多條文-305",
+    "status": 200,
+    "wall_ms": 770.7387000118615,
+    "answer": "到職滿三個月的試用期員工尚未滿六個月，因此沒有特休假。",
+    "retriever": "numpy",
+    "cited": [
+     22,
+     6,
+     26
+    ],
+    "timing": {
+     "embed_ms": 761.371,
+     "retrieve_ms": 0.413,
+     "llm_ms": 4.255,
+     "serialize_ms": 0.127,
+     "total_ms": 766.469,
+     "overhead_ms": 0.303
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "767.77",
+    "header_llm": "4.25"
+   },
+   {
+    "key": "多條文-306",
+    "status": 200,
+    "wall_ms": 553.6463000025833,
+    "answer": "會被書面提醒，但不會直接記過。若情節重大或經提醒仍未改善，則可能依獎懲規定處理。",
+    "retriever": "numpy",
+    "cited": [
+     12,
+     46,
+     23
+    ],
+    "timing": {
+     "embed_ms": 545.957,
+     "retrieve_ms": 0.205,
+     "llm_ms": 2.366,
+     "serialize_ms": 0.093,
+     "total_ms": 548.832,
+     "overhead_ms": 0.21
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "550.63",
+    "header_llm": "2.37"
+   },
+   {
+    "key": "多條文-307",
+    "status": 200,
+    "wall_ms": 520.6023999926401,
+    "answer": "是的，未交還公司財物或留存複本的情況下，公司得暫緩發給離職相關文件，包括服務證明書。",
+    "retriever": "numpy",
+    "cited": [
+     57,
+     53,
+     55
+    ],
+    "timing": {
+     "embed_ms": 514.588,
+     "retrieve_ms": 0.203,
+     "llm_ms": 2.363,
+     "serialize_ms": 0.116,
+     "total_ms": 517.459,
+     "overhead_ms": 0.19
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "518.62",
+    "header_llm": "2.36"
+   },
+   {
+    "key": "多條文-308",
+    "status": 200,
+    "wall_ms": 390.93680000223685,
+    "answer": "遇到颱風宣布停止上班，具備遠距工作條件之職務可經主管同意改採居家辦公，該日以正常出勤論。因此，當天不需要簽到，算作正常出勤。",
+    "retriever": "numpy",
+    "cited": [
+     16,
+     12,
+     25
+    ],
+    "timing": {
+     "embed_ms": 383.549,
+     "retrieve_ms": 0.172,
+     "llm_ms": 1.806,
+     "serialize_ms": 0.101,
+     "total_ms": 386.024,
+     "overhead_ms": 0.396
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "388.35",
+    "header_llm": "1.81"
+   },
+   {
+    "key": "陷阱-101",
+    "status": 200,
+    "wall_ms": 563.9603000017814,
+    "answer": "規章條文中並未提及育嬰留職停薪的相關規定，因此無法提供具體的留職停薪最長時間。請參考其他相關規章或政策。",
+    "retriever": "numpy",
+    "cited": [
+     22,
+     27,
+     18
+    ],
+    "timing": {
+     "embed_ms": 556.623,
+     "retrieve_ms": 0.161,
+     "llm_ms": 2.49,
+     "serialize_ms": 0.079,
+     "total_ms": 559.53,
+     "overhead_ms": 0.176
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "560.62",
+    "header_llm": "2.49"
+   },
+   {
+    "key": "陷阱-102",
+    "status": 200,
+    "wall_ms": 290.5125999968732,
+    "answer": "根據提供的規章條文，沒有提及公司有健身房或運動補助的相關內容。",
+    "retriever": "numpy",
+    "cited": [
+     38,
+     20,
+     37
+    ],
+    "timing": {
+     "embed_ms": 281.348,
+     "retrieve_ms": 0.175,
+     "llm_ms": 2.869,
+     "serialize_ms": 0.046,
+     "total_ms": 284.593,
+     "overhead_ms": 0.154
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "286.78",
+    "header_llm": "2.87"
+   },
+   {
+    "key": "陷阱-103",
+    "status": 200,
+    "wall_ms": 633.1269999936922,
+    "answer": "規章條文中並未提及遠端工作的相關規定，因此無法提供具體的天數。",
+    "retriever": "numpy",
+    "cited": [
+     43,
+     22,
+     18
+    ],
+    "timing": {
+     "embed_ms": 626.718,
+     "retrieve_ms": 0.173,
+     "llm_ms": 2.233,
+     "serialize_ms": 0.051,
+     "total_ms": 629.357,
+     "overhead_ms": 0.181
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "630.92",
+    "header_llm": "2.23"
+   },
+   {
+    "key": "陷阱-104",
+    "status": 200,
+    "wall_ms": 431.46369999158196,
+    "answer": "國外出差住宿費上限依公司「國外出差辦法」另行規定，未規定事項準用國內出差的規定。國內出差住宿費上限為每人每晚新臺幣三千元。具體的國外住宿費上限需查閱相關辦法。",
+    "retriever": "numpy",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 417.742,
+     "retrieve_ms": 0.186,
+     "llm_ms": 2.713,
+     "serialize_ms": 0.051,
+     "total_ms": 420.895,
+     "overhead_ms": 0.203
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "425.74",
+    "header_llm": "2.71"
+   },
+   {
+    "key": "陷阱-105",
+    "status": 200,
+    "wall_ms": 472.046800001408,
+    "answer": "平日加班3小時的計算方式為：前2小時按每小時工資額加給三分之二，第三小時則按每小時工資額加給三分之一。具體金額需依據您的本薪及經常性給與計算。請提供您的每小時工資額以便計算具體金額。",
+    "retriever": "numpy",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 461.854,
+     "retrieve_ms": 0.181,
+     "llm_ms": 3.625,
+     "serialize_ms": 0.086,
+     "total_ms": 465.972,
+     "overhead_ms": 0.227
+    },
+    "usage": {
+     "embedding_tokens": 0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "cached": true
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "467.93",
+    "header_llm": "3.62"
+   }
+  ]
+ },
+ "agent_warm": {
+  "summary": {
+   "n": 28,
+   "ok": 28,
+   "p50": 480.3,
+   "p95": 2013.1,
+   "max": 3162.5,
+   "mean": 688.9,
+   "wall_p50": 483.9,
+   "stages": {
+    "embed": 469.736,
+    "retrieve": 6.039,
+    "llm": 5.346,
+    "serialize": 0.083,
+    "overhead": 3.383
+   },
+   "share": {
+    "embed": 97.8,
+    "retrieve": 1.26,
+    "llm": 1.11,
+    "serialize": 0.02,
+    "overhead": 0.7
+   }
+  },
+  "rows": [
+   {
+    "key": "單條文-1",
+    "status": 200,
+    "wall_ms": 342.7786999964155,
+    "answer": "病假連續請三天（含）以上者，需附上合格醫療院所出具的診斷證明書。",
+    "retriever": "chroma",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 316.54,
+     "retrieve_ms": 5.577,
+     "llm_ms": 5.425,
+     "serialize_ms": 0.069,
+     "total_ms": 337.057,
+     "overhead_ms": 9.446
+    },
+    "usage": {
+     "embedding_tokens": 25,
+     "input_tokens": 1191,
+     "output_tokens": 58,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "病假 連續請幾天 附診斷證明"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "338.55",
+    "header_llm": "5.42"
+   },
+   {
+    "key": "單條文-2",
+    "status": 200,
+    "wall_ms": 313.6672999971779,
+    "answer": "特休假應於預定休假日的三個工作日前，於差勤系統提出申請。經直屬主管核准後生效。",
+    "retriever": "chroma",
+    "cited": [
+     23,
+     22,
+     26
+    ],
+    "timing": {
+     "embed_ms": 297.258,
+     "retrieve_ms": 3.974,
+     "llm_ms": 3.811,
+     "serialize_ms": 0.06,
+     "total_ms": 307.912,
+     "overhead_ms": 2.809
+    },
+    "usage": {
+     "embedding_tokens": 18,
+     "input_tokens": 1234,
+     "output_tokens": 58,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "特休假 申請 最晚 幾天前"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "308.90",
+    "header_llm": "3.81"
+   },
+   {
+    "key": "單條文-3",
+    "status": 200,
+    "wall_ms": 677.4183000088669,
+    "answer": "婚假總共有八天，工資照給。婚假應自結婚登記日起一年內休畢，得分次申請。",
+    "retriever": "chroma",
+    "cited": [
+     27,
+     25,
+     30
+    ],
+    "timing": {
+     "embed_ms": 649.359,
+     "retrieve_ms": 13.021,
+     "llm_ms": 5.346,
+     "serialize_ms": 0.13,
+     "total_ms": 671.432,
+     "overhead_ms": 3.576
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1126,
+     "output_tokens": 45,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "婚假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "674.34",
+    "header_llm": "5.35"
+   },
+   {
+    "key": "單條文-4",
+    "status": 200,
+    "wall_ms": 664.3612000043504,
+    "answer": "請假一日（含）以上者，需要指定職務代理人。代理人必須同意，並經直屬主管核准後才能離開職務。",
+    "retriever": "chroma",
+    "cited": [
+     30,
+     25,
+     13
+    ],
+    "timing": {
+     "embed_ms": 646.423,
+     "retrieve_ms": 6.039,
+     "llm_ms": 4.916,
+     "serialize_ms": 0.061,
+     "total_ms": 659.366,
+     "overhead_ms": 1.928
+    },
+    "usage": {
+     "embedding_tokens": 16,
+     "input_tokens": 1263,
+     "output_tokens": 56,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "請假 指定職務代理人"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "661.60",
+    "header_llm": "4.92"
+   },
+   {
+    "key": "單條文-5",
+    "status": 200,
+    "wall_ms": 483.91819999960717,
+    "answer": "事假一年最多可以請十四天。事假期間不支薪，需於三個工作日前提出申請。未依規定申請者，將不予核准。",
+    "retriever": "chroma",
+    "cited": [
+     25,
+     22,
+     27
+    ],
+    "timing": {
+     "embed_ms": 469.736,
+     "retrieve_ms": 4.765,
+     "llm_ms": 3.544,
+     "serialize_ms": 0.086,
+     "total_ms": 480.33,
+     "overhead_ms": 2.199
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 1195,
+     "output_tokens": 62,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "事假 一年 最多 請幾天"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "481.55",
+    "header_llm": "3.54"
+   },
+   {
+    "key": "單條文-6",
+    "status": 200,
+    "wall_ms": 405.29209999658633,
+    "answer": "加班換的假必須在加班事實發生日起六個月內休畢，若屆期未休畢，則公司會依延長工時當日的工資標準折算加班費發給。",
+    "retriever": "chroma",
+    "cited": [
+     26,
+     20,
+     23
+    ],
+    "timing": {
+     "embed_ms": 373.865,
+     "retrieve_ms": 10.816,
+     "llm_ms": 7.553,
+     "serialize_ms": 0.196,
+     "total_ms": 397.917,
+     "overhead_ms": 5.487
+    },
+    "usage": {
+     "embedding_tokens": 12,
+     "input_tokens": 1241,
+     "output_tokens": 73,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班換的假 過期"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "400.59",
+    "header_llm": "7.55"
+   },
+   {
+    "key": "單條文-7",
+    "status": 200,
+    "wall_ms": 545.0108999939403,
+    "answer": "特休假應於年度終結前休畢，若因業務需要或個人因素未能休畢，可申請遞延至次年三月三十一日。屆期仍未休畢的特休假日數，公司將按日折算工資發給，不再遞延。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 516.169,
+     "retrieve_ms": 6.678,
+     "llm_ms": 9.748,
+     "serialize_ms": 0.062,
+     "total_ms": 536.392,
+     "overhead_ms": 3.735
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1215,
+     "output_tokens": 87,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "特休沒休完"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "539.38",
+    "header_llm": "9.75"
+   },
+   {
+    "key": "單條文-8",
+    "status": 200,
+    "wall_ms": 391.8463000009069,
+    "answer": "因急病無法事前請假者，應立即以電話或即時通訊通知直屬主管，並於復工後三個工作日內補辦請假手續。若逾期未補辦，將依曠職處理。",
+    "retriever": "chroma",
+    "cited": [
+     24,
+     25,
+     31
+    ],
+    "timing": {
+     "embed_ms": 375.889,
+     "retrieve_ms": 5.325,
+     "llm_ms": 3.881,
+     "serialize_ms": 0.083,
+     "total_ms": 387.46,
+     "overhead_ms": 2.282
+    },
+    "usage": {
+     "embedding_tokens": 9,
+     "input_tokens": 1190,
+     "output_tokens": 75,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "急診 請假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "388.69",
+    "header_llm": "3.88"
+   },
+   {
+    "key": "單條文-9",
+    "status": 200,
+    "wall_ms": 774.4431000028271,
+    "answer": "若未來上班且未事先請假，將被視為曠職，曠職期間不發工資。若無正當理由持續曠職三日，或一個月內累計曠職達六日，公司可依法終止勞動契約。建議儘快補辦請假手續以避免後果。",
+    "retriever": "chroma",
+    "cited": [
+     17,
+     31,
+     26,
+     32,
+     46
+    ],
+    "timing": {
+     "embed_ms": 742.729,
+     "retrieve_ms": 12.533,
+     "llm_ms": 8.021,
+     "serialize_ms": 0.078,
+     "total_ms": 768.858,
+     "overhead_ms": 5.497
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 2600,
+     "output_tokens": 108,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 3,
+     "queries": [
+      "缺勤 後果",
+      "曠職 後果"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "771.32",
+    "header_llm": "8.02"
+   },
+   {
+    "key": "單條文-10",
+    "status": 200,
+    "wall_ms": 329.88180000393186,
+    "answer": "您可以請家庭照顧假，因為小孩打疫苗屬於家庭成員的預防接種。家庭照顧假全年以七日為限，請假期間不支薪。請假時需依事假規定提前申請。",
+    "retriever": "chroma",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 308.316,
+     "retrieve_ms": 7.86,
+     "llm_ms": 6.09,
+     "serialize_ms": 0.064,
+     "total_ms": 325.665,
+     "overhead_ms": 3.334
+    },
+    "usage": {
+     "embedding_tokens": 13,
+     "input_tokens": 1182,
+     "output_tokens": 79,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "小孩 疫苗 請假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "327.29",
+    "header_llm": "6.09"
+   },
+   {
+    "key": "單條文-11",
+    "status": 200,
+    "wall_ms": 496.63110000255983,
+    "answer": "每月加班時數上限為四十六小時。經工會或勞資會議同意者，可調整為每月不超過五十四小時。每三個月的加班時數上限為一百三十八小時。",
+    "retriever": "chroma",
+    "cited": [
+     18,
+     17,
+     19
+    ],
+    "timing": {
+     "embed_ms": 473.139,
+     "retrieve_ms": 5.845,
+     "llm_ms": 6.866,
+     "serialize_ms": 0.098,
+     "total_ms": 489.905,
+     "overhead_ms": 3.956
+    },
+    "usage": {
+     "embedding_tokens": 10,
+     "input_tokens": 1455,
+     "output_tokens": 78,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "每月加班時數上限"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "492.49",
+    "header_llm": "6.87"
+   },
+   {
+    "key": "單條文-12",
+    "status": 200,
+    "wall_ms": 384.2949999962002,
+    "answer": "忘記打卡的員工應於當日或次一工作日內至差勤系統申請補登，並需經直屬主管核准。每月補登次數限制為三次，超過次數且無正當理由者將依遲到或曠職相關規定處理。",
+    "retriever": "chroma",
+    "cited": [
+     11,
+     53,
+     31
+    ],
+    "timing": {
+     "embed_ms": 360.428,
+     "retrieve_ms": 5.243,
+     "llm_ms": 10.626,
+     "serialize_ms": 0.091,
+     "total_ms": 379.772,
+     "overhead_ms": 3.383
+    },
+    "usage": {
+     "embedding_tokens": 11,
+     "input_tokens": 1368,
+     "output_tokens": 90,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "忘記打卡 補救"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "381.57",
+    "header_llm": "10.63"
+   },
+   {
+    "key": "單條文-13",
+    "status": 200,
+    "wall_ms": 278.52189999248367,
+    "answer": "國內出差住宿費每人每晚以新臺幣三千元為上限。超過上限之差額由員工自行負擔，但經主管事前核准者不在此限。合住的情況下，合計不得超過各自上限之總和。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 264.81,
+     "retrieve_ms": 4.728,
+     "llm_ms": 3.494,
+     "serialize_ms": 0.062,
+     "total_ms": 275.303,
+     "overhead_ms": 2.208
+    },
+    "usage": {
+     "embedding_tokens": 18,
+     "input_tokens": 1388,
+     "output_tokens": 89,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "國內出差 住宿費 限額"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "276.47",
+    "header_llm": "3.49"
+   },
+   {
+    "key": "單條文-14",
+    "status": 200,
+    "wall_ms": 858.485999997356,
+    "answer": "員工未經核准將公司內部文件、客戶資料或營業秘密攜出、傳送或洩漏予第三人者，將會受到記大過的處分；若致公司受有損害或情節重大者，得不經預告終止勞動契約，並依法請求損害賠償。",
+    "retriever": "chroma",
+    "cited": [
+     7,
+     57,
+     52,
+     53,
+     47,
+     46
+    ],
+    "timing": {
+     "embed_ms": 814.459,
+     "retrieve_ms": 14.979,
+     "llm_ms": 13.917,
+     "serialize_ms": 0.072,
+     "total_ms": 854.888,
+     "overhead_ms": 11.461
+    },
+    "usage": {
+     "embedding_tokens": 52,
+     "input_tokens": 8717,
+     "output_tokens": 227,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 5,
+     "searches": 3,
+     "llm_calls": 6,
+     "queries": [
+      "內部資料 傳給外面的人 處分",
+      "內部資料 外洩 處分",
+      "內部資料 外洩 處分 罰則"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 1,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "856.15",
+    "header_llm": "13.92"
+   },
+   {
+    "key": "單條文-15",
+    "status": 200,
+    "wall_ms": 306.39339999470394,
+    "answer": "員工自請離職者，需依工作年限提前通知公司：工作三個月以上未滿一年者，提前十天；一年以上未滿三年者，提前二十天；三年以上者，提前三十天。離職通知需以書面或於差勤系統提出。",
+    "retriever": "chroma",
+    "cited": [
+     54,
+     5,
+     31
+    ],
+    "timing": {
+     "embed_ms": 293.329,
+     "retrieve_ms": 4.545,
+     "llm_ms": 2.958,
+     "serialize_ms": 0.066,
+     "total_ms": 303.054,
+     "overhead_ms": 2.157
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1349,
+     "output_tokens": 83,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "提前通知 辭職"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "304.25",
+    "header_llm": "2.96"
+   },
+   {
+    "key": "多條文-301",
+    "status": 200,
+    "wall_ms": 284.6939000010025,
+    "answer": "平日加班費計算方式為：若加班在2小時以內，按每小時工資額加給三分之一以上；若再延長2小時以內，則加給三分之二以上。若您平日加班3小時，則前2小時加給三分之一，第三小時加給三分之二。",
+    "retriever": "chroma",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 271.307,
+     "retrieve_ms": 4.016,
+     "llm_ms": 3.777,
+     "serialize_ms": 0.083,
+     "total_ms": 281.438,
+     "overhead_ms": 2.254
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1457,
+     "output_tokens": 97,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "282.60",
+    "header_llm": "3.78"
+   },
+   {
+    "key": "多條文-302",
+    "status": 200,
+    "wall_ms": 582.6002999965567,
+    "answer": "選擇補休後，該筆加班不得再變更為加班費。若六個月內未休畢補休時數，公司將依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "chroma",
+    "cited": [
+     20,
+     19,
+     26,
+     6,
+     22,
+     12
+    ],
+    "timing": {
+     "embed_ms": 561.249,
+     "retrieve_ms": 10.525,
+     "llm_ms": 3.248,
+     "serialize_ms": 0.1,
+     "total_ms": 578.283,
+     "overhead_ms": 3.161
+    },
+    "usage": {
+     "embedding_tokens": 28,
+     "input_tokens": 1920,
+     "output_tokens": 91,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 2,
+     "queries": [
+      "加班 補休 改領 加班費",
+      "六個月內沒排到"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "580.38",
+    "header_llm": "3.25"
+   },
+   {
+    "key": "多條文-303",
+    "status": 200,
+    "wall_ms": 289.61370000615716,
+    "answer": "住宿費用報支上限為每人每晚新臺幣三千元，因此可報銷 3,000 元。由於住宿發票遺失，需填寫報銷申請表並附上相關證明文件，經主管核准後方可報支。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     43,
+     38
+    ],
+    "timing": {
+     "embed_ms": 276.409,
+     "retrieve_ms": 4.253,
+     "llm_ms": 3.673,
+     "serialize_ms": 0.053,
+     "total_ms": 286.438,
+     "overhead_ms": 2.05
+    },
+    "usage": {
+     "embedding_tokens": 16,
+     "input_tokens": 1405,
+     "output_tokens": 86,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "出差 住宿報銷 規定"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "287.60",
+    "header_llm": "3.67"
+   },
+   {
+    "key": "多條文-304",
+    "status": 200,
+    "wall_ms": 514.9286999949254,
+    "answer": "無故連續曠職三天，公司可依法終止勞動契約，且不需發給資遣費。根據規定，員工在曠職三日後，公司有權終止契約。此情況屬於不需預告終止契約的情形。",
+    "retriever": "chroma",
+    "cited": [
+     32,
+     56,
+     23
+    ],
+    "timing": {
+     "embed_ms": 500.032,
+     "retrieve_ms": 4.626,
+     "llm_ms": 4.156,
+     "serialize_ms": 0.082,
+     "total_ms": 511.347,
+     "overhead_ms": 2.451
+    },
+    "usage": {
+     "embedding_tokens": 27,
+     "input_tokens": 1290,
+     "output_tokens": 97,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "無故連續曠職三天 終止契約 資遣費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "512.58",
+    "header_llm": "4.16"
+   },
+   {
+    "key": "多條文-305",
+    "status": 200,
+    "wall_ms": 328.0707999947481,
+    "answer": "到職滿三個月的試用期員工，依據公司規章，特休假需滿六個月才能享有。因此，試用期員工在滿三個月時並不具備特休假權益。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     6,
+     26
+    ],
+    "timing": {
+     "embed_ms": 314.357,
+     "retrieve_ms": 5.155,
+     "llm_ms": 3.141,
+     "serialize_ms": 0.051,
+     "total_ms": 324.889,
+     "overhead_ms": 2.185
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 1323,
+     "output_tokens": 72,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "試用期 員工 特休假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "325.96",
+    "header_llm": "3.14"
+   },
+   {
+    "key": "多條文-306",
+    "status": 200,
+    "wall_ms": 304.11199999798555,
+    "answer": "如果這個月遲到三次，會由直屬主管予以書面提醒。情節重大或經提醒仍未改善者，可能會依獎懲規定處理，甚至記過。建議注意出勤紀錄，避免影響後續工作。",
+    "retriever": "chroma",
+    "cited": [
+     12,
+     46,
+     14
+    ],
+    "timing": {
+     "embed_ms": 288.261,
+     "retrieve_ms": 5.277,
+     "llm_ms": 3.965,
+     "serialize_ms": 0.063,
+     "total_ms": 300.378,
+     "overhead_ms": 2.811
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1410,
+     "output_tokens": 80,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "遲到 記過"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "301.63",
+    "header_llm": "3.97"
+   },
+   {
+    "key": "多條文-307",
+    "status": 200,
+    "wall_ms": 326.3066999934381,
+    "answer": "公司可以不發服務證明書，若員工未交還公司財物。根據第53條，未交還或留存公司財物的情況下，公司得暫緩發給離職相關文件。員工應在離職時將所有公司財物交還。",
+    "retriever": "chroma",
+    "cited": [
+     57,
+     53,
+     55
+    ],
+    "timing": {
+     "embed_ms": 311.289,
+     "retrieve_ms": 5.231,
+     "llm_ms": 3.675,
+     "serialize_ms": 0.063,
+     "total_ms": 322.69,
+     "overhead_ms": 2.432
+    },
+    "usage": {
+     "embedding_tokens": 20,
+     "input_tokens": 1341,
+     "output_tokens": 87,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "離職 服務證明書 財物交還"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "323.82",
+    "header_llm": "3.67"
+   },
+   {
+    "key": "多條文-308",
+    "status": 200,
+    "wall_ms": 611.4302000059979,
+    "answer": "在颱風宣布停止上班的情況下，若經主管同意改為居家辦公，該日可視為正常出勤，不需簽到。工資照給，且不會影響出勤紀錄。",
+    "retriever": "chroma",
+    "cited": [
+     16,
+     31,
+     17,
+     14,
+     57
+    ],
+    "timing": {
+     "embed_ms": 585.438,
+     "retrieve_ms": 11.63,
+     "llm_ms": 5.195,
+     "serialize_ms": 0.106,
+     "total_ms": 606.857,
+     "overhead_ms": 4.489
+    },
+    "usage": {
+     "embedding_tokens": 37,
+     "input_tokens": 1956,
+     "output_tokens": 100,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 2,
+     "queries": [
+      "颱風 停止上班 在家上班 簽到 出勤",
+      "在家上班 簽到 出勤"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "608.43",
+    "header_llm": "5.19"
+   },
+   {
+    "key": "陷阱-101",
+    "status": 200,
+    "wall_ms": 1657.8186999977333,
+    "answer": "育嬰留職停薪的最長期限為三年。",
+    "retriever": "chroma",
+    "cited": [
+     23,
+     26,
+     18,
+     16,
+     28,
+     29,
+     27,
+     22,
+     25
+    ],
+    "timing": {
+     "embed_ms": 1591.523,
+     "retrieve_ms": 29.513,
+     "llm_ms": 13.444,
+     "serialize_ms": 0.11,
+     "total_ms": 1652.495,
+     "overhead_ms": 17.905
+    },
+    "usage": {
+     "embedding_tokens": 79,
+     "input_tokens": 10832,
+     "output_tokens": 95,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "育嬰留職停薪 最長",
+      "育嬰留職停薪",
+      "育嬰假",
+      "育嬰留職停薪 最長 期限",
+      "育嬰假 期限",
+      "育嬰假 相關規定"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "1653.91",
+    "header_llm": "13.44"
+   },
+   {
+    "key": "陷阱-102",
+    "status": 200,
+    "wall_ms": 1719.6961000008741,
+    "answer": "目前查詢結果中未找到有關公司健身房或運動補助的具體條文。建議您向人資部門進一步確認相關福利政策。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     38,
+     24,
+     50,
+     7,
+     39,
+     8,
+     13,
+     26,
+     27,
+     37,
+     10,
+     14,
+     1
+    ],
+    "timing": {
+     "embed_ms": 1643.013,
+     "retrieve_ms": 36.193,
+     "llm_ms": 13.529,
+     "serialize_ms": 0.146,
+     "total_ms": 1715.938,
+     "overhead_ms": 23.057
+    },
+    "usage": {
+     "embedding_tokens": 40,
+     "input_tokens": 14225,
+     "output_tokens": 98,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "健身房 運動補助",
+      "健身",
+      "運動",
+      "員工福利",
+      "員工健身",
+      "員工福利健身"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "1716.92",
+    "header_llm": "13.53"
+   },
+   {
+    "key": "陷阱-103",
+    "status": 200,
+    "wall_ms": 3170.573900002637,
+    "answer": "目前查詢的規章中並未明確規定遠端工作一週最多幾天。建議查閱公司內部相關政策或向主管詢問以獲取具體資訊。",
+    "retriever": "chroma",
+    "cited": [
+     43,
+     22,
+     18,
+     38,
+     13
+    ],
+    "timing": {
+     "embed_ms": 3085.377,
+     "retrieve_ms": 33.245,
+     "llm_ms": 20.443,
+     "serialize_ms": 0.144,
+     "total_ms": 3162.519,
+     "overhead_ms": 23.308
+    },
+    "usage": {
+     "embedding_tokens": 57,
+     "input_tokens": 14132,
+     "output_tokens": 117,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "遠端工作 一週 最多 幾天",
+      "遠端工作",
+      "遠端工作 規定",
+      "遠端工作 週",
+      "遠端工作 週次",
+      "遠端工作 相關規定"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "3164.20",
+    "header_llm": "20.44"
+   },
+   {
+    "key": "陷阱-104",
+    "status": 200,
+    "wall_ms": 2021.1014000087744,
+    "answer": "國外出差的住宿費上限依公司「國外出差辦法」另行規定，未規定事項則準用國內出差的規定。根據國內出差規定，住宿費每人每晚以新臺幣三千元為上限。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     43,
+     38,
+     13
+    ],
+    "timing": {
+     "embed_ms": 1958.275,
+     "retrieve_ms": 21.942,
+     "llm_ms": 15.504,
+     "serialize_ms": 0.111,
+     "total_ms": 2013.071,
+     "overhead_ms": 17.239
+    },
+    "usage": {
+     "embedding_tokens": 66,
+     "input_tokens": 10692,
+     "output_tokens": 132,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 6,
+     "searches": 5,
+     "llm_calls": 6,
+     "queries": [
+      "國外出差 住宿費 上限",
+      "國外出差辦法",
+      "國外出差住宿費標準",
+      "國外出差住宿費",
+      "國外出差住宿費用"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2015.74",
+    "header_llm": "15.50"
+   },
+   {
+    "key": "陷阱-105",
+    "status": 200,
+    "wall_ms": 367.1872999984771,
+    "answer": "加班費的計算依據平日工資，延長工作時間在二小時以內者，加給三分之一以上；再延長二小時以內者，加給三分之二以上。若你加班3小時，則前2小時加給三分之一，第三小時加給三分之二。具體金額需依據你的每小時工資計算。",
+    "retriever": "chroma",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 337.122,
+     "retrieve_ms": 6.526,
+     "llm_ms": 10.542,
+     "serialize_ms": 0.148,
+     "total_ms": 358.386,
+     "overhead_ms": 4.048
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1463,
+     "output_tokens": 106,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "361.01",
+    "header_llm": "10.54"
+   }
+  ]
+ },
+ "agent_numpy": {
+  "summary": {
+   "n": 28,
+   "ok": 28,
+   "p50": 304.3,
+   "p95": 3057.4,
+   "max": 3342.6,
+   "mean": 775.1,
+   "wall_p50": 313.1,
+   "stages": {
+    "embed": 296.603,
+    "retrieve": 0.204,
+    "llm": 4.68,
+    "serialize": 0.081,
+    "overhead": 2.917
+   },
+   "share": {
+    "embed": 97.47,
+    "retrieve": 0.07,
+    "llm": 1.54,
+    "serialize": 0.03,
+    "overhead": 0.96
+   }
+  },
+  "rows": [
+   {
+    "key": "單條文-1",
+    "status": 200,
+    "wall_ms": 295.492799996282,
+    "answer": "病假連續請三天（含）以上者，需附上合格醫療院所出具的診斷證明書。",
+    "retriever": "numpy",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 283.714,
+     "retrieve_ms": 0.17,
+     "llm_ms": 3.835,
+     "serialize_ms": 0.053,
+     "total_ms": 290.174,
+     "overhead_ms": 2.402
+    },
+    "usage": {
+     "embedding_tokens": 25,
+     "input_tokens": 1191,
+     "output_tokens": 58,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "病假 連續請幾天 附診斷證明"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "291.54",
+    "header_llm": "3.84"
+   },
+   {
+    "key": "單條文-2",
+    "status": 200,
+    "wall_ms": 285.79249999893364,
+    "answer": "特休假應於預定休假日的三個工作日前，於差勤系統提出申請。經直屬主管核准後生效。",
+    "retriever": "numpy",
+    "cited": [
+     23,
+     22,
+     26
+    ],
+    "timing": {
+     "embed_ms": 277.147,
+     "retrieve_ms": 0.169,
+     "llm_ms": 3.021,
+     "serialize_ms": 0.07,
+     "total_ms": 282.576,
+     "overhead_ms": 2.169
+    },
+    "usage": {
+     "embedding_tokens": 18,
+     "input_tokens": 1234,
+     "output_tokens": 58,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "特休假 申請 最晚 幾天前"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "283.75",
+    "header_llm": "3.02"
+   },
+   {
+    "key": "單條文-3",
+    "status": 200,
+    "wall_ms": 274.30019999155775,
+    "answer": "婚假總共有八天，工資照給。婚假應自結婚登記日起一年內休畢，得分次申請。",
+    "retriever": "numpy",
+    "cited": [
+     27,
+     25,
+     30
+    ],
+    "timing": {
+     "embed_ms": 265.865,
+     "retrieve_ms": 0.178,
+     "llm_ms": 3.193,
+     "serialize_ms": 0.055,
+     "total_ms": 271.136,
+     "overhead_ms": 1.846
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1126,
+     "output_tokens": 45,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "婚假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "272.28",
+    "header_llm": "3.19"
+   },
+   {
+    "key": "單條文-4",
+    "status": 200,
+    "wall_ms": 290.807000012137,
+    "answer": "請假一日（含）以上者，需要指定職務代理人。代理人必須同意，並經直屬主管核准後才能離開職務。",
+    "retriever": "numpy",
+    "cited": [
+     30,
+     25,
+     13
+    ],
+    "timing": {
+     "embed_ms": 278.447,
+     "retrieve_ms": 0.266,
+     "llm_ms": 4.71,
+     "serialize_ms": 0.124,
+     "total_ms": 286.464,
+     "overhead_ms": 2.917
+    },
+    "usage": {
+     "embedding_tokens": 16,
+     "input_tokens": 1263,
+     "output_tokens": 56,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "請假 指定職務代理人"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "287.68",
+    "header_llm": "4.71"
+   },
+   {
+    "key": "單條文-5",
+    "status": 200,
+    "wall_ms": 356.7346999916481,
+    "answer": "事假一年最多可以請十四天。事假期間不支薪，需於三個工作日前提出申請。未依規定申請者，將不予核准。",
+    "retriever": "numpy",
+    "cited": [
+     25,
+     22,
+     27
+    ],
+    "timing": {
+     "embed_ms": 333.004,
+     "retrieve_ms": 0.593,
+     "llm_ms": 7.021,
+     "serialize_ms": 0.438,
+     "total_ms": 346.927,
+     "overhead_ms": 5.872
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 1195,
+     "output_tokens": 62,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "事假 一年 最多 請幾天"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "350.97",
+    "header_llm": "7.02"
+   },
+   {
+    "key": "單條文-6",
+    "status": 200,
+    "wall_ms": 312.38760000269394,
+    "answer": "加班換的假必須在加班事實發生日起六個月內休畢，若屆期未休畢，則公司會依延長工時當日的工資標準折算加班費發給。",
+    "retriever": "numpy",
+    "cited": [
+     26,
+     20,
+     23
+    ],
+    "timing": {
+     "embed_ms": 296.603,
+     "retrieve_ms": 0.182,
+     "llm_ms": 4.68,
+     "serialize_ms": 0.083,
+     "total_ms": 304.295,
+     "overhead_ms": 2.747
+    },
+    "usage": {
+     "embedding_tokens": 12,
+     "input_tokens": 1241,
+     "output_tokens": 73,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班換的假 過期"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "306.41",
+    "header_llm": "4.68"
+   },
+   {
+    "key": "單條文-7",
+    "status": 200,
+    "wall_ms": 268.90320000529755,
+    "answer": "特休假應於年度終結前休畢，若因業務需要或個人因素未能休畢，可申請遞延至次年三月三十一日。屆期仍未休畢的特休假日數，公司將按日折算工資發給，不再遞延。",
+    "retriever": "numpy",
+    "cited": [
+     22,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 259.486,
+     "retrieve_ms": 0.17,
+     "llm_ms": 3.777,
+     "serialize_ms": 0.078,
+     "total_ms": 265.69,
+     "overhead_ms": 2.179
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1215,
+     "output_tokens": 87,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "特休沒休完"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "266.77",
+    "header_llm": "3.78"
+   },
+   {
+    "key": "單條文-8",
+    "status": 200,
+    "wall_ms": 277.6449999946635,
+    "answer": "因急病無法事前請假者，應立即以電話或即時通訊通知直屬主管，並於復工後三個工作日內補辦請假手續。若逾期未補辦，將依曠職處理。",
+    "retriever": "numpy",
+    "cited": [
+     24,
+     25,
+     31
+    ],
+    "timing": {
+     "embed_ms": 267.907,
+     "retrieve_ms": 0.172,
+     "llm_ms": 3.709,
+     "serialize_ms": 0.099,
+     "total_ms": 274.261,
+     "overhead_ms": 2.373
+    },
+    "usage": {
+     "embedding_tokens": 9,
+     "input_tokens": 1190,
+     "output_tokens": 75,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "急診 請假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "275.59",
+    "header_llm": "3.71"
+   },
+   {
+    "key": "單條文-9",
+    "status": 200,
+    "wall_ms": 611.530700000003,
+    "answer": "若未來上班且未事先請假，將被視為曠職，曠職期間不發工資。若無正當理由持續曠職三日，或一個月內累計曠職達六日，公司可依法終止勞動契約。建議儘快補辦請假手續以避免後果。",
+    "retriever": "numpy",
+    "cited": [
+     17,
+     31,
+     26,
+     32,
+     46
+    ],
+    "timing": {
+     "embed_ms": 588.123,
+     "retrieve_ms": 0.361,
+     "llm_ms": 9.994,
+     "serialize_ms": 0.092,
+     "total_ms": 603.555,
+     "overhead_ms": 4.985
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 2600,
+     "output_tokens": 108,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 3,
+     "queries": [
+      "缺勤 後果",
+      "曠職 後果"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "605.50",
+    "header_llm": "9.99"
+   },
+   {
+    "key": "單條文-10",
+    "status": 200,
+    "wall_ms": 313.114399992628,
+    "answer": "您可以請家庭照顧假，因為小孩打疫苗屬於家庭成員的預防接種。家庭照顧假全年以七日為限，請假期間不支薪。請假時需依事假規定提前申請。",
+    "retriever": "numpy",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 291.887,
+     "retrieve_ms": 0.185,
+     "llm_ms": 8.014,
+     "serialize_ms": 0.11,
+     "total_ms": 303.354,
+     "overhead_ms": 3.158
+    },
+    "usage": {
+     "embedding_tokens": 13,
+     "input_tokens": 1182,
+     "output_tokens": 79,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "小孩 疫苗 請假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "307.00",
+    "header_llm": "8.01"
+   },
+   {
+    "key": "單條文-11",
+    "status": 200,
+    "wall_ms": 277.5145000050543,
+    "answer": "每月加班時數上限為四十六小時。經工會或勞資會議同意者，可調整為每月不超過五十四小時。每三個月的加班時數上限為一百三十八小時。",
+    "retriever": "numpy",
+    "cited": [
+     18,
+     17,
+     19
+    ],
+    "timing": {
+     "embed_ms": 268.064,
+     "retrieve_ms": 0.151,
+     "llm_ms": 3.339,
+     "serialize_ms": 0.072,
+     "total_ms": 274.082,
+     "overhead_ms": 2.455
+    },
+    "usage": {
+     "embedding_tokens": 10,
+     "input_tokens": 1455,
+     "output_tokens": 78,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "每月加班時數上限"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "275.09",
+    "header_llm": "3.34"
+   },
+   {
+    "key": "單條文-12",
+    "status": 200,
+    "wall_ms": 274.08819999254774,
+    "answer": "忘記打卡的員工應於當日或次一工作日內至差勤系統申請補登，並需經直屬主管核准。每月補登次數限制為三次，超過次數且無正當理由者將依遲到或曠職相關規定處理。",
+    "retriever": "numpy",
+    "cited": [
+     11,
+     53,
+     31
+    ],
+    "timing": {
+     "embed_ms": 264.456,
+     "retrieve_ms": 0.227,
+     "llm_ms": 3.339,
+     "serialize_ms": 0.069,
+     "total_ms": 270.924,
+     "overhead_ms": 2.833
+    },
+    "usage": {
+     "embedding_tokens": 11,
+     "input_tokens": 1368,
+     "output_tokens": 90,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "忘記打卡 補救"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "271.96",
+    "header_llm": "3.34"
+   },
+   {
+    "key": "單條文-13",
+    "status": 200,
+    "wall_ms": 333.2970000046771,
+    "answer": "國內出差住宿費每人每晚以新臺幣三千元為上限。超過上限之差額由員工自行負擔，但經主管事前核准者不在此限。合住的情況下，合計不得超過各自上限之總和。",
+    "retriever": "numpy",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 321.796,
+     "retrieve_ms": 0.173,
+     "llm_ms": 4.505,
+     "serialize_ms": 0.063,
+     "total_ms": 329.083,
+     "overhead_ms": 2.546
+    },
+    "usage": {
+     "embedding_tokens": 18,
+     "input_tokens": 1388,
+     "output_tokens": 89,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "國內出差 住宿費 限額"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "331.06",
+    "header_llm": "4.51"
+   },
+   {
+    "key": "單條文-14",
+    "status": 200,
+    "wall_ms": 1083.164299998316,
+    "answer": "員工未經核准將公司內部文件、客戶資料或營業秘密攜出、傳送或洩漏予第三人者，將會受到記大過的處分；若致公司受有損害或情節重大者，得不經預告終止勞動契約，並依法請求損害賠償。",
+    "retriever": "numpy",
+    "cited": [
+     7,
+     57,
+     52,
+     53,
+     47,
+     46
+    ],
+    "timing": {
+     "embed_ms": 1045.798,
+     "retrieve_ms": 0.618,
+     "llm_ms": 17.948,
+     "serialize_ms": 0.106,
+     "total_ms": 1078.389,
+     "overhead_ms": 13.92
+    },
+    "usage": {
+     "embedding_tokens": 52,
+     "input_tokens": 8717,
+     "output_tokens": 227,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 5,
+     "searches": 3,
+     "llm_calls": 6,
+     "queries": [
+      "內部資料 傳給外面的人 處分",
+      "內部資料 外洩 處分",
+      "內部資料 外洩 處分 罰則"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 1,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "1079.90",
+    "header_llm": "17.95"
+   },
+   {
+    "key": "單條文-15",
+    "status": 200,
+    "wall_ms": 471.29499999573454,
+    "answer": "員工自請離職者，需依工作年限提前通知公司：工作三個月以上未滿一年者，提前十天；一年以上未滿三年者，提前二十天；三年以上者，提前三十天。離職通知需以書面或於差勤系統提出。",
+    "retriever": "numpy",
+    "cited": [
+     54,
+     5,
+     31
+    ],
+    "timing": {
+     "embed_ms": 455.143,
+     "retrieve_ms": 0.199,
+     "llm_ms": 7.092,
+     "serialize_ms": 0.079,
+     "total_ms": 466.264,
+     "overhead_ms": 3.752
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1349,
+     "output_tokens": 83,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "提前通知 辭職"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "468.61",
+    "header_llm": "7.09"
+   },
+   {
+    "key": "多條文-301",
+    "status": 200,
+    "wall_ms": 585.5874999979278,
+    "answer": "平日加班費計算方式為：若加班在2小時以內，按每小時工資額加給三分之一以上；若再延長2小時以內，則加給三分之二以上。若您平日加班3小時，則前2小時加給三分之一，第三小時加給三分之二。",
+    "retriever": "numpy",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 575.87,
+     "retrieve_ms": 0.344,
+     "llm_ms": 3.487,
+     "serialize_ms": 0.063,
+     "total_ms": 582.134,
+     "overhead_ms": 2.369
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1457,
+     "output_tokens": 97,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "583.29",
+    "header_llm": "3.49"
+   },
+   {
+    "key": "多條文-302",
+    "status": 200,
+    "wall_ms": 525.1981000037631,
+    "answer": "選擇補休後，該筆加班不得再變更為加班費。若六個月內未休畢補休時數，公司將依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "numpy",
+    "cited": [
+     20,
+     19,
+     26,
+     6,
+     22,
+     12
+    ],
+    "timing": {
+     "embed_ms": 513.771,
+     "retrieve_ms": 0.451,
+     "llm_ms": 3.779,
+     "serialize_ms": 0.081,
+     "total_ms": 521.441,
+     "overhead_ms": 3.359
+    },
+    "usage": {
+     "embedding_tokens": 28,
+     "input_tokens": 1920,
+     "output_tokens": 91,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 2,
+     "queries": [
+      "加班 補休 改領 加班費",
+      "六個月內沒排到"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "522.74",
+    "header_llm": "3.78"
+   },
+   {
+    "key": "多條文-303",
+    "status": 200,
+    "wall_ms": 272.11350000288803,
+    "answer": "住宿費用報支上限為每人每晚新臺幣三千元，因此可報銷 3,000 元。由於住宿發票遺失，需填寫報銷申請表並附上相關證明文件，經主管核准後方可報支。",
+    "retriever": "numpy",
+    "cited": [
+     40,
+     43,
+     38
+    ],
+    "timing": {
+     "embed_ms": 261.669,
+     "retrieve_ms": 0.178,
+     "llm_ms": 3.642,
+     "serialize_ms": 0.066,
+     "total_ms": 268.567,
+     "overhead_ms": 3.012
+    },
+    "usage": {
+     "embedding_tokens": 16,
+     "input_tokens": 1405,
+     "output_tokens": 86,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "出差 住宿報銷 規定"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "269.80",
+    "header_llm": "3.64"
+   },
+   {
+    "key": "多條文-304",
+    "status": 200,
+    "wall_ms": 295.1002000045264,
+    "answer": "無故連續曠職三天，公司可依法終止勞動契約，且不需發給資遣費。根據規定，員工在曠職三日後，公司有權終止契約。此情況屬於不需預告終止契約的情形。",
+    "retriever": "numpy",
+    "cited": [
+     32,
+     56,
+     23
+    ],
+    "timing": {
+     "embed_ms": 285.302,
+     "retrieve_ms": 0.158,
+     "llm_ms": 3.752,
+     "serialize_ms": 0.068,
+     "total_ms": 291.369,
+     "overhead_ms": 2.09
+    },
+    "usage": {
+     "embedding_tokens": 27,
+     "input_tokens": 1290,
+     "output_tokens": 97,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "無故連續曠職三天 終止契約 資遣費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "292.75",
+    "header_llm": "3.75"
+   },
+   {
+    "key": "多條文-305",
+    "status": 200,
+    "wall_ms": 286.2700000114273,
+    "answer": "到職滿三個月的試用期員工，依據公司規章，特休假需滿六個月才能享有。因此，試用期員工在滿三個月時並不具備特休假權益。",
+    "retriever": "numpy",
+    "cited": [
+     22,
+     6,
+     26
+    ],
+    "timing": {
+     "embed_ms": 276.186,
+     "retrieve_ms": 0.219,
+     "llm_ms": 3.711,
+     "serialize_ms": 0.067,
+     "total_ms": 282.661,
+     "overhead_ms": 2.478
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 1323,
+     "output_tokens": 72,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "試用期 員工 特休假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "283.68",
+    "header_llm": "3.71"
+   },
+   {
+    "key": "多條文-306",
+    "status": 200,
+    "wall_ms": 292.7449999988312,
+    "answer": "如果這個月遲到三次，會由直屬主管予以書面提醒。情節重大或經提醒仍未改善者，可能會依獎懲規定處理，甚至記過。建議注意出勤紀錄，避免影響後續工作。",
+    "retriever": "numpy",
+    "cited": [
+     12,
+     46,
+     14
+    ],
+    "timing": {
+     "embed_ms": 280.784,
+     "retrieve_ms": 0.2,
+     "llm_ms": 4.626,
+     "serialize_ms": 0.073,
+     "total_ms": 288.599,
+     "overhead_ms": 2.917
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1410,
+     "output_tokens": 80,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "遲到 記過"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "290.06",
+    "header_llm": "4.63"
+   },
+   {
+    "key": "多條文-307",
+    "status": 200,
+    "wall_ms": 287.07619999477174,
+    "answer": "公司可以不發服務證明書，若員工未交還公司財物。根據第53條，未交還或留存公司財物的情況下，公司得暫緩發給離職相關文件。員工應在離職時將所有公司財物交還。",
+    "retriever": "numpy",
+    "cited": [
+     57,
+     53,
+     55
+    ],
+    "timing": {
+     "embed_ms": 274.98,
+     "retrieve_ms": 0.186,
+     "llm_ms": 5.358,
+     "serialize_ms": 0.081,
+     "total_ms": 283.395,
+     "overhead_ms": 2.79
+    },
+    "usage": {
+     "embedding_tokens": 20,
+     "input_tokens": 1341,
+     "output_tokens": 87,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "離職 服務證明書 財物交還"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "284.46",
+    "header_llm": "5.36"
+   },
+   {
+    "key": "多條文-308",
+    "status": 200,
+    "wall_ms": 1296.876099993824,
+    "answer": "在颱風宣布停止上班的情況下，若經主管同意改為居家辦公，該日可視為正常出勤，不需簽到。工資照給，且不會影響出勤紀錄。",
+    "retriever": "numpy",
+    "cited": [
+     16,
+     31,
+     17,
+     14,
+     57
+    ],
+    "timing": {
+     "embed_ms": 1268.16,
+     "retrieve_ms": 0.764,
+     "llm_ms": 9.206,
+     "serialize_ms": 0.291,
+     "total_ms": 1288.273,
+     "overhead_ms": 9.85
+    },
+    "usage": {
+     "embedding_tokens": 37,
+     "input_tokens": 1956,
+     "output_tokens": 100,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 2,
+     "queries": [
+      "颱風 停止上班 在家上班 簽到 出勤",
+      "在家上班 簽到 出勤"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "1291.41",
+    "header_llm": "9.21"
+   },
+   {
+    "key": "陷阱-101",
+    "status": 200,
+    "wall_ms": 3352.0229999994626,
+    "answer": "育嬰留職停薪的最長期限為三年。",
+    "retriever": "numpy",
+    "cited": [
+     23,
+     26,
+     18,
+     16,
+     28,
+     29,
+     27,
+     22,
+     25
+    ],
+    "timing": {
+     "embed_ms": 3278.077,
+     "retrieve_ms": 2.016,
+     "llm_ms": 31.196,
+     "serialize_ms": 0.124,
+     "total_ms": 3342.559,
+     "overhead_ms": 31.145
+    },
+    "usage": {
+     "embedding_tokens": 79,
+     "input_tokens": 10832,
+     "output_tokens": 95,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "育嬰留職停薪 最長",
+      "育嬰留職停薪",
+      "育嬰假",
+      "育嬰留職停薪 最長 期限",
+      "育嬰假 期限",
+      "育嬰假 相關規定"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "3346.34",
+    "header_llm": "31.20"
+   },
+   {
+    "key": "陷阱-102",
+    "status": 200,
+    "wall_ms": 2334.394399993471,
+    "answer": "目前查詢結果中未找到有關公司健身房或運動補助的具體條文。建議您向人資部門進一步確認相關福利政策。",
+    "retriever": "numpy",
+    "cited": [
+     40,
+     41,
+     38,
+     24,
+     50,
+     7,
+     39,
+     8,
+     13,
+     26,
+     27,
+     37,
+     10,
+     14,
+     1
+    ],
+    "timing": {
+     "embed_ms": 2281.973,
+     "retrieve_ms": 1.477,
+     "llm_ms": 17.937,
+     "serialize_ms": 0.15,
+     "total_ms": 2330.741,
+     "overhead_ms": 29.203
+    },
+    "usage": {
+     "embedding_tokens": 40,
+     "input_tokens": 14225,
+     "output_tokens": 98,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "健身房 運動補助",
+      "健身",
+      "運動",
+      "員工福利",
+      "員工健身",
+      "員工福利健身"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2332.20",
+    "header_llm": "17.94"
+   },
+   {
+    "key": "陷阱-103",
+    "status": 200,
+    "wall_ms": 2900.7818000100087,
+    "answer": "目前查詢的規章中並未明確規定遠端工作一週最多幾天。建議查閱公司內部相關政策或向主管詢問以獲取具體資訊。",
+    "retriever": "numpy",
+    "cited": [
+     43,
+     22,
+     18,
+     38,
+     13
+    ],
+    "timing": {
+     "embed_ms": 2834.742,
+     "retrieve_ms": 2.012,
+     "llm_ms": 26.306,
+     "serialize_ms": 0.12,
+     "total_ms": 2896.003,
+     "overhead_ms": 32.824
+    },
+    "usage": {
+     "embedding_tokens": 57,
+     "input_tokens": 14132,
+     "output_tokens": 117,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "遠端工作 一週 最多 幾天",
+      "遠端工作",
+      "遠端工作 規定",
+      "遠端工作 週",
+      "遠端工作 週次",
+      "遠端工作 相關規定"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2897.62",
+    "header_llm": "26.31"
+   },
+   {
+    "key": "陷阱-104",
+    "status": 200,
+    "wall_ms": 3068.0892999953358,
+    "answer": "國外出差的住宿費上限依公司「國外出差辦法」另行規定，未規定事項則準用國內出差的規定。根據國內出差規定，住宿費每人每晚以新臺幣三千元為上限。",
+    "retriever": "numpy",
+    "cited": [
+     40,
+     41,
+     43,
+     38,
+     13
+    ],
+    "timing": {
+     "embed_ms": 2985.254,
+     "retrieve_ms": 1.702,
+     "llm_ms": 28.905,
+     "serialize_ms": 0.38,
+     "total_ms": 3057.434,
+     "overhead_ms": 41.193
+    },
+    "usage": {
+     "embedding_tokens": 66,
+     "input_tokens": 10692,
+     "output_tokens": 132,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 6,
+     "searches": 5,
+     "llm_calls": 6,
+     "queries": [
+      "國外出差 住宿費 上限",
+      "國外出差辦法",
+      "國外出差住宿費標準",
+      "國外出差住宿費",
+      "國外出差住宿費用"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "3061.46",
+    "header_llm": "28.91"
+   },
+   {
+    "key": "陷阱-105",
+    "status": 200,
+    "wall_ms": 634.7678000020096,
+    "answer": "加班費的計算依據平日工資，延長工作時間在二小時以內者，加給三分之一以上；再延長二小時以內者，加給三分之二以上。若你加班3小時，則前2小時加給三分之一，第三小時加給三分之二。具體金額需依據你的每小時工資計算。",
+    "retriever": "numpy",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 607.732,
+     "retrieve_ms": 0.204,
+     "llm_ms": 10.597,
+     "serialize_ms": 0.069,
+     "total_ms": 623.3,
+     "overhead_ms": 4.698
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1463,
+     "output_tokens": 106,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "627.28",
+    "header_llm": "10.60"
+   }
+  ]
+ },
+ "cold": {
+  "summary": {
+   "n": 28,
+   "ok": 28,
+   "p50": 1350.2,
+   "p95": 1847.1,
+   "max": 8411.8,
+   "mean": 1592.6,
+   "wall_p50": 1358.2,
+   "stages": {
+    "embed": 211.288,
+    "retrieve": 19.179,
+    "llm": 1053.779,
+    "serialize": 0.147,
+    "overhead": 0.535
+   },
+   "share": {
+    "embed": 15.65,
+    "retrieve": 1.42,
+    "llm": 78.05,
+    "serialize": 0.01,
+    "overhead": 0.04
+   }
+  },
+  "rows": [
+   {
+    "key": "單條文-1",
+    "status": 200,
+    "wall_ms": 8427.882899995893,
+    "answer": "病假連續請三天（含）以上需要附診斷證明。",
+    "retriever": "chroma",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 6450.519,
+     "retrieve_ms": 18.827,
+     "llm_ms": 1941.841,
+     "serialize_ms": 0.07,
+     "total_ms": 8411.768,
+     "overhead_ms": 0.511
+    },
+    "usage": {
+     "embedding_tokens": 26,
+     "input_tokens": 410,
+     "output_tokens": 19,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "8415.22",
+    "header_llm": "1941.84"
+   },
+   {
+    "key": "單條文-2",
+    "status": 200,
+    "wall_ms": 1358.2416999997804,
+    "answer": "特休假應於預定休假日的三個工作日前提出申請。",
+    "retriever": "chroma",
+    "cited": [
+     23,
+     22,
+     26
+    ],
+    "timing": {
+     "embed_ms": 339.648,
+     "retrieve_ms": 12.804,
+     "llm_ms": 996.713,
+     "serialize_ms": 0.35,
+     "total_ms": 1350.152,
+     "overhead_ms": 0.637
+    },
+    "usage": {
+     "embedding_tokens": 22,
+     "input_tokens": 459,
+     "output_tokens": 19,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1352.61",
+    "header_llm": "996.71"
+   },
+   {
+    "key": "單條文-3",
+    "status": 200,
+    "wall_ms": 1229.9947999999858,
+    "answer": "婚假總共有八天。",
+    "retriever": "chroma",
+    "cited": [
+     27,
+     22,
+     25
+    ],
+    "timing": {
+     "embed_ms": 208.845,
+     "retrieve_ms": 27.999,
+     "llm_ms": 976.124,
+     "serialize_ms": 0.284,
+     "total_ms": 1214.071,
+     "overhead_ms": 0.82
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 423,
+     "output_tokens": 7,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1220.76",
+    "header_llm": "976.12"
+   },
+   {
+    "key": "單條文-4",
+    "status": 200,
+    "wall_ms": 1002.1127999934833,
+    "answer": "請假一日（含）以上者需要指定職務代理人。",
+    "retriever": "chroma",
+    "cited": [
+     30,
+     25,
+     22
+    ],
+    "timing": {
+     "embed_ms": 177.816,
+     "retrieve_ms": 15.983,
+     "llm_ms": 791.931,
+     "serialize_ms": 0.202,
+     "total_ms": 986.38,
+     "overhead_ms": 0.449
+    },
+    "usage": {
+     "embedding_tokens": 20,
+     "input_tokens": 453,
+     "output_tokens": 16,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "991.22",
+    "header_llm": "791.93"
+   },
+   {
+    "key": "單條文-5",
+    "status": 200,
+    "wall_ms": 1769.0748000022722,
+    "answer": "事假一年最多可以請十四天。",
+    "retriever": "chroma",
+    "cited": [
+     25,
+     27,
+     22
+    ],
+    "timing": {
+     "embed_ms": 813.346,
+     "retrieve_ms": 14.532,
+     "llm_ms": 927.133,
+     "serialize_ms": 0.202,
+     "total_ms": 1755.68,
+     "overhead_ms": 0.467
+    },
+    "usage": {
+     "embedding_tokens": 15,
+     "input_tokens": 425,
+     "output_tokens": 9,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1761.10",
+    "header_llm": "927.13"
+   },
+   {
+    "key": "單條文-6",
+    "status": 200,
+    "wall_ms": 1482.4692999973195,
+    "answer": "加班換的假必須在加班事實發生日起六個月內休畢，若屆期未休畢，公司將依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "chroma",
+    "cited": [
+     20,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 189.583,
+     "retrieve_ms": 24.897,
+     "llm_ms": 1256.983,
+     "serialize_ms": 0.205,
+     "total_ms": 1472.55,
+     "overhead_ms": 0.881
+    },
+    "usage": {
+     "embedding_tokens": 21,
+     "input_tokens": 472,
+     "output_tokens": 53,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1475.80",
+    "header_llm": "1256.98"
+   },
+   {
+    "key": "單條文-7",
+    "status": 200,
+    "wall_ms": 1330.7000999921001,
+    "answer": "特休假應於年度終結前休畢，若未能休畢可申請遞延至次年三月三十一日止。屆期仍未休畢之日數，公司將按日折算工資發給，不再遞延。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 250.808,
+     "retrieve_ms": 13.038,
+     "llm_ms": 1053.779,
+     "serialize_ms": 0.284,
+     "total_ms": 1318.663,
+     "overhead_ms": 0.755
+    },
+    "usage": {
+     "embedding_tokens": 16,
+     "input_tokens": 453,
+     "output_tokens": 62,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1322.67",
+    "header_llm": "1053.78"
+   },
+   {
+    "key": "單條文-8",
+    "status": 200,
+    "wall_ms": 1140.7589000009466,
+    "answer": "您可以先以電話或即時通訊軟體通知直屬主管，並於復工後三個工作日內至差勤系統補辦請假手續。若逾期未補辦，將依曠職處理。",
+    "retriever": "chroma",
+    "cited": [
+     31,
+     24,
+     25
+    ],
+    "timing": {
+     "embed_ms": 226.242,
+     "retrieve_ms": 17.105,
+     "llm_ms": 884.408,
+     "serialize_ms": 0.089,
+     "total_ms": 1128.143,
+     "overhead_ms": 0.298
+    },
+    "usage": {
+     "embedding_tokens": 31,
+     "input_tokens": 419,
+     "output_tokens": 57,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1131.78",
+    "header_llm": "884.41"
+   },
+   {
+    "key": "單條文-9",
+    "status": 200,
+    "wall_ms": 1860.470899991924,
+    "answer": "根據第 47 條，員工未經核准擅自缺勤可視情節輕重予以申誡、記過或記大過。若情節重大，可能不經預告終止勞動契約並請求損害賠償。建議儘快與主管聯繫以解釋情況。",
+    "retriever": "chroma",
+    "cited": [
+     47,
+     12,
+     49
+    ],
+    "timing": {
+     "embed_ms": 210.192,
+     "retrieve_ms": 40.292,
+     "llm_ms": 1595.084,
+     "serialize_ms": 0.449,
+     "total_ms": 1847.109,
+     "overhead_ms": 1.091
+    },
+    "usage": {
+     "embedding_tokens": 30,
+     "input_tokens": 725,
+     "output_tokens": 84,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1852.05",
+    "header_llm": "1595.08"
+   },
+   {
+    "key": "單條文-10",
+    "status": 200,
+    "wall_ms": 1027.3731000052067,
+    "answer": "可以請家庭照顧假，全年以七日為限，請假期間依事假規定不支薪。",
+    "retriever": "chroma",
+    "cited": [
+     29,
+     24,
+     25
+    ],
+    "timing": {
+     "embed_ms": 189.259,
+     "retrieve_ms": 19.588,
+     "llm_ms": 802.691,
+     "serialize_ms": 0.106,
+     "total_ms": 1012.023,
+     "overhead_ms": 0.379
+    },
+    "usage": {
+     "embedding_tokens": 28,
+     "input_tokens": 409,
+     "output_tokens": 27,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1016.20",
+    "header_llm": "802.69"
+   },
+   {
+    "key": "單條文-11",
+    "status": 200,
+    "wall_ms": 1553.9152000128524,
+    "answer": "每月加班時數上限為四十六小時，經工會或勞資會議同意可調整為五十四小時。",
+    "retriever": "chroma",
+    "cited": [
+     18,
+     19,
+     17
+    ],
+    "timing": {
+     "embed_ms": 217.105,
+     "retrieve_ms": 23.192,
+     "llm_ms": 1296.718,
+     "serialize_ms": 0.303,
+     "total_ms": 1537.915,
+     "overhead_ms": 0.597
+    },
+    "usage": {
+     "embedding_tokens": 16,
+     "input_tokens": 687,
+     "output_tokens": 35,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1542.80",
+    "header_llm": "1296.72"
+   },
+   {
+    "key": "單條文-12",
+    "status": 200,
+    "wall_ms": 1543.7127999903169,
+    "answer": "未依規定刷卡者，應於當日或次一工作日內至差勤系統申請補登，並經直屬主管核准；每月補登以三次為限。逾次數且無正當理由者，將依遲到或曠職相關規定處理。",
+    "retriever": "chroma",
+    "cited": [
+     11,
+     31,
+     53
+    ],
+    "timing": {
+     "embed_ms": 206.156,
+     "retrieve_ms": 23.675,
+     "llm_ms": 1299.448,
+     "serialize_ms": 0.146,
+     "total_ms": 1529.986,
+     "overhead_ms": 0.561
+    },
+    "usage": {
+     "embedding_tokens": 25,
+     "input_tokens": 598,
+     "output_tokens": 73,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1534.22",
+    "header_llm": "1299.45"
+   },
+   {
+    "key": "單條文-13",
+    "status": 200,
+    "wall_ms": 1416.357499998412,
+    "answer": "國內出差住宿費每人每晚以新臺幣三千元為上限。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 227.533,
+     "retrieve_ms": 22.41,
+     "llm_ms": 1148.909,
+     "serialize_ms": 0.147,
+     "total_ms": 1399.582,
+     "overhead_ms": 0.584
+    },
+    "usage": {
+     "embedding_tokens": 22,
+     "input_tokens": 619,
+     "output_tokens": 22,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1406.20",
+    "header_llm": "1148.91"
+   },
+   {
+    "key": "單條文-14",
+    "status": 200,
+    "wall_ms": 1373.064900006284,
+    "answer": "將公司內部文件、客戶資料或營業秘密攜出、傳送或洩漏予第三人者，將記大過；若致公司受損或情節重大者，得不經預告終止勞動契約，並依法請求損害賠償。",
+    "retriever": "chroma",
+    "cited": [
+     7,
+     53,
+     47
+    ],
+    "timing": {
+     "embed_ms": 207.041,
+     "retrieve_ms": 24.998,
+     "llm_ms": 1135.313,
+     "serialize_ms": 0.114,
+     "total_ms": 1367.98,
+     "overhead_ms": 0.514
+    },
+    "usage": {
+     "embedding_tokens": 32,
+     "input_tokens": 737,
+     "output_tokens": 70,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1369.40",
+    "header_llm": "1135.31"
+   },
+   {
+    "key": "單條文-15",
+    "status": 200,
+    "wall_ms": 1639.0318000048865,
+    "answer": "若您在公司工作三個月以上未滿一年，需於十日前預告；一年以上未滿三年者，需於二十日前預告；三年以上者，需於三十日前預告。",
+    "retriever": "chroma",
+    "cited": [
+     54,
+     12,
+     17
+    ],
+    "timing": {
+     "embed_ms": 219.75,
+     "retrieve_ms": 5.274,
+     "llm_ms": 1409.576,
+     "serialize_ms": 0.075,
+     "total_ms": 1634.883,
+     "overhead_ms": 0.208
+    },
+    "usage": {
+     "embedding_tokens": 20,
+     "input_tokens": 663,
+     "output_tokens": 48,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1636.24",
+    "header_llm": "1409.58"
+   },
+   {
+    "key": "多條文-301",
+    "status": 200,
+    "wall_ms": 1354.4259000045713,
+    "answer": "平日加班3小時，前2小時按每小時工資額加給三分之一以上，第三小時按加給三分之二以上計算。具體加班費需依據您的本薪及經常性給與來計算。請確認您的工資額以得知最終加班費。",
+    "retriever": "chroma",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 196.551,
+     "retrieve_ms": 6.045,
+     "llm_ms": 1146.317,
+     "serialize_ms": 0.106,
+     "total_ms": 1349.198,
+     "overhead_ms": 0.179
+    },
+    "usage": {
+     "embedding_tokens": 25,
+     "input_tokens": 689,
+     "output_tokens": 76,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1351.15",
+    "header_llm": "1146.32"
+   },
+   {
+    "key": "多條文-302",
+    "status": 200,
+    "wall_ms": 1449.3951000040397,
+    "answer": "選擇補休後，該筆加班不得再變更為加班費。若六個月內未休畢，則公司應依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "chroma",
+    "cited": [
+     20,
+     26,
+     19
+    ],
+    "timing": {
+     "embed_ms": 169.672,
+     "retrieve_ms": 6.76,
+     "llm_ms": 1267.246,
+     "serialize_ms": 0.058,
+     "total_ms": 1443.946,
+     "overhead_ms": 0.21
+    },
+    "usage": {
+     "embedding_tokens": 46,
+     "input_tokens": 576,
+     "output_tokens": 54,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1445.73",
+    "header_llm": "1267.25"
+   },
+   {
+    "key": "多條文-303",
+    "status": 200,
+    "wall_ms": 1295.8380000054603,
+    "answer": "住宿費用超過上限的 3,000 元，員工需自行負擔 200 元。由於住宿發票遺失，需填具「單據遺失切結書」，並經權責主管核准後才能報支。報支金額為 0 元，因為未檢附住宿費的單據。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     42
+    ],
+    "timing": {
+     "embed_ms": 157.07,
+     "retrieve_ms": 5.027,
+     "llm_ms": 1126.748,
+     "serialize_ms": 0.437,
+     "total_ms": 1289.96,
+     "overhead_ms": 0.678
+    },
+    "usage": {
+     "embedding_tokens": 54,
+     "input_tokens": 817,
+     "output_tokens": 80,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1293.10",
+    "header_llm": "1126.75"
+   },
+   {
+    "key": "多條文-304",
+    "status": 200,
+    "wall_ms": 1074.2871999973431,
+    "answer": "公司因員工無故連續曠職三天而終止契約，依規章條文可不發給資遣費。",
+    "retriever": "chroma",
+    "cited": [
+     56,
+     32,
+     23
+    ],
+    "timing": {
+     "embed_ms": 194.796,
+     "retrieve_ms": 19.864,
+     "llm_ms": 855.501,
+     "serialize_ms": 0.078,
+     "total_ms": 1070.602,
+     "overhead_ms": 0.362
+    },
+    "usage": {
+     "embedding_tokens": 35,
+     "input_tokens": 502,
+     "output_tokens": 32,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1071.62",
+    "header_llm": "855.50"
+   },
+   {
+    "key": "多條文-305",
+    "status": 200,
+    "wall_ms": 1207.7448000054574,
+    "answer": "到職滿三個月的試用期員工沒有特休假。根據規章，特休假需滿六個月才能享有。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     6,
+     26
+    ],
+    "timing": {
+     "embed_ms": 227.308,
+     "retrieve_ms": 7.302,
+     "llm_ms": 964.286,
+     "serialize_ms": 0.285,
+     "total_ms": 1199.615,
+     "overhead_ms": 0.435
+    },
+    "usage": {
+     "embedding_tokens": 28,
+     "input_tokens": 548,
+     "output_tokens": 34,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1201.45",
+    "header_llm": "964.29"
+   },
+   {
+    "key": "多條文-306",
+    "status": 200,
+    "wall_ms": 1001.4867999998387,
+    "answer": "會被書面提醒，但不會直接記過。若情節重大或經提醒仍未改善，則可能依獎懲規定處理。",
+    "retriever": "chroma",
+    "cited": [
+     12,
+     46,
+     23
+    ],
+    "timing": {
+     "embed_ms": 187.878,
+     "retrieve_ms": 19.179,
+     "llm_ms": 778.421,
+     "serialize_ms": 0.241,
+     "total_ms": 986.4,
+     "overhead_ms": 0.682
+    },
+    "usage": {
+     "embedding_tokens": 22,
+     "input_tokens": 587,
+     "output_tokens": 35,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "991.53",
+    "header_llm": "778.42"
+   },
+   {
+    "key": "多條文-307",
+    "status": 200,
+    "wall_ms": 1126.015899993945,
+    "answer": "是的，未交還公司財物或留存複本的情況下，公司得暫緩發給離職相關文件，包括服務證明書。",
+    "retriever": "chroma",
+    "cited": [
+     57,
+     53,
+     55
+    ],
+    "timing": {
+     "embed_ms": 187.215,
+     "retrieve_ms": 31.11,
+     "llm_ms": 890.781,
+     "serialize_ms": 0.139,
+     "total_ms": 1109.844,
+     "overhead_ms": 0.598
+    },
+    "usage": {
+     "embedding_tokens": 34,
+     "input_tokens": 562,
+     "output_tokens": 37,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1115.71",
+    "header_llm": "890.78"
+   },
+   {
+    "key": "多條文-308",
+    "status": 200,
+    "wall_ms": 1276.0716000047978,
+    "answer": "遇到颱風宣布停止上班，若經主管同意改採居家辦公，該日以正常出勤論，因此不需要簽到。",
+    "retriever": "chroma",
+    "cited": [
+     16,
+     12,
+     25
+    ],
+    "timing": {
+     "embed_ms": 222.313,
+     "retrieve_ms": 24.75,
+     "llm_ms": 1001.745,
+     "serialize_ms": 0.14,
+     "total_ms": 1249.953,
+     "overhead_ms": 1.005
+    },
+    "usage": {
+     "embedding_tokens": 39,
+     "input_tokens": 582,
+     "output_tokens": 37,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1255.40",
+    "header_llm": "1001.75"
+   },
+   {
+    "key": "陷阱-101",
+    "status": 200,
+    "wall_ms": 1257.147199998144,
+    "answer": "規章條文中並未提及育嬰留職停薪的相關規定，因此無法提供具體的留職停薪最長時間。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     27,
+     18
+    ],
+    "timing": {
+     "embed_ms": 196.119,
+     "retrieve_ms": 22.122,
+     "llm_ms": 1029.046,
+     "serialize_ms": 0.217,
+     "total_ms": 1248.078,
+     "overhead_ms": 0.573
+    },
+    "usage": {
+     "embedding_tokens": 23,
+     "input_tokens": 498,
+     "output_tokens": 35,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1251.11",
+    "header_llm": "1029.05"
+   },
+   {
+    "key": "陷阱-102",
+    "status": 200,
+    "wall_ms": 1394.6585999947274,
+    "answer": "根據提供的規章條文，沒有提及公司有健身房或運動補助的相關內容。",
+    "retriever": "chroma",
+    "cited": [
+     38,
+     20,
+     37
+    ],
+    "timing": {
+     "embed_ms": 573.424,
+     "retrieve_ms": 19.853,
+     "llm_ms": 789.509,
+     "serialize_ms": 0.071,
+     "total_ms": 1383.303,
+     "overhead_ms": 0.446
+    },
+    "usage": {
+     "embedding_tokens": 19,
+     "input_tokens": 669,
+     "output_tokens": 26,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1387.85",
+    "header_llm": "789.51"
+   },
+   {
+    "key": "陷阱-103",
+    "status": 200,
+    "wall_ms": 1601.3489000033587,
+    "answer": "規章條文中並未提及遠端工作的相關規定，因此無法提供具體的天數。",
+    "retriever": "chroma",
+    "cited": [
+     43,
+     22,
+     18
+    ],
+    "timing": {
+     "embed_ms": 566.364,
+     "retrieve_ms": 4.828,
+     "llm_ms": 1019.557,
+     "serialize_ms": 0.796,
+     "total_ms": 1592.08,
+     "overhead_ms": 0.535
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 567,
+     "output_tokens": 25,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1595.97",
+    "header_llm": "1019.56"
+   },
+   {
+    "key": "陷阱-104",
+    "status": 200,
+    "wall_ms": 1388.5509999963688,
+    "answer": "國外出差住宿費上限依公司「國外出差辦法」另行規定，未規定事項準用國內出差之規定。國內出差住宿費上限為每人每晚新臺幣三千元。具體的國外住宿費上限需查閱相關辦法。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 217.14,
+     "retrieve_ms": 7.448,
+     "llm_ms": 1151.558,
+     "serialize_ms": 0.058,
+     "total_ms": 1376.45,
+     "overhead_ms": 0.246
+    },
+    "usage": {
+     "embedding_tokens": 18,
+     "input_tokens": 618,
+     "output_tokens": 74,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1381.63",
+    "header_llm": "1151.56"
+   },
+   {
+    "key": "陷阱-105",
+    "status": 200,
+    "wall_ms": 1331.0811999981524,
+    "answer": "平日加班3小時的計算方式為：前2小時按每小時工資額加給三分之二，第三小時則按每小時工資額加給三分之一。具體金額需依據您的本薪及經常性給與計算。請提供您的每小時工資額以便計算具體金額。",
+    "retriever": "chroma",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 211.288,
+     "retrieve_ms": 4.766,
+     "llm_ms": 1111.207,
+     "serialize_ms": 0.102,
+     "total_ms": 1327.542,
+     "overhead_ms": 0.179
+    },
+    "usage": {
+     "embedding_tokens": 29,
+     "input_tokens": 692,
+     "output_tokens": 85,
+     "cached": false
+    },
+    "mode": "pipeline",
+    "agent": null,
+    "header_total": "1328.88",
+    "header_llm": "1111.21"
+   }
+  ]
+ },
+ "agent_cold": {
+  "summary": {
+   "n": 28,
+   "ok": 28,
+   "p50": 2604.0,
+   "p95": 11292.5,
+   "max": 12390.6,
+   "mean": 4235.0,
+   "wall_p50": 2616.7,
+   "stages": {
+    "embed": 638.979,
+    "retrieve": 14.373,
+    "llm": 2034.774,
+    "serialize": 0.248,
+    "overhead": 7.749
+   },
+   "share": {
+    "embed": 24.54,
+    "retrieve": 0.55,
+    "llm": 78.14,
+    "serialize": 0.01,
+    "overhead": 0.3
+   }
+  },
+  "rows": [
+   {
+    "key": "單條文-1",
+    "status": 200,
+    "wall_ms": 2533.878799993545,
+    "answer": "病假連續請三天（含）以上者，需附合格醫療院所出具之診斷證明書。",
+    "retriever": "chroma",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 430.81,
+     "retrieve_ms": 5.306,
+     "llm_ms": 2083.084,
+     "serialize_ms": 0.319,
+     "total_ms": 2523.076,
+     "overhead_ms": 3.556
+    },
+    "usage": {
+     "embedding_tokens": 25,
+     "input_tokens": 1191,
+     "output_tokens": 57,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "病假 連續請幾天 附診斷證明"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2526.71",
+    "header_llm": "2083.08"
+   },
+   {
+    "key": "單條文-2",
+    "status": 200,
+    "wall_ms": 2902.4454000027617,
+    "answer": "特休假應於預定休假日的三個工作日前，於差勤系統提出申請。經直屬主管核准後生效。",
+    "retriever": "chroma",
+    "cited": [
+     23,
+     22,
+     26
+    ],
+    "timing": {
+     "embed_ms": 840.346,
+     "retrieve_ms": 4.316,
+     "llm_ms": 2034.774,
+     "serialize_ms": 0.355,
+     "total_ms": 2885.933,
+     "overhead_ms": 6.143
+    },
+    "usage": {
+     "embedding_tokens": 18,
+     "input_tokens": 1234,
+     "output_tokens": 58,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "特休假 申請 最晚 幾天前"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2891.41",
+    "header_llm": "2034.77"
+   },
+   {
+    "key": "單條文-3",
+    "status": 200,
+    "wall_ms": 2553.100600009202,
+    "answer": "婚假總共有八天，工資照給。婚假應自結婚登記日起一年內休畢，得分次申請。",
+    "retriever": "chroma",
+    "cited": [
+     27,
+     25,
+     30
+    ],
+    "timing": {
+     "embed_ms": 800.146,
+     "retrieve_ms": 14.281,
+     "llm_ms": 1717.175,
+     "serialize_ms": 0.277,
+     "total_ms": 2539.096,
+     "overhead_ms": 7.217
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1126,
+     "output_tokens": 45,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "婚假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2543.41",
+    "header_llm": "1717.18"
+   },
+   {
+    "key": "單條文-4",
+    "status": 200,
+    "wall_ms": 2094.920000003185,
+    "answer": "請假一日（含）以上者，需要指定職務代理人。代理人必須同意，並經直屬主管核准後才能離開職務。",
+    "retriever": "chroma",
+    "cited": [
+     30,
+     25,
+     13
+    ],
+    "timing": {
+     "embed_ms": 394.152,
+     "retrieve_ms": 8.022,
+     "llm_ms": 1670.988,
+     "serialize_ms": 0.213,
+     "total_ms": 2080.465,
+     "overhead_ms": 7.09
+    },
+    "usage": {
+     "embedding_tokens": 16,
+     "input_tokens": 1263,
+     "output_tokens": 56,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "請假 指定職務代理人"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2085.84",
+    "header_llm": "1670.99"
+   },
+   {
+    "key": "單條文-5",
+    "status": 200,
+    "wall_ms": 2884.437100001378,
+    "answer": "事假一年最多可以請十四天。",
+    "retriever": "chroma",
+    "cited": [
+     25,
+     27,
+     22
+    ],
+    "timing": {
+     "embed_ms": 1352.89,
+     "retrieve_ms": 4.665,
+     "llm_ms": 1506.969,
+     "serialize_ms": 0.212,
+     "total_ms": 2872.325,
+     "overhead_ms": 7.589
+    },
+    "usage": {
+     "embedding_tokens": 15,
+     "input_tokens": 1194,
+     "output_tokens": 30,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "事假 一年 最多可以請幾天"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2876.98",
+    "header_llm": "1506.97"
+   },
+   {
+    "key": "單條文-6",
+    "status": 200,
+    "wall_ms": 2675.186299995403,
+    "answer": "加班換的假必須在加班事實發生日起六個月內休畢，否則屆期未休畢的時數將依當日工資標準折算為加班費發給。",
+    "retriever": "chroma",
+    "cited": [
+     26,
+     20,
+     23
+    ],
+    "timing": {
+     "embed_ms": 556.396,
+     "retrieve_ms": 6.9,
+     "llm_ms": 2097.037,
+     "serialize_ms": 0.202,
+     "total_ms": 2665.396,
+     "overhead_ms": 4.861
+    },
+    "usage": {
+     "embedding_tokens": 11,
+     "input_tokens": 1240,
+     "output_tokens": 69,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班換假 過期"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2669.13",
+    "header_llm": "2097.04"
+   },
+   {
+    "key": "單條文-7",
+    "status": 200,
+    "wall_ms": 2821.7060000024503,
+    "answer": "特休假應於年度終結前休畢，若因業務需要或個人因素未能休畢，可申請遞延至次年三月三十一日。屆期仍未休畢的特休假日數，公司將按日折算工資發給，不再遞延。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     26,
+     23
+    ],
+    "timing": {
+     "embed_ms": 796.472,
+     "retrieve_ms": 17.596,
+     "llm_ms": 1989.47,
+     "serialize_ms": 0.297,
+     "total_ms": 2809.33,
+     "overhead_ms": 5.495
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1215,
+     "output_tokens": 87,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "特休沒休完"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2814.11",
+    "header_llm": "1989.47"
+   },
+   {
+    "key": "單條文-8",
+    "status": 200,
+    "wall_ms": 2616.7286000127206,
+    "answer": "因急病無法事前請假者，應立即以電話或即時通訊通知直屬主管，並於復工後三個工作日內補辦請假手續。若逾期未補辦，將依曠職處理。",
+    "retriever": "chroma",
+    "cited": [
+     24,
+     25,
+     31
+    ],
+    "timing": {
+     "embed_ms": 638.979,
+     "retrieve_ms": 22.485,
+     "llm_ms": 1930.25,
+     "serialize_ms": 0.203,
+     "total_ms": 2603.999,
+     "overhead_ms": 12.082
+    },
+    "usage": {
+     "embedding_tokens": 9,
+     "input_tokens": 1190,
+     "output_tokens": 75,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "急診 請假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2608.12",
+    "header_llm": "1930.25"
+   },
+   {
+    "key": "單條文-9",
+    "status": 200,
+    "wall_ms": 4325.407700001961,
+    "answer": "若未來上班且未辦理請假，將被視為曠職，曠職期間不發工資。若無正當理由持續曠職三日，或一個月內累計曠職達六日，公司可依法終止勞動契約。請務必遵循請假程序以避免不必要的後果。",
+    "retriever": "chroma",
+    "cited": [
+     17,
+     31,
+     26,
+     32,
+     46
+    ],
+    "timing": {
+     "embed_ms": 1370.605,
+     "retrieve_ms": 39.521,
+     "llm_ms": 2886.351,
+     "serialize_ms": 0.211,
+     "total_ms": 4311.189,
+     "overhead_ms": 14.502
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 2600,
+     "output_tokens": 108,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 3,
+     "queries": [
+      "缺勤 後果",
+      "曠職 後果"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "4316.85",
+    "header_llm": "2886.35"
+   },
+   {
+    "key": "單條文-10",
+    "status": 200,
+    "wall_ms": 2381.5923999936786,
+    "answer": "您可以請家庭照顧假，因為小孩打疫苗屬於家庭成員的預防接種。家庭照顧假全年以七日為限，請假期間不支薪。",
+    "retriever": "chroma",
+    "cited": [
+     24,
+     25,
+     29
+    ],
+    "timing": {
+     "embed_ms": 602.92,
+     "retrieve_ms": 9.79,
+     "llm_ms": 1753.753,
+     "serialize_ms": 0.186,
+     "total_ms": 2371.188,
+     "overhead_ms": 4.541
+    },
+    "usage": {
+     "embedding_tokens": 13,
+     "input_tokens": 1182,
+     "output_tokens": 66,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "小孩 疫苗 請假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2374.92",
+    "header_llm": "1753.75"
+   },
+   {
+    "key": "單條文-11",
+    "status": 200,
+    "wall_ms": 2499.698500003433,
+    "answer": "每月加班時數上限為四十六小時。經工會或勞資會議同意者，可調整為每月不超過五十四小時。每三個月的加班時數上限為一百三十八小時。",
+    "retriever": "chroma",
+    "cited": [
+     18,
+     17,
+     19
+    ],
+    "timing": {
+     "embed_ms": 633.146,
+     "retrieve_ms": 20.04,
+     "llm_ms": 1817.557,
+     "serialize_ms": 0.442,
+     "total_ms": 2485.623,
+     "overhead_ms": 14.439
+    },
+    "usage": {
+     "embedding_tokens": 10,
+     "input_tokens": 1455,
+     "output_tokens": 78,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "每月加班時數上限"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2490.10",
+    "header_llm": "1817.56"
+   },
+   {
+    "key": "單條文-12",
+    "status": 200,
+    "wall_ms": 2475.035700001172,
+    "answer": "忘記打卡的員工應於當日或次一工作日內至差勤系統申請補登，並需經直屬主管核准。每月補登次數限制為三次，超過次數且無正當理由者，將依遲到或曠職相關規定處理。",
+    "retriever": "chroma",
+    "cited": [
+     11,
+     53,
+     31
+    ],
+    "timing": {
+     "embed_ms": 436.484,
+     "retrieve_ms": 15.789,
+     "llm_ms": 1985.533,
+     "serialize_ms": 0.209,
+     "total_ms": 2447.184,
+     "overhead_ms": 9.168
+    },
+    "usage": {
+     "embedding_tokens": 11,
+     "input_tokens": 1368,
+     "output_tokens": 91,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "忘記打卡 補救"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2459.26",
+    "header_llm": "1985.53"
+   },
+   {
+    "key": "單條文-13",
+    "status": 200,
+    "wall_ms": 2602.9886000033002,
+    "answer": "國內出差住宿費每人每晚以新臺幣三千元為上限。超過上限之差額由員工自行負擔，但經主管事前核准者不在此限。合住的情況下，合計不得超過各自上限之總和。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     43
+    ],
+    "timing": {
+     "embed_ms": 638.928,
+     "retrieve_ms": 14.373,
+     "llm_ms": 1924.755,
+     "serialize_ms": 0.19,
+     "total_ms": 2585.995,
+     "overhead_ms": 7.749
+    },
+    "usage": {
+     "embedding_tokens": 18,
+     "input_tokens": 1388,
+     "output_tokens": 89,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "國內出差 住宿費 限額"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2592.16",
+    "header_llm": "1924.75"
+   },
+   {
+    "key": "單條文-14",
+    "status": 200,
+    "wall_ms": 12400.914800004102,
+    "answer": "員工未經核准將公司內部文件或營業秘密洩漏給第三人，將受到記大過處分；情節重大者可不經預告終止勞動契約並請求損害賠償。懲處依據第八章獎懲規定進行。",
+    "retriever": "chroma",
+    "cited": [
+     7,
+     33,
+     57,
+     53,
+     52,
+     50,
+     36,
+     47,
+     46
+    ],
+    "timing": {
+     "embed_ms": 4313.146,
+     "retrieve_ms": 37.087,
+     "llm_ms": 7999.65,
+     "serialize_ms": 0.114,
+     "total_ms": 12390.552,
+     "overhead_ms": 40.554
+    },
+    "usage": {
+     "embedding_tokens": 71,
+     "input_tokens": 12363,
+     "output_tokens": 313,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 6,
+     "searches": 4,
+     "llm_calls": 7,
+     "queries": [
+      "公司內部資料 傳給外面的人 處分",
+      "內部資料 外洩 處分",
+      "內部資料 外洩 處分 規定",
+      "內部資料 外洩 處分 罰則"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 1,
+     "flagged": true,
+     "revised": true
+    },
+    "header_total": "12394.82",
+    "header_llm": "7999.65"
+   },
+   {
+    "key": "單條文-15",
+    "status": 200,
+    "wall_ms": 2338.098699998227,
+    "answer": "員工自請離職者，需依工作年限提前通知公司：三個月以上未滿一年者，提前十天；一年以上未滿三年者，提前二十天；三年以上者，提前三十天。離職通知需以書面或於差勤系統提出。",
+    "retriever": "chroma",
+    "cited": [
+     54,
+     5,
+     31
+    ],
+    "timing": {
+     "embed_ms": 301.371,
+     "retrieve_ms": 5.415,
+     "llm_ms": 2017.649,
+     "serialize_ms": 0.248,
+     "total_ms": 2328.609,
+     "overhead_ms": 3.926
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1349,
+     "output_tokens": 82,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "提前通知 辭職"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2332.18",
+    "header_llm": "2017.65"
+   },
+   {
+    "key": "多條文-301",
+    "status": 200,
+    "wall_ms": 2548.5025999951176,
+    "answer": "平日加班費計算方式為：若加班在2小時以內，按每小時工資額加給三分之一以上；若再延長2小時以內，則加給三分之二以上。若您平日加班3小時，則前2小時加給三分之一，第三小時加給三分之二。",
+    "retriever": "chroma",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 452.421,
+     "retrieve_ms": 4.545,
+     "llm_ms": 2068.304,
+     "serialize_ms": 0.405,
+     "total_ms": 2534.184,
+     "overhead_ms": 8.509
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1457,
+     "output_tokens": 97,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2539.58",
+    "header_llm": "2068.30"
+   },
+   {
+    "key": "多條文-302",
+    "status": 200,
+    "wall_ms": 3345.5530000064755,
+    "answer": "選擇補休後，該筆加班不得再變更為加班費。若六個月內未休畢補休時數，公司將依延長工時當日之工資標準折算加班費發給。",
+    "retriever": "chroma",
+    "cited": [
+     20,
+     19,
+     26,
+     6,
+     22,
+     12
+    ],
+    "timing": {
+     "embed_ms": 1008.893,
+     "retrieve_ms": 19.644,
+     "llm_ms": 2293.487,
+     "serialize_ms": 0.182,
+     "total_ms": 3329.317,
+     "overhead_ms": 7.11
+    },
+    "usage": {
+     "embedding_tokens": 28,
+     "input_tokens": 1920,
+     "output_tokens": 91,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 2,
+     "queries": [
+      "加班 補休 改領 加班費",
+      "六個月內沒排到"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "3334.95",
+    "header_llm": "2293.49"
+   },
+   {
+    "key": "多條文-303",
+    "status": 200,
+    "wall_ms": 4346.204900008161,
+    "answer": "住宿費用可報銷上限為新臺幣 3,000 元，您可報銷 3,000 元。因發票遺失，需填具「單據遺失切結書」，並經權責主管核准後方可報支。每年度此類報支限兩次。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     43,
+     39,
+     42,
+     38
+    ],
+    "timing": {
+     "embed_ms": 1649.128,
+     "retrieve_ms": 38.419,
+     "llm_ms": 2633.329,
+     "serialize_ms": 0.174,
+     "total_ms": 4333.411,
+     "overhead_ms": 12.362
+    },
+    "usage": {
+     "embedding_tokens": 33,
+     "input_tokens": 2088,
+     "output_tokens": 110,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 2,
+     "queries": [
+      "出差住宿報銷標準",
+      "住宿發票遺失報銷手續"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "4338.62",
+    "header_llm": "2633.33"
+   },
+   {
+    "key": "多條文-304",
+    "status": 200,
+    "wall_ms": 2550.0230000034207,
+    "answer": "無故連續曠職三天，公司可依法終止勞動契約，且不需發給資遣費。根據規定，員工在曠職三日後，公司有權終止契約。此情況下，員工不符合資遣費的發放條件。",
+    "retriever": "chroma",
+    "cited": [
+     32,
+     56,
+     23
+    ],
+    "timing": {
+     "embed_ms": 471.565,
+     "retrieve_ms": 5.446,
+     "llm_ms": 2055.053,
+     "serialize_ms": 0.294,
+     "total_ms": 2538.137,
+     "overhead_ms": 5.78
+    },
+    "usage": {
+     "embedding_tokens": 27,
+     "input_tokens": 1290,
+     "output_tokens": 97,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "無故連續曠職三天 終止契約 資遣費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2541.46",
+    "header_llm": "2055.05"
+   },
+   {
+    "key": "多條文-305",
+    "status": 200,
+    "wall_ms": 2239.3920999893453,
+    "answer": "到職滿三個月的試用期員工，依據公司規章，尚未滿六個月，因此不具備特休假資格。特休假需滿六個月才能享有三天的假期。",
+    "retriever": "chroma",
+    "cited": [
+     22,
+     6,
+     26
+    ],
+    "timing": {
+     "embed_ms": 310.473,
+     "retrieve_ms": 4.167,
+     "llm_ms": 1906.926,
+     "serialize_ms": 0.078,
+     "total_ms": 2227.61,
+     "overhead_ms": 5.965
+    },
+    "usage": {
+     "embedding_tokens": 14,
+     "input_tokens": 1323,
+     "output_tokens": 70,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "試用期 員工 特休假"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2232.23",
+    "header_llm": "1906.93"
+   },
+   {
+    "key": "多條文-306",
+    "status": 200,
+    "wall_ms": 2113.2671000086702,
+    "answer": "如果這個月遲到三次，會由直屬主管予以書面提醒。情節重大或經提醒仍未改善者，可能會依獎懲規定處理，甚至記過。建議注意出勤紀錄，避免影響後續工作。",
+    "retriever": "chroma",
+    "cited": [
+     12,
+     46,
+     14
+    ],
+    "timing": {
+     "embed_ms": 341.309,
+     "retrieve_ms": 4.899,
+     "llm_ms": 1752.65,
+     "serialize_ms": 0.513,
+     "total_ms": 2103.983,
+     "overhead_ms": 4.612
+    },
+    "usage": {
+     "embedding_tokens": 8,
+     "input_tokens": 1410,
+     "output_tokens": 80,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "遲到 記過"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2107.43",
+    "header_llm": "1752.65"
+   },
+   {
+    "key": "多條文-307",
+    "status": 200,
+    "wall_ms": 2497.800400000415,
+    "answer": "公司可以不發服務證明書，若員工未交還公司財物。根據第 53 條，未交還或留存複本者，公司得暫緩發給離職相關文件。員工應在離職時將所有公司財物交還。",
+    "retriever": "chroma",
+    "cited": [
+     57,
+     53,
+     55
+    ],
+    "timing": {
+     "embed_ms": 509.866,
+     "retrieve_ms": 6.802,
+     "llm_ms": 1958.089,
+     "serialize_ms": 0.147,
+     "total_ms": 2481.368,
+     "overhead_ms": 6.463
+    },
+    "usage": {
+     "embedding_tokens": 20,
+     "input_tokens": 1341,
+     "output_tokens": 86,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "離職 服務證明書 財物交還"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2488.11",
+    "header_llm": "1958.09"
+   },
+   {
+    "key": "多條文-308",
+    "status": 200,
+    "wall_ms": 4209.305700002005,
+    "answer": "在颱風宣布停止上班的情況下，若經主管同意改為居家辦公，該日可視為正常出勤，不需簽到。工資照給，且不會影響出勤紀錄。",
+    "retriever": "chroma",
+    "cited": [
+     16,
+     31,
+     17,
+     14,
+     57
+    ],
+    "timing": {
+     "embed_ms": 1539.824,
+     "retrieve_ms": 43.462,
+     "llm_ms": 2595.632,
+     "serialize_ms": 0.435,
+     "total_ms": 4195.143,
+     "overhead_ms": 15.79
+    },
+    "usage": {
+     "embedding_tokens": 37,
+     "input_tokens": 1956,
+     "output_tokens": 100,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 3,
+     "searches": 2,
+     "llm_calls": 2,
+     "queries": [
+      "颱風 停止上班 在家上班 簽到 出勤",
+      "在家上班 簽到 出勤"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "4200.69",
+    "header_llm": "2595.63"
+   },
+   {
+    "key": "陷阱-101",
+    "status": 200,
+    "wall_ms": 11093.249099998502,
+    "answer": "育嬰留職停薪的最長期限為三年。",
+    "retriever": "chroma",
+    "cited": [
+     23,
+     26,
+     18,
+     16,
+     28,
+     29,
+     27,
+     54,
+     22,
+     25
+    ],
+    "timing": {
+     "embed_ms": 4917.355,
+     "retrieve_ms": 61.525,
+     "llm_ms": 6055.412,
+     "serialize_ms": 0.442,
+     "total_ms": 11075.77,
+     "overhead_ms": 41.036
+    },
+    "usage": {
+     "embedding_tokens": 76,
+     "input_tokens": 10757,
+     "output_tokens": 93,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "育嬰留職停薪 最長",
+      "育嬰留職停薪",
+      "育嬰假",
+      "育嬰留職停薪 期限",
+      "育嬰假 期限",
+      "育嬰假 相關規定"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "11082.23",
+    "header_llm": "6055.41"
+   },
+   {
+    "key": "陷阱-102",
+    "status": 200,
+    "wall_ms": 11308.405300005688,
+    "answer": "目前查詢結果中並未找到有關公司提供健身房或運動補助的具體條文。建議您向人資部門進一步確認相關福利政策。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     38,
+     24,
+     50,
+     7,
+     39,
+     8,
+     13,
+     26,
+     27,
+     37,
+     10,
+     14,
+     1
+    ],
+    "timing": {
+     "embed_ms": 4849.505,
+     "retrieve_ms": 87.263,
+     "llm_ms": 6294.297,
+     "serialize_ms": 0.524,
+     "total_ms": 11292.482,
+     "overhead_ms": 60.894
+    },
+    "usage": {
+     "embedding_tokens": 41,
+     "input_tokens": 14226,
+     "output_tokens": 101,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "健身房 運動補助",
+      "健身",
+      "運動",
+      "員工福利",
+      "員工健身",
+      "員工福利 健身"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "11298.09",
+    "header_llm": "6294.30"
+   },
+   {
+    "key": "陷阱-103",
+    "status": 200,
+    "wall_ms": 10883.918799998355,
+    "answer": "目前查詢的規章中並未明確規定遠端工作一週最多幾天。建議參考公司內部的相關政策或向主管詢問以獲取具體資訊。",
+    "retriever": "chroma",
+    "cited": [
+     43,
+     22,
+     18,
+     38,
+     13
+    ],
+    "timing": {
+     "embed_ms": 4584.83,
+     "retrieve_ms": 70.374,
+     "llm_ms": 6168.841,
+     "serialize_ms": 0.24,
+     "total_ms": 10871.235,
+     "overhead_ms": 46.951
+    },
+    "usage": {
+     "embedding_tokens": 57,
+     "input_tokens": 14130,
+     "output_tokens": 117,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 7,
+     "searches": 6,
+     "llm_calls": 7,
+     "queries": [
+      "遠端工作 一週 最多 幾天",
+      "遠端工作",
+      "遠端工作 規定",
+      "遠端工作 一週",
+      "遠端工作 週",
+      "遠端工作 相關規定"
+     ],
+     "repeats": 0,
+     "hit_cap": true,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "10877.28",
+    "header_llm": "6168.84"
+   },
+   {
+    "key": "陷阱-104",
+    "status": 200,
+    "wall_ms": 9314.441000009538,
+    "answer": "國外出差的住宿費用上限依公司「國外出差辦法」另行規定，未規定事項準用國內出差的規定。根據國內出差規定，住宿費每人每晚以新臺幣三千元為上限。",
+    "retriever": "chroma",
+    "cited": [
+     40,
+     41,
+     43,
+     38,
+     13
+    ],
+    "timing": {
+     "embed_ms": 4019.613,
+     "retrieve_ms": 24.002,
+     "llm_ms": 5225.234,
+     "serialize_ms": 0.547,
+     "total_ms": 9297.849,
+     "overhead_ms": 28.453
+    },
+    "usage": {
+     "embedding_tokens": 57,
+     "input_tokens": 10219,
+     "output_tokens": 138,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 6,
+     "searches": 4,
+     "llm_calls": 6,
+     "queries": [
+      "國外出差 住宿費 上限",
+      "國外出差辦法",
+      "國外出差住宿費用標準",
+      "國外出差住宿費用上限"
+     ],
+     "repeats": 1,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "9305.12",
+    "header_llm": "5225.23"
+   },
+   {
+    "key": "陷阱-105",
+    "status": 200,
+    "wall_ms": 2417.5606000062544,
+    "answer": "加班費計算依據平日工資，延長工作時間在2小時內者，加給三分之一以上；再延長2小時內者，加給三分之二以上。若您加班3小時，則至少可領到平日工資的1.5倍。具體金額需依您的本薪計算。",
+    "retriever": "chroma",
+    "cited": [
+     19,
+     17,
+     20
+    ],
+    "timing": {
+     "embed_ms": 365.549,
+     "retrieve_ms": 12.779,
+     "llm_ms": 2009.11,
+     "serialize_ms": 0.378,
+     "total_ms": 2399.137,
+     "overhead_ms": 11.32
+    },
+    "usage": {
+     "embedding_tokens": 5,
+     "input_tokens": 1463,
+     "output_tokens": 93,
+     "cached": false
+    },
+    "mode": "agent",
+    "agent": {
+     "steps": 2,
+     "searches": 1,
+     "llm_calls": 2,
+     "queries": [
+      "加班費"
+     ],
+     "repeats": 0,
+     "hit_cap": false,
+     "n_checks": 0,
+     "flagged": false,
+     "revised": false
+    },
+    "header_total": "2406.62",
+    "header_llm": "2009.11"
+   }
+  ]
+ },
+ "ingest": {
+  "status_code": 202,
+  "post_ms": 16.0,
+  "job": {
+   "job_id": "a35ce0c5dbff",
+   "status": "done",
+   "path": "work_rules.md",
+   "chunks": 59,
+   "elapsed_ms": 785.9,
+   "error": null
+  }
+ },
+ "middleware": {
+  "asgi": {
+   "ask_p50": 289.4,
+   "header_total_present": 10,
+   "header_llm_present": 10,
+   "post_documents_ms": 5.5,
+   "job_elapsed_ms": 481.7,
+   "n": 10
+  },
+  "base": {
+   "ask_p50": 325.3,
+   "header_total_present": 10,
+   "header_llm_present": 10,
+   "post_documents_ms": 8.0,
+   "job_elapsed_ms": 726.4,
+   "n": 10
+  },
+  "none": {
+   "ask_p50": 512.1,
+   "header_total_present": 0,
+   "header_llm_present": 0,
+   "post_documents_ms": 19.9,
+   "job_elapsed_ms": 868.7,
+   "n": 10
+  }
+ },
+ "probe": {
+  "repeats_healthz": 30,
+  "asgi": {
+   "label": "純 ASGI",
+   "rounds": [
+    {
+     "boot_ms": 3499.6,
+     "healthz": {
+      "n": 30,
+      "p50": 4.411,
+      "p95": 9.636,
+      "mean": 5.101,
+      "min": 2.147
+     },
+     "fresh_conn_healthz": 1611.7,
+     "fresh_conn_post": 1639.0,
+     "documents": {
+      "first": 10.7,
+      "rest": [
+       4.1,
+       4.6
+      ],
+      "rest_median": 4.1,
+      "all": [
+       10.7,
+       4.1,
+       4.6
+      ]
+     }
+    },
+    {
+     "boot_ms": 4250.7,
+     "healthz": {
+      "n": 30,
+      "p50": 2.565,
+      "p95": 10.04,
+      "mean": 3.691,
+      "min": 2.068
+     },
+     "fresh_conn_healthz": 1001.5,
+     "fresh_conn_post": 957.8,
+     "documents": {
+      "first": 5.9,
+      "rest": [
+       14.7,
+       7.3
+      ],
+      "rest_median": 7.3,
+      "all": [
+       5.9,
+       14.7,
+       7.3
+      ]
+     }
+    },
+    {
+     "boot_ms": 4260.7,
+     "healthz": {
+      "n": 30,
+      "p50": 9.669,
+      "p95": 18.401,
+      "mean": 10.284,
+      "min": 2.159
+     },
+     "fresh_conn_healthz": 1188.0,
+     "fresh_conn_post": 1758.9,
+     "documents": {
+      "first": 5.5,
+      "rest": [
+       19.3,
+       3.7
+      ],
+      "rest_median": 3.7,
+      "all": [
+       5.5,
+       19.3,
+       3.7
+      ]
+     }
+    }
+   ],
+   "healthz": {
+    "p50": 4.411,
+    "p95": 10.04,
+    "min": 2.068,
+    "n": 90
+   },
+   "fresh_conn_healthz": [
+    1611.7,
+    1001.5,
+    1188.0
+   ],
+   "first_post_fresh_conn": [
+    1639.0,
+    957.8,
+    1758.9
+   ],
+   "documents_rest": [
+    4.1,
+    4.6,
+    14.7,
+    7.3,
+    19.3,
+    3.7
+   ]
+  },
+  "base": {
+   "label": "BaseHTTPMiddleware",
+   "rounds": [
+    {
+     "boot_ms": 5249.8,
+     "healthz": {
+      "n": 30,
+      "p50": 2.562,
+      "p95": 4.501,
+      "mean": 2.768,
+      "min": 2.308
+     },
+     "fresh_conn_healthz": 1529.7,
+     "fresh_conn_post": 2470.9,
+     "documents": {
+      "first": 14.5,
+      "rest": [
+       20.9,
+       5.2
+      ],
+      "rest_median": 5.2,
+      "all": [
+       14.5,
+       20.9,
+       5.2
+      ]
+     }
+    },
+    {
+     "boot_ms": 4040.6,
+     "healthz": {
+      "n": 30,
+      "p50": 2.647,
+      "p95": 2.945,
+      "mean": 2.669,
+      "min": 2.387
+     },
+     "fresh_conn_healthz": 951.3,
+     "fresh_conn_post": 825.0,
+     "documents": {
+      "first": 19.1,
+      "rest": [
+       12.0,
+       19.7
+      ],
+      "rest_median": 12.0,
+      "all": [
+       19.1,
+       12.0,
+       19.7
+      ]
+     }
+    },
+    {
+     "boot_ms": 4298.5,
+     "healthz": {
+      "n": 30,
+      "p50": 4.164,
+      "p95": 13.664,
+      "mean": 5.408,
+      "min": 2.864
+     },
+     "fresh_conn_healthz": 1512.2,
+     "fresh_conn_post": 1919.4,
+     "documents": {
+      "first": 27.3,
+      "rest": [
+       3.9,
+       3.7
+      ],
+      "rest_median": 3.7,
+      "all": [
+       27.3,
+       3.9,
+       3.7
+      ]
+     }
+    }
+   ],
+   "healthz": {
+    "p50": 2.647,
+    "p95": 4.501,
+    "min": 2.308,
+    "n": 90
+   },
+   "fresh_conn_healthz": [
+    1529.7,
+    951.3,
+    1512.2
+   ],
+   "first_post_fresh_conn": [
+    2470.9,
+    825.0,
+    1919.4
+   ],
+   "documents_rest": [
+    20.9,
+    5.2,
+    12.0,
+    19.7,
+    3.9,
+    3.7
+   ]
+  },
+  "none": {
+   "label": "不掛",
+   "rounds": [
+    {
+     "boot_ms": 4038.2,
+     "healthz": {
+      "n": 30,
+      "p50": 6.452,
+      "p95": 15.681,
+      "mean": 7.513,
+      "min": 2.437
+     },
+     "fresh_conn_healthz": 1077.0,
+     "fresh_conn_post": 1102.2,
+     "documents": {
+      "first": 7.7,
+      "rest": [
+       3.0,
+       12.1
+      ],
+      "rest_median": 3.0,
+      "all": [
+       7.7,
+       3.0,
+       12.1
+      ]
+     }
+    },
+    {
+     "boot_ms": 4679.4,
+     "healthz": {
+      "n": 30,
+      "p50": 4.002,
+      "p95": 15.215,
+      "mean": 5.566,
+      "min": 2.159
+     },
+     "fresh_conn_healthz": 1097.0,
+     "fresh_conn_post": 337.3,
+     "documents": {
+      "first": 24.7,
+      "rest": [
+       16.9,
+       3.0
+      ],
+      "rest_median": 3.0,
+      "all": [
+       24.7,
+       16.9,
+       3.0
+      ]
+     }
+    },
+    {
+     "boot_ms": 4113.2,
+     "healthz": {
+      "n": 30,
+      "p50": 3.228,
+      "p95": 12.847,
+      "mean": 5.241,
+      "min": 1.729
+     },
+     "fresh_conn_healthz": 1906.3,
+     "fresh_conn_post": 1810.2,
+     "documents": {
+      "first": 7.1,
+      "rest": [
+       3.5,
+       13.0
+      ],
+      "rest_median": 3.5,
+      "all": [
+       7.1,
+       3.5,
+       13.0
+      ]
+     }
+    }
+   ],
+   "healthz": {
+    "p50": 4.002,
+    "p95": 15.215,
+    "min": 1.729,
+    "n": 90
+   },
+   "fresh_conn_healthz": [
+    1077.0,
+    1097.0,
+    1906.3
+   ],
+   "first_post_fresh_conn": [
+    1102.2,
+    337.3,
+    1810.2
+   ],
+   "documents_rest": [
+    3.0,
+    12.1,
+    16.9,
+    3.0,
+    3.5,
+    13.0
+   ]
+  }
+ }
+}

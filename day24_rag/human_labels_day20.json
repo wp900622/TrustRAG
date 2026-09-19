@@ -1,0 +1,1402 @@
+[
+  {
+    "key": "單條文-1-baseline",
+    "group": "單條文",
+    "id": 1,
+    "condition": "baseline",
+    "question": "病假連續請幾天以上需要附診斷證明？",
+    "expected_articles": [
+      24
+    ],
+    "retrieved": [
+      24,
+      25,
+      29
+    ],
+    "queries": [
+      "病假連續請幾天以上需要附診斷證明？"
+    ],
+    "answer": "病假連續請三天（含）以上需要附診斷證明。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-1-agent",
+    "group": "單條文",
+    "id": 1,
+    "condition": "agent",
+    "question": "病假連續請幾天以上需要附診斷證明？",
+    "expected_articles": [
+      24
+    ],
+    "retrieved": [
+      24,
+      25,
+      29
+    ],
+    "queries": [
+      "病假 連續請幾天 附診斷證明"
+    ],
+    "answer": "連續請病假三日（含）以上者，需附合格醫療院所出具之診斷證明書。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-2-baseline",
+    "group": "單條文",
+    "id": 2,
+    "condition": "baseline",
+    "question": "特休假最晚要在幾天前提出申請？",
+    "expected_articles": [
+      22
+    ],
+    "retrieved": [
+      22,
+      23,
+      26
+    ],
+    "queries": [
+      "特休假最晚要在幾天前提出申請？"
+    ],
+    "answer": "特休假應於預定休假日之三個工作日前提出申請。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-2-agent",
+    "group": "單條文",
+    "id": 2,
+    "condition": "agent",
+    "question": "特休假最晚要在幾天前提出申請？",
+    "expected_articles": [
+      22
+    ],
+    "retrieved": [
+      22,
+      23,
+      26
+    ],
+    "queries": [
+      "特休假 申請 最晚 幾天前"
+    ],
+    "answer": "特休假應於預定休假日的三個工作日前提出申請。申請需經直屬主管核准後生效。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-3-baseline",
+    "group": "單條文",
+    "id": 3,
+    "condition": "baseline",
+    "question": "婚假總共有幾天？",
+    "expected_articles": [
+      27
+    ],
+    "retrieved": [
+      22,
+      25,
+      27
+    ],
+    "queries": [
+      "婚假總共有幾天？"
+    ],
+    "answer": "婚假總共有八天。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-3-agent",
+    "group": "單條文",
+    "id": 3,
+    "condition": "agent",
+    "question": "婚假總共有幾天？",
+    "expected_articles": [
+      27
+    ],
+    "retrieved": [
+      25,
+      27,
+      30
+    ],
+    "queries": [
+      "婚假"
+    ],
+    "answer": "婚假總共有八天，工資照給。婚假應自結婚登記日起一年內休畢，得分次申請。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-4-baseline",
+    "group": "單條文",
+    "id": 4,
+    "condition": "baseline",
+    "question": "請假幾天以上需要指定職務代理人？",
+    "expected_articles": [
+      30
+    ],
+    "retrieved": [
+      22,
+      25,
+      30
+    ],
+    "queries": [
+      "請假幾天以上需要指定職務代理人？"
+    ],
+    "answer": "請假一日（含）以上者需要指定職務代理人。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-4-agent",
+    "group": "單條文",
+    "id": 4,
+    "condition": "agent",
+    "question": "請假幾天以上需要指定職務代理人？",
+    "expected_articles": [
+      30
+    ],
+    "retrieved": [
+      25,
+      30,
+      31
+    ],
+    "queries": [
+      "請假 代理人"
+    ],
+    "answer": "請假一日（含）以上者，需要指定職務代理人。代理人必須同意，並經直屬主管核准後才能離開職務。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-5-baseline",
+    "group": "單條文",
+    "id": 5,
+    "condition": "baseline",
+    "question": "事假一年最多可以請幾天？",
+    "expected_articles": [
+      25
+    ],
+    "retrieved": [
+      22,
+      25,
+      27
+    ],
+    "queries": [
+      "事假一年最多可以請幾天？"
+    ],
+    "answer": "事假一年最多可以請十四天。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-5-agent",
+    "group": "單條文",
+    "id": 5,
+    "condition": "agent",
+    "question": "事假一年最多可以請幾天？",
+    "expected_articles": [
+      25
+    ],
+    "retrieved": [
+      22,
+      25,
+      27
+    ],
+    "queries": [
+      "事假 一年 最多 請幾天"
+    ],
+    "answer": "事假一年最多可以請十四天。事假期間不支薪，需於三個工作日前提出申請。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-6-baseline",
+    "group": "單條文",
+    "id": 6,
+    "condition": "baseline",
+    "question": "加班換的假放到過期會怎樣？",
+    "expected_articles": [
+      26
+    ],
+    "retrieved": [
+      20,
+      23,
+      26
+    ],
+    "queries": [
+      "加班換的假放到過期會怎樣？"
+    ],
+    "answer": "加班換的假必須在加班事實發生日起六個月內休畢，若屆期未休畢，公司將依延長工時當日之工資標準折算加班費發給。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-6-agent",
+    "group": "單條文",
+    "id": 6,
+    "condition": "agent",
+    "question": "加班換的假放到過期會怎樣？",
+    "expected_articles": [
+      26
+    ],
+    "retrieved": [
+      20,
+      23,
+      26
+    ],
+    "queries": [
+      "加班換假 過期"
+    ],
+    "answer": "加班換的假必須在加班事實發生日起六個月內休畢，若屆期未休畢，則公司會依延長工時當日的工資標準折算加班費發給。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-7-baseline",
+    "group": "單條文",
+    "id": 7,
+    "condition": "baseline",
+    "question": "特休沒休完會怎樣？",
+    "expected_articles": [
+      23
+    ],
+    "retrieved": [
+      22,
+      23,
+      26
+    ],
+    "queries": [
+      "特休沒休完會怎樣？"
+    ],
+    "answer": "特休假應於年度終結前休畢，若未能休畢可申請遞延至次年三月三十一日止。屆期仍未休畢之日數，公司將按日折算工資發給，不再遞延。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-7-agent",
+    "group": "單條文",
+    "id": 7,
+    "condition": "agent",
+    "question": "特休沒休完會怎樣？",
+    "expected_articles": [
+      23
+    ],
+    "retrieved": [
+      22,
+      23,
+      26
+    ],
+    "queries": [
+      "特休沒休完"
+    ],
+    "answer": "特休假應於年度終結前休畢，若因業務需要或個人因素未能休畢，可申請遞延至次年三月三十一日。屆期仍未休畢的日數，公司將按日折算工資發給，不再遞延。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-8-baseline",
+    "group": "單條文",
+    "id": 8,
+    "condition": "baseline",
+    "question": "早上突然掛急診，來不及先請假怎麼辦？",
+    "expected_articles": [
+      31
+    ],
+    "retrieved": [
+      24,
+      25,
+      31
+    ],
+    "queries": [
+      "早上突然掛急診，來不及先請假怎麼辦？"
+    ],
+    "answer": "您可以先以電話或即時通訊軟體通知直屬主管，並於復工後三個工作日內至差勤系統補辦請假手續。若逾期未補辦，將依第 32 條曠職論處。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-8-agent",
+    "group": "單條文",
+    "id": 8,
+    "condition": "agent",
+    "question": "早上突然掛急診，來不及先請假怎麼辦？",
+    "expected_articles": [
+      31
+    ],
+    "retrieved": [
+      24,
+      25,
+      31
+    ],
+    "queries": [
+      "急診 請假"
+    ],
+    "answer": "因急病或緊急事故無法事前請假者，應先以電話或即時通訊通知直屬主管。復工後需在三個工作日內補辦請假手續，否則將依曠職處理。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-9-baseline",
+    "group": "單條文",
+    "id": 9,
+    "condition": "baseline",
+    "question": "沒來上班也沒跟任何人講，會有什麼後果？",
+    "expected_articles": [
+      32
+    ],
+    "retrieved": [
+      12,
+      47,
+      49
+    ],
+    "queries": [
+      "沒來上班也沒跟任何人講，會有什麼後果？"
+    ],
+    "answer": "根據第 47 條，員工未經核准擅自缺勤可視情節輕重予以申誡、記過或記大過。若情節重大，可能不經預告終止勞動契約並請求損害賠償。建議儘快與主管聯繫以解釋情況。",
+    "verdict": "不完整",
+    "ruler_C": "錯誤",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": "撈到 [12,47,49]，漏了第 32 條。答案講第 47 條的申誡／記過，沒講到問題真正問的「曠職」——曠職期間不發工資、連續三日得終止契約。沒有與規章牴觸（違反工作規則確實可依第 47 條懲處），但漏掉直接問到的要件。"
+  },
+  {
+    "key": "單條文-9-agent",
+    "group": "單條文",
+    "id": 9,
+    "condition": "agent",
+    "question": "沒來上班也沒跟任何人講，會有什麼後果？",
+    "expected_articles": [
+      32
+    ],
+    "retrieved": [
+      17,
+      26,
+      31,
+      32,
+      46
+    ],
+    "queries": [
+      "缺勤 後果",
+      "曠職 後果"
+    ],
+    "answer": "若未來上班且未辦理請假，將被視為曠職，曠職期間不發工資。若無正當理由持續曠職三日，或一個月內累計曠職達六日，公司可依法終止勞動契約。請務必遵循請假程序以避免不必要的後果。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": "第一次查「缺勤 後果」沒撈到，換成「曠職 後果」才撈到第 32 條，答案完整命中：曠職不發工資、連續三日或一月六日得終止契約。"
+  },
+  {
+    "key": "單條文-10-baseline",
+    "group": "單條文",
+    "id": 10,
+    "condition": "baseline",
+    "question": "小孩要打疫苗需要我帶去，可以請什麼假？",
+    "expected_articles": [
+      29
+    ],
+    "retrieved": [
+      24,
+      25,
+      29
+    ],
+    "queries": [
+      "小孩要打疫苗需要我帶去，可以請什麼假？"
+    ],
+    "answer": "可以請家庭照顧假，全年以七日為限，請假期間依事假規定不支薪。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-10-agent",
+    "group": "單條文",
+    "id": 10,
+    "condition": "agent",
+    "question": "小孩要打疫苗需要我帶去，可以請什麼假？",
+    "expected_articles": [
+      29
+    ],
+    "retrieved": [
+      24,
+      25,
+      29
+    ],
+    "queries": [
+      "小孩 疫苗 請假"
+    ],
+    "answer": "您可以請家庭照顧假，因為小孩打疫苗屬於家庭成員的預防接種。家庭照顧假全年以七日為限，請假期間不支薪。請假時需依事假規定提前申請。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-11-baseline",
+    "group": "單條文",
+    "id": 11,
+    "condition": "baseline",
+    "question": "每月加班時數上限是多少小時？",
+    "expected_articles": [
+      18
+    ],
+    "retrieved": [
+      17,
+      18,
+      19
+    ],
+    "queries": [
+      "每月加班時數上限是多少小時？"
+    ],
+    "answer": "每月加班時數上限為四十六小時，經工會或勞資會議同意可調整為五十四小時。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-11-agent",
+    "group": "單條文",
+    "id": 11,
+    "condition": "agent",
+    "question": "每月加班時數上限是多少小時？",
+    "expected_articles": [
+      18
+    ],
+    "retrieved": [
+      17,
+      18,
+      19
+    ],
+    "queries": [
+      "每月加班時數上限"
+    ],
+    "answer": "每月加班時數上限為四十六小時。經工會或勞資會議同意者，可調整為每月不超過五十四小時。每三個月的加班時數上限為一百三十八小時。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-12-baseline",
+    "group": "單條文",
+    "id": 12,
+    "condition": "baseline",
+    "question": "忘記打卡要怎麼補救？會有事嗎？",
+    "expected_articles": [
+      11
+    ],
+    "retrieved": [
+      11,
+      31,
+      53
+    ],
+    "queries": [
+      "忘記打卡要怎麼補救？會有事嗎？"
+    ],
+    "answer": "未依規定刷卡者，應於當日或次一工作日內至差勤系統申請補登，並經直屬主管核准；每月補登以三次為限。逾次數且無正當理由者，將依遲到或曠職相關規定處理。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-12-agent",
+    "group": "單條文",
+    "id": 12,
+    "condition": "agent",
+    "question": "忘記打卡要怎麼補救？會有事嗎？",
+    "expected_articles": [
+      11
+    ],
+    "retrieved": [
+      11,
+      31,
+      53
+    ],
+    "queries": [
+      "忘記打卡 補救"
+    ],
+    "answer": "忘記打卡的員工應於當日或次一工作日內至差勤系統申請補登，並需經直屬主管核准。每月補登次數限制為三次，超過次數且無正當理由者，將依遲到或曠職相關規定處理。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-13-baseline",
+    "group": "單條文",
+    "id": 13,
+    "condition": "baseline",
+    "question": "國內出差住宿費每晚上限是多少？",
+    "expected_articles": [
+      40
+    ],
+    "retrieved": [
+      40,
+      41,
+      43
+    ],
+    "queries": [
+      "國內出差住宿費每晚上限是多少？"
+    ],
+    "answer": "國內出差住宿費每人每晚以新臺幣三千元為上限。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-13-agent",
+    "group": "單條文",
+    "id": 13,
+    "condition": "agent",
+    "question": "國內出差住宿費每晚上限是多少？",
+    "expected_articles": [
+      40
+    ],
+    "retrieved": [
+      40,
+      41,
+      43
+    ],
+    "queries": [
+      "國內出差 住宿費 限額"
+    ],
+    "answer": "國內出差住宿費每人每晚以新臺幣三千元為上限。超過上限的差額由員工自行負擔，除非經權責主管事前專案核准。合住的情況下，報支不得超過各自上限之總和。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-14-baseline",
+    "group": "單條文",
+    "id": 14,
+    "condition": "baseline",
+    "question": "把公司內部資料傳給外面的人會受到什麼處分？",
+    "expected_articles": [
+      47
+    ],
+    "retrieved": [
+      7,
+      47,
+      53
+    ],
+    "queries": [
+      "把公司內部資料傳給外面的人會受到什麼處分？"
+    ],
+    "answer": "將公司內部文件、客戶資料或營業秘密攜出、傳送或洩漏予第三人者，將記大過；若致公司受有損害或情節重大者，得不經預告終止勞動契約，並依法請求損害賠償。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-14-agent",
+    "group": "單條文",
+    "id": 14,
+    "condition": "agent",
+    "question": "把公司內部資料傳給外面的人會受到什麼處分？",
+    "expected_articles": [
+      47
+    ],
+    "retrieved": [
+      7,
+      36,
+      46,
+      47,
+      50,
+      52,
+      53,
+      57
+    ],
+    "queries": [
+      "內部資料 傳給外面的人 處分",
+      "內部資料 外洩 處分",
+      "內部資料 外洩 處分 規定",
+      "內部資料 外洩 處分 罰則"
+    ],
+    "answer": "員工未經核准將公司內部文件或資料洩漏給第三人，將被記大過；若情節重大或造成公司損害，則可不經預告終止勞動契約並請求損害賠償。懲處可包括申誡、記過、記大過或解僱。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-15-baseline",
+    "group": "單條文",
+    "id": 15,
+    "condition": "baseline",
+    "question": "不想做了，要提前多久跟公司講？",
+    "expected_articles": [
+      54
+    ],
+    "retrieved": [
+      12,
+      17,
+      54
+    ],
+    "queries": [
+      "不想做了，要提前多久跟公司講？"
+    ],
+    "answer": "根據規章條文，自請離職者需提前預告公司：三個月以上未滿一年者，十天；一年以上未滿三年者，二十天；三年以上者，三十天。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "單條文-15-agent",
+    "group": "單條文",
+    "id": 15,
+    "condition": "agent",
+    "question": "不想做了，要提前多久跟公司講？",
+    "expected_articles": [
+      54
+    ],
+    "retrieved": [
+      5,
+      31,
+      54
+    ],
+    "queries": [
+      "提前通知 辭職"
+    ],
+    "answer": "員工自請離職者，需依工作年限提前通知公司：三個月以上未滿一年者，提前十天；一年以上未滿三年者，提前二十天；三年以上者，提前三十天。離職通知需以書面或於差勤系統提出。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "",
+    "ruler_day15": "",
+    "note": ""
+  },
+  {
+    "key": "多條文-301-baseline",
+    "group": "多條文",
+    "id": 301,
+    "condition": "baseline",
+    "question": "我平日加班 3 小時，加班費要怎麼算？",
+    "expected_articles": [
+      19,
+      33
+    ],
+    "retrieved": [
+      17,
+      19,
+      20
+    ],
+    "queries": [
+      "我平日加班 3 小時，加班費要怎麼算？"
+    ],
+    "answer": "平日加班3小時，前2小時按每小時工資額加給三分之一以上，第三小時按加給三分之二以上。具體加班費計算基準為本薪加計經常性給與。請依據上述標準計算您的加班費。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "分段算對，且說出計算基準為本薪加計經常性給與。與 Day 18 對 301@k3 的標註一致。"
+  },
+  {
+    "key": "多條文-301-agent",
+    "group": "多條文",
+    "id": 301,
+    "condition": "agent",
+    "question": "我平日加班 3 小時，加班費要怎麼算？",
+    "expected_articles": [
+      19,
+      33
+    ],
+    "retrieved": [
+      17,
+      19,
+      20
+    ],
+    "queries": [
+      "加班費"
+    ],
+    "answer": "平日加班費計算方式為：若加班在2小時以內，按每小時工資額加給三分之一以上；若再延長2小時以內，則加給三分之二以上。若你平日加班3小時，則應按每小時工資額加給三分之二以上的費用計算。",
+    "verdict": "錯誤",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "前半把規則講對了，但結論塌掉：「平日加班3小時，則應按每小時工資額加給三分之二以上計算」——第 19 條是前二小時三分之一、第三小時才三分之二。Day 18 對同型的 301@k15 也是標錯誤，沿用同一把尺度。"
+  },
+  {
+    "key": "多條文-302-baseline",
+    "group": "多條文",
+    "id": 302,
+    "condition": "baseline",
+    "question": "加班選了補休之後可以改領加班費嗎？六個月內沒排到又會怎樣？",
+    "expected_articles": [
+      20,
+      26
+    ],
+    "retrieved": [
+      19,
+      20,
+      26
+    ],
+    "queries": [
+      "加班選了補休之後可以改領加班費嗎？六個月內沒排到又會怎樣？"
+    ],
+    "answer": "選擇補休後，該筆加班不得再變更為加班費。若六個月內未休畢，則公司應依延長工時當日之工資標準折算加班費發給。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "不得變更＋六個月折算，兩件都答到。"
+  },
+  {
+    "key": "多條文-302-agent",
+    "group": "多條文",
+    "id": 302,
+    "condition": "agent",
+    "question": "加班選了補休之後可以改領加班費嗎？六個月內沒排到又會怎樣？",
+    "expected_articles": [
+      20,
+      26
+    ],
+    "retrieved": [
+      6,
+      12,
+      19,
+      20,
+      22,
+      26
+    ],
+    "queries": [
+      "加班 補休 改領 加班費",
+      "六個月內沒排到"
+    ],
+    "answer": "選擇補休後，該筆加班不得再變更為加班費。若六個月內未休畢補休時數，公司將依延長工時當日之工資標準折算加班費發給。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "同上。"
+  },
+  {
+    "key": "多條文-303-baseline",
+    "group": "多條文",
+    "id": 303,
+    "condition": "baseline",
+    "question": "國內出差住一晚花了 3,200 元，住宿發票又弄丟了，可以報多少？要辦什麼手續？",
+    "expected_articles": [
+      40,
+      42
+    ],
+    "retrieved": [
+      40,
+      41,
+      42
+    ],
+    "queries": [
+      "國內出差住一晚花了 3,200 元，住宿發票又弄丟了，可以報多少？要辦什麼手續？"
+    ],
+    "answer": "住宿費用超過上限的 3,000 元，員工需自行負擔 200 元。由於住宿發票遺失，需填具「單據遺失切結書」，並經權責主管核准後才能報支。報支金額為 0 元，因為未檢附住宿發票。",
+    "verdict": "錯誤",
+    "ruler_C": "不完整",
+    "ruler_B3": "錯誤",
+    "ruler_day15": "",
+    "note": "結尾「報支金額為 0 元，因為未檢附住宿發票」與第 42 條牴觸——切結書經核准後即得報支。與 Day 18 對 303@k3 的標註一致。"
+  },
+  {
+    "key": "多條文-303-agent",
+    "group": "多條文",
+    "id": 303,
+    "condition": "agent",
+    "question": "國內出差住一晚花了 3,200 元，住宿發票又弄丟了，可以報多少？要辦什麼手續？",
+    "expected_articles": [
+      40,
+      42
+    ],
+    "retrieved": [
+      38,
+      39,
+      40,
+      42,
+      43
+    ],
+    "queries": [
+      "出差住宿報銷標準",
+      "住宿發票遺失報銷手續"
+    ],
+    "answer": "住宿費用上限為每人每晚新臺幣三千元，因此可以報銷 3,000 元。因發票遺失，需填具「單據遺失切結書」，並經權責主管核准後方可報支。報支應於出差結束後十個工作日內辦理。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "不完整",
+    "ruler_day15": "",
+    "note": "改查「出差住宿報銷標準」「住宿發票遺失報銷手續」，撈到第 40、42 條，答出可報 3,000 元＋切結書核准。沒明講超出的 200 元自負，但那是「可以報多少」的同一件事。"
+  },
+  {
+    "key": "多條文-304-baseline",
+    "group": "多條文",
+    "id": 304,
+    "condition": "baseline",
+    "question": "無故連續曠職三天被終止契約，公司要不要發資遣費？",
+    "expected_articles": [
+      32,
+      56
+    ],
+    "retrieved": [
+      23,
+      32,
+      56
+    ],
+    "queries": [
+      "無故連續曠職三天被終止契約，公司要不要發資遣費？"
+    ],
+    "answer": "公司因員工無故連續曠職三天而終止契約，依規章條文可不發給資遣費。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "不發資遣費，符合第 56 條末句。"
+  },
+  {
+    "key": "多條文-304-agent",
+    "group": "多條文",
+    "id": 304,
+    "condition": "agent",
+    "question": "無故連續曠職三天被終止契約，公司要不要發資遣費？",
+    "expected_articles": [
+      32,
+      56
+    ],
+    "retrieved": [
+      23,
+      32,
+      56
+    ],
+    "queries": [
+      "無故連續曠職三天 終止契約 資遣費"
+    ],
+    "answer": "根據規章，無故連續曠職三天可被公司依法終止勞動契約。此情況下，公司得不發給資遣費。故不需支付資遣費。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "同上。"
+  },
+  {
+    "key": "多條文-305-baseline",
+    "group": "多條文",
+    "id": 305,
+    "condition": "baseline",
+    "question": "到職滿三個月的試用期員工，有沒有特休假？",
+    "expected_articles": [
+      2,
+      22
+    ],
+    "retrieved": [
+      6,
+      22,
+      26
+    ],
+    "queries": [
+      "到職滿三個月的試用期員工，有沒有特休假？"
+    ],
+    "answer": "到職滿三個月的試用期員工尚未滿六個月，因此沒有特休假。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "錯誤",
+    "ruler_day15": "",
+    "note": "直接回答沒有特休假並給出滿六個月的門檻。與 Day 18 對 305@k3 的標註一致。"
+  },
+  {
+    "key": "多條文-305-agent",
+    "group": "多條文",
+    "id": 305,
+    "condition": "agent",
+    "question": "到職滿三個月的試用期員工，有沒有特休假？",
+    "expected_articles": [
+      2,
+      22
+    ],
+    "retrieved": [
+      6,
+      22,
+      26
+    ],
+    "queries": [
+      "試用期 員工 特休假"
+    ],
+    "answer": "到職滿三個月的試用期員工，依據公司規章，特休假需滿六個月才能享有。因此，試用期滿三個月的員工並不具備特休假權益。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "錯誤",
+    "ruler_day15": "",
+    "note": "同上，講法不同但結論與依據都對。"
+  },
+  {
+    "key": "多條文-306-baseline",
+    "group": "多條文",
+    "id": 306,
+    "condition": "baseline",
+    "question": "這個月遲到三次，會被記過嗎？",
+    "expected_articles": [
+      12,
+      46
+    ],
+    "retrieved": [
+      12,
+      23,
+      46
+    ],
+    "queries": [
+      "這個月遲到三次，會被記過嗎？"
+    ],
+    "answer": "會被書面提醒，但不會直接記過。若情節重大或經提醒仍未改善，則可能依獎懲規定處理。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "正面回答「不會直接記過」＋書面提醒。與 Day 18 對 306@k3 的標註一致。"
+  },
+  {
+    "key": "多條文-306-agent",
+    "group": "多條文",
+    "id": 306,
+    "condition": "agent",
+    "question": "這個月遲到三次，會被記過嗎？",
+    "expected_articles": [
+      12,
+      46
+    ],
+    "retrieved": [
+      12,
+      14,
+      46
+    ],
+    "queries": [
+      "遲到 記過"
+    ],
+    "answer": "如果這個月遲到三次，會由直屬主管予以書面提醒。情節重大或經提醒仍未改善者，可能會依獎懲規定處理，甚至記過。請注意，記過的情況會影響未來的懲處紀錄。",
+    "verdict": "不完整",
+    "ruler_C": "不完整",
+    "ruler_B3": "錯誤",
+    "ruler_day15": "",
+    "note": "講了書面提醒，但**沒有正面回答「會不會被記過」**，還補一句「甚至記過」。沒有與規章牴觸（情節重大確實可能記過），但漏掉問題直接問到的要件。"
+  },
+  {
+    "key": "多條文-307-baseline",
+    "group": "多條文",
+    "id": 307,
+    "condition": "baseline",
+    "question": "離職時公司財物還沒交還，公司可以不發服務證明書嗎？",
+    "expected_articles": [
+      53,
+      57
+    ],
+    "retrieved": [
+      53,
+      55,
+      57
+    ],
+    "queries": [
+      "離職時公司財物還沒交還，公司可以不發服務證明書嗎？"
+    ],
+    "answer": "是的，未交還公司財物或留存複本的情況下，公司得暫緩發給離職相關文件，包括服務證明書。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "得暫緩發給，含服務證明書。"
+  },
+  {
+    "key": "多條文-307-agent",
+    "group": "多條文",
+    "id": 307,
+    "condition": "agent",
+    "question": "離職時公司財物還沒交還，公司可以不發服務證明書嗎？",
+    "expected_articles": [
+      53,
+      57
+    ],
+    "retrieved": [
+      53,
+      55,
+      57
+    ],
+    "queries": [
+      "離職 服務證明書 財物交還"
+    ],
+    "answer": "若員工在離職時未交還公司財物，公司可以暫緩發給服務證明書。根據第 53 條，未交還財物的情況下，公司有權不發相關文件。員工應在離職前完成財物交還及交接。",
+    "verdict": "正確",
+    "ruler_C": "正確",
+    "ruler_B3": "正確",
+    "ruler_day15": "",
+    "note": "同上。"
+  },
+  {
+    "key": "多條文-308-baseline",
+    "group": "多條文",
+    "id": 308,
+    "condition": "baseline",
+    "question": "颱風宣布停止上班，我改在家上班，那天要不要簽到？算不算出勤？",
+    "expected_articles": [
+      15,
+      16
+    ],
+    "retrieved": [
+      12,
+      16,
+      25
+    ],
+    "queries": [
+      "颱風宣布停止上班，我改在家上班，那天要不要簽到？算不算出勤？"
+    ],
+    "answer": "遇到颱風宣布停止上班，具備遠距工作條件之職務可經主管同意改採居家辦公，該日以正常出勤論。因此，當天不需要簽到，算作正常出勤。",
+    "verdict": "錯誤",
+    "ruler_C": "錯誤",
+    "ruler_B3": "錯誤",
+    "ruler_day15": "",
+    "note": "「當天不需要簽到」與第 15 條「遠距工作日仍應完成線上簽到」牴觸。與 Day 18 標註一致。"
+  },
+  {
+    "key": "多條文-308-agent",
+    "group": "多條文",
+    "id": 308,
+    "condition": "agent",
+    "question": "颱風宣布停止上班，我改在家上班，那天要不要簽到？算不算出勤？",
+    "expected_articles": [
+      15,
+      16
+    ],
+    "retrieved": [
+      14,
+      16,
+      17,
+      31,
+      57
+    ],
+    "queries": [
+      "颱風 停止上班 在家上班 簽到 出勤",
+      "在家上班 簽到 出勤"
+    ],
+    "answer": "在颱風宣布停止上班的情況下，若經主管同意改為居家辦公，該日可視為正常出勤，不需要簽到。工資照給，且不會影響出勤紀錄。",
+    "verdict": "錯誤",
+    "ruler_C": "錯誤",
+    "ruler_B3": "錯誤",
+    "ruler_day15": "",
+    "note": "查了兩次、撈到 5 條，**還是沒撈到第 15 條**，照樣答「不需要簽到」。多查一次沒有救到它——這一筆是今天最該看的。"
+  },
+  {
+    "key": "陷阱-101-baseline",
+    "group": "陷阱",
+    "id": 101,
+    "condition": "baseline",
+    "question": "育嬰留職停薪最長可以留多久？",
+    "expected_articles": [],
+    "retrieved": [
+      18,
+      22,
+      27
+    ],
+    "queries": [
+      "育嬰留職停薪最長可以留多久？"
+    ],
+    "answer": "規章條文中並未提及育嬰留職停薪的相關規定，因此無法提供具體的留職停薪最長時間。請參考其他相關規章或政策。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "proper",
+    "note": "正確拒答，沒有編造期限。"
+  },
+  {
+    "key": "陷阱-101-agent",
+    "group": "陷阱",
+    "id": 101,
+    "condition": "agent",
+    "question": "育嬰留職停薪最長可以留多久？",
+    "expected_articles": [],
+    "retrieved": [
+      16,
+      18,
+      22,
+      23,
+      26,
+      27,
+      28,
+      29
+    ],
+    "queries": [
+      "育嬰留職停薪 最長",
+      "育嬰留職停薪",
+      "育嬰假",
+      "育嬰留職停薪 最長 期限",
+      "育嬰假 期限",
+      "育嬰假 留職停薪"
+    ],
+    "answer": "目前查詢到的條文中並未明確提及育嬰留職停薪的最長期限，因此無法提供具體的時間限制。建議查閱相關的育嬰假規定或向人資部門詢問以獲取準確資訊。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "proper",
+    "note": "查了 6 次撞上限，最後仍正確拒答，沒有編數字。"
+  },
+  {
+    "key": "陷阱-102-baseline",
+    "group": "陷阱",
+    "id": 102,
+    "condition": "baseline",
+    "question": "公司有健身房或運動補助嗎？",
+    "expected_articles": [],
+    "retrieved": [
+      20,
+      37,
+      38
+    ],
+    "queries": [
+      "公司有健身房或運動補助嗎？"
+    ],
+    "answer": "根據提供的規章條文，沒有提及公司有健身房或運動補助的相關內容。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "proper",
+    "note": "正確拒答。"
+  },
+  {
+    "key": "陷阱-102-agent",
+    "group": "陷阱",
+    "id": 102,
+    "condition": "agent",
+    "question": "公司有健身房或運動補助嗎？",
+    "expected_articles": [],
+    "retrieved": [
+      1,
+      7,
+      8,
+      10,
+      13,
+      14,
+      24,
+      26,
+      27,
+      37,
+      38,
+      39,
+      40,
+      41,
+      50
+    ],
+    "queries": [
+      "健身房 運動補助",
+      "健身",
+      "運動",
+      "員工福利",
+      "員工健身",
+      "員工福利 健身"
+    ],
+    "answer": "目前查詢的條文中並未明確提到公司是否提供健身房或運動補助的相關規定，因此無法確定是否有此福利。建議向人資部門進一步確認相關福利政策。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "proper",
+    "note": "查了 6 次撞上限，仍正確拒答。"
+  },
+  {
+    "key": "陷阱-103-baseline",
+    "group": "陷阱",
+    "id": 103,
+    "condition": "baseline",
+    "question": "遠端工作一週最多幾天？",
+    "expected_articles": [],
+    "retrieved": [
+      18,
+      22,
+      43
+    ],
+    "queries": [
+      "遠端工作一週最多幾天？"
+    ],
+    "answer": "規章條文中並未提及遠端工作的相關規定，因此無法提供具體的天數。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "proper",
+    "note": "正確拒答。"
+  },
+  {
+    "key": "陷阱-103-agent",
+    "group": "陷阱",
+    "id": 103,
+    "condition": "agent",
+    "question": "遠端工作一週最多幾天？",
+    "expected_articles": [],
+    "retrieved": [
+      13,
+      18,
+      22,
+      38,
+      43
+    ],
+    "queries": [
+      "遠端工作 一週 最多 幾天",
+      "遠端工作",
+      "遠端工作 規定",
+      "遠端工作 週次",
+      "遠端工作 週"
+    ],
+    "answer": "目前查詢的條文中並未明確規定遠端工作一週最多幾天的相關內容，因此無法提供具體數字或規定。建議查閱公司內部的遠端工作政策或相關文件以獲取準確資訊。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "proper",
+    "note": "查了 5 次，仍正確拒答。"
+  },
+  {
+    "key": "陷阱-104-baseline",
+    "group": "陷阱",
+    "id": 104,
+    "condition": "baseline",
+    "question": "國外出差住宿費上限是多少？",
+    "expected_articles": [],
+    "retrieved": [
+      40,
+      41,
+      43
+    ],
+    "queries": [
+      "國外出差住宿費上限是多少？"
+    ],
+    "answer": "國外出差住宿費上限依公司「國外出差辦法」另行規定，未規定事項準用國內出差的規定。國內出差住宿費上限為每人每晚新臺幣三千元。具體的國外住宿費上限需查閱相關辦法。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "fake_refusal",
+    "note": "第 43 條寫明國外出差依「國外出差辦法」另行規定，答案正確轉指，並未替國外編一個金額；提到的三千元有明確標示是國內的。Day 15 舊尺判 fake_refusal，是因為它的 marker 抓「數字＋元」——舊尺錯，不是答案錯。"
+  },
+  {
+    "key": "陷阱-104-agent",
+    "group": "陷阱",
+    "id": 104,
+    "condition": "agent",
+    "question": "國外出差住宿費上限是多少？",
+    "expected_articles": [],
+    "retrieved": [
+      13,
+      38,
+      40,
+      41,
+      43
+    ],
+    "queries": [
+      "國外出差 住宿費 上限",
+      "國外出差辦法",
+      "國外出差住宿費標準",
+      "國外出差住宿費",
+      "國外出差住宿費用"
+    ],
+    "answer": "國外出差的住宿費用標準依公司「國外出差辦法」另行規定，未規定事項準用國內出差的規定。國內出差的住宿費每人每晚上限為新臺幣三千元。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "fake_refusal",
+    "note": "同上。"
+  },
+  {
+    "key": "陷阱-105-baseline",
+    "group": "陷阱",
+    "id": 105,
+    "condition": "baseline",
+    "question": "加班費怎麼算？我加班 3 小時可以領多少錢？",
+    "expected_articles": [],
+    "retrieved": [
+      17,
+      19,
+      20
+    ],
+    "queries": [
+      "加班費怎麼算？我加班 3 小時可以領多少錢？"
+    ],
+    "answer": "平日加班3小時的計算方式為：前2小時按每小時工資額加給三分之二，第三小時則按每小時工資額加給三分之一。具體金額需依據您的本薪及經常性給與計算。請提供您的每小時工資額以便計算具體金額。",
+    "verdict": "錯誤",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "proper",
+    "note": "**把加成比例前後顛倒**：答「前2小時加給三分之二，第三小時加給三分之一」，第 19 條是前二小時三分之一、再延長三分之二。Day 15 舊尺判 proper——放水。"
+  },
+  {
+    "key": "陷阱-105-agent",
+    "group": "陷阱",
+    "id": 105,
+    "condition": "agent",
+    "question": "加班費怎麼算？我加班 3 小時可以領多少錢？",
+    "expected_articles": [],
+    "retrieved": [
+      17,
+      19,
+      20
+    ],
+    "queries": [
+      "加班費"
+    ],
+    "answer": "加班費計算依據為本薪加計經常性給與，平日加班3小時的話，前2小時按每小時工資額加給三分之一，第三小時加給三分之二。具體金額需依據您的本薪計算。",
+    "verdict": "正確",
+    "ruler_C": "",
+    "ruler_B3": "",
+    "ruler_day15": "proper",
+    "note": "比例順序正確，且說明具體金額需依本薪計算，沒有編造金額。"
+  }
+]
