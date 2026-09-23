@@ -18,6 +18,7 @@ handler 刻意寫成同步 `def`：底下那些 OpenAI 呼叫是會阻塞的 sdk
 跑起來：
     uvicorn day24_service.main:app --port 8024
 """
+import asyncio
 import logging
 import threading
 import time
@@ -25,21 +26,29 @@ from contextlib import asynccontextmanager
 
 import numpy as np
 from fastapi import BackgroundTasks, FastAPI, Response
+from fastapi.responses import StreamingResponse
+from starlette.concurrency import run_in_threadpool
 
 import chroma_store
 import pipeline
 import prompts
 import rag_core
 
-from . import agents, cache, embedder, errors, ingest, timing
+from . import (agents, budget, cache, embedder, errors, ingest, ledger,
+               streaming, timing)
 from .config import settings
 from .contracts import (AgentTrace, AskRequest, AskResponse, Citation,
-                        IngestJob, IngestRequest, Timing, Usage)
+                        DeleteResult, IngestJob, IngestRequest, SearchRequest,
+                        SearchResponse, SourceSummary, Timing, Usage)
 from .errors import ServiceError
 from .retrievers import ChromaRetriever, NumpyRetriever, Retriever
 from .store import JobStore, as_contract
 
-VERSION = "24.0"
+VERSION = "24.1"
+
+# 開機那份語料的來源名。Day 29 之前索引裡沒有這個欄位，
+# 因為在那之前索引裡永遠只有一份文件
+BASE_SOURCE = rag_core.DOC_PATH.name
 log = logging.getLogger("day24")
 
 STATE: dict = {"retrievers": {}, "chunks": 0, "boot_ms": 0.0,
@@ -59,6 +68,55 @@ def _collection():
     return chroma_store.get_client().get_collection(chroma_store.COLLECTION)
 
 
+def _stamp(metadatas: list[dict], source: str) -> list[dict]:
+    """替每一塊補上它是哪份文件來的。
+
+    `chroma_store.article_metadata()` 是 Day 14 的檔案，前 15 天的實驗都靠它，
+    所以不去動它，補在服務這一層。多這個欄位不會讓既有的快取失效：
+    進 prompt 的只有 `article_no` 與 `chapter`（`prompts.build_messages`）。
+    """
+    for meta in metadatas:
+        meta["source"] = source
+    return metadatas
+
+
+def _where(source: str | None, chapter_no: int | None) -> dict | None:
+    """把請求裡的兩個欄位翻成檢索條件。都沒給就回 None，走原本的整庫檢索。
+
+    只做等值比對，因為 `NumpyRetriever` 也要做得到同一件事。
+    服務對外承諾的，只能是兩個實作都給得起的東西。
+    """
+    clauses = {}
+    if source:
+        clauses["source"] = {"$eq": source}
+    if chapter_no is not None:
+        clauses["chapter_no"] = {"$eq": chapter_no}
+    if not clauses:
+        return None
+    if len(clauses) == 1:
+        return clauses
+    return {"$and": [{k: v} for k, v in clauses.items()]}
+
+
+def _backfill_source(collection, source: str) -> int:
+    """舊索引裡的塊沒有 source，補寫一次。
+
+    不補的話，`?source=` 對開機那 59 塊永遠回 0 筆——欄位不存在，
+    過濾條件當然一條都不符合。這是一次性的，補完之後每次攝取都會自己帶。
+    """
+    got = collection.get(include=["metadatas"])
+    ids = [i for i, m in zip(got["ids"], got["metadatas"])
+           if not (m or {}).get("source")]
+    if not ids:
+        return 0
+    metas = [dict(m or {}, source=source)
+             for i, m in zip(got["ids"], got["metadatas"])
+             if not (m or {}).get("source")]
+    collection.update(ids=ids, metadatas=metas)
+    log.info("backfill source=%s chunks=%s", source, len(ids))
+    return len(ids)
+
+
 def _refresh(collection=None, chunks=None, articles=None) -> None:
     """重建 retriever 與條號索引。
 
@@ -68,14 +126,20 @@ def _refresh(collection=None, chunks=None, articles=None) -> None:
         if collection is None:
             collection, chunks, articles, _t, _c = pipeline.build_index()
         vectors, _t, _c = rag_core.get_embeddings([c["text"] for c in chunks])
-        metadatas = [chroma_store.article_metadata(c, articles) for c in chunks]
+        metadatas = _stamp(
+            [chroma_store.article_metadata(c, articles) for c in chunks],
+            BASE_SOURCE)
+        _backfill_source(collection, BASE_SOURCE)
         STATE.update({
             "collection": collection,
             "chunks": collection.count(),
             "retrievers": {"chroma": ChromaRetriever(_collection),
                            "numpy": NumpyRetriever(vectors, chunks, metadatas)},
-            # agent 回來的是一串條號，要能換回原文才組得出引用
-            "chunk_index": {m["article_no"]: {"text": c["text"], "meta": m}
+            # agent 回來的是一串條號，要能換回原文才組得出引用。
+            # Day 29 起 key 是（文件, 條號）：兩份文件都有第 3 條的時候，
+            # 只用條號當 key 會讓後進來的那份直接蓋掉前一份
+            "chunk_index": {(m["source"], m["article_no"]):
+                            {"text": c["text"], "meta": m}
                             for c, m in zip(chunks, metadatas)}})
 
 
@@ -97,14 +161,17 @@ async def lifespan(app: FastAPI):
         seeded = cache.warm(rag_core.CACHE_PATH, rag_core.CHAT_CACHE_PATH)
         STATE["cache"] = {"backend": backend, **seeded}
     STATE["store"] = JobStore(settings.job_db)
+    # 帳本要在收第一個請求之前讀回來，不然重啟一次命中率就從零開始
+    STATE["ledger"] = ledger.load()
     _build_index()
     STATE["ready"] = True
-    log.info("ready chunks=%s boot_ms=%s cache=%s",
-             STATE["chunks"], STATE["boot_ms"], STATE["cache"])
+    log.info("ready chunks=%s boot_ms=%s cache=%s ledger=%s",
+             STATE["chunks"], STATE["boot_ms"], STATE["cache"], STATE["ledger"])
     try:
         yield
     finally:
         STATE["ready"] = False
+        ledger.flush()          # 最後那幾筆還沒落地的命中
         if STATE["store"] is not None:
             STATE["store"].close()
         cache.uninstall()
@@ -127,6 +194,23 @@ def _retriever(name: str | None) -> Retriever:
                            f"沒有這個 retriever：{picked}"
                            f"（有的是 {sorted(STATE['retrievers'])}）")
     return engine
+
+
+def _chunk_entry(article_no: int, source: str | None = None) -> dict | None:
+    """條號換原文。給了文件就精準查，沒給就退回「第一個有這個條號的」。
+
+    退回的那條路是 agent 留下的：凍結的 `agent_day21.py` 只帶條號回來，
+    帶不回它是在哪份文件裡看到的。索引裡不只一份文件時，那個引用本身就有歧義，
+    所以 `RetrieverCollection` 現在會把（文件, 條號）成對記下來，
+    這個 fallback 只剩下舊資料在用。
+    """
+    index = STATE["chunk_index"]
+    if source is not None and (source, article_no) in index:
+        return index[(source, article_no)]
+    for (_src, no), entry in index.items():
+        if no == article_no:
+            return entry
+    return None
 
 
 def _require_ready() -> None:
@@ -153,6 +237,17 @@ def readyz() -> Response:
     return Response(status_code=204)
 
 
+@app.get("/usage")
+def usage() -> dict:
+    """這支服務到目前為止花了多少、擋下了多少。
+
+    Day 27 要花一整天考古才問得出來的東西，現在是一次 GET。
+    `unpriced_hits` 是命中了、但那一筆的金額是這個帳本存在之前買的——
+    它不歸零，「省了多少」就還是不完整的，所以它露在回應裡。
+    """
+    return {"version": VERSION, **ledger.summary()}
+
+
 # -------------------------------------------------------------------- 問答
 
 @app.post("/ask")
@@ -160,6 +255,13 @@ def ask(req: AskRequest, retriever: str | None = None) -> Response:
     _require_ready()
     t0 = time.perf_counter()
     engine = _retriever(retriever)
+
+    if req.stream:
+        if req.mode == "agent":
+            raise ServiceError(400, "stream_not_supported",
+                               "agent 目前不支援串流，它會來回好幾次，"
+                               "中間的 token 不是最終答案")
+        return _ask_stream(req, engine, t0)
 
     with _INDEX_LOCK:
         if req.mode == "agent":
@@ -187,21 +289,175 @@ def ask(req: AskRequest, retriever: str | None = None) -> Response:
                     media_type="application/json")
 
 
+_PULL_DONE = object()
+
+
+def _ask_stream(req: AskRequest, engine, t0: float) -> StreamingResponse:
+    """SSE 版的 /ask。跟非串流走同一條管線，差別只在答案怎麼送出去。
+
+    事件順序是刻意的：`citations` 在模型開口之前就送得出去，
+    因為出處在檢索完就定案了。這是串流真正買到的東西——
+    不只是字會跳出來，是使用者在等模型的那一秒裡有東西可以讀。
+
+    **這個產生器是 async 的，跟服務裡其他 handler 相反。**
+    原因只有一個：要偵測得到客戶端中途走掉。
+    第一版寫成同步產生器（跟其他 handler 一致，Starlette 會丟進執行緒池），
+    結果客戶端斷線時它只是不再被拉取，沒有人關它，
+    `except GeneratorExit` 那段從來沒執行過——看起來有處理，其實沒有。
+    async 版本才會被 `aclose()`，`CancelledError` 才進得來。
+
+    代價是每一個會阻塞的呼叫都得自己丟進執行緒池，所以底下到處是
+    `run_in_threadpool`。漏掉任何一個，整個 event loop 就會被那個
+    OpenAI 呼叫卡住。
+
+    串流的另一件麻煩：**出錯了改不了狀態碼。** 第一個 byte 送出去，
+    狀態就定在 200。後面炸掉只能靠一個 `error` 事件講，
+    不然呼叫端會以為答案就是講到那裡為止。
+    """
+    async def events():
+        first_token_ms = None
+        text, in_tok, out_tok, hit = "", 0, 0, False
+        emb_tokens = 0
+        gen = None
+        key = None          # 記帳用，跟快取共用同一把。斷線那條路也要看得到它
+        sent = 0            # 已經送出去幾段。斷線時 text 還是空的，要靠它
+        sent_chars = 0
+        try:
+            embed = embedder.get(req.use_cache)
+            vector, emb_tokens = await run_in_threadpool(embed.embed, req.question)
+
+            def _retrieve():
+                # 只在真的碰索引的時候上鎖。非串流那條抓著 _INDEX_LOCK
+                # 走完整個請求沒問題，但串流會抓著它等模型講完話——
+                # 那一秒多裡攝取完全沒辦法進來
+                with _INDEX_LOCK:
+                    with timing.stage("retrieve"):
+                        return engine.search(np.asarray(vector), req.k,
+                                             _where(req.source, req.chapter_no))
+
+            hits = await run_in_threadpool(_retrieve)
+
+            citations = [Citation(article_no=h.article_no, title=h.title,
+                                  similarity=round(h.similarity, 4),
+                                  text=h.text, source=h.source)
+                         for h in hits]
+            # 先送出處。這一刻模型還沒被呼叫
+            yield streaming.to_sse("citations", {
+                "citations": [c.model_dump() for c in citations],
+                "elapsed_ms": round((time.perf_counter() - t0) * 1000, 1)})
+
+            messages = prompts.build_messages(
+                req.question, [{"text": h.text, "meta": h.meta} for h in hits])
+            key = ledger.chat_key(messages)
+
+            t_llm = time.perf_counter()
+            gen = streaming.stream_chat(messages, req.use_cache)
+            while True:
+                # 一次拉一段。每個 await 都是一個取消點，
+                # 客戶端走掉時就停在這裡，不會把整串生完才發現沒人在聽
+                kind, payload = await run_in_threadpool(_pull, gen)
+                if kind is None:
+                    break
+                if kind == "delta":
+                    if first_token_ms is None:
+                        first_token_ms = (time.perf_counter() - t0) * 1000
+                    sent += 1
+                    sent_chars += len(payload)
+                    yield streaming.to_sse("token", {"text": payload})
+                else:
+                    text, in_tok, out_tok, hit = payload
+            timing.record("llm", (time.perf_counter() - t_llm) * 1000)
+
+        except (asyncio.CancelledError, GeneratorExit):
+            # 客戶端走了。不能再 yield，只能記下來。
+            # 那次呼叫已經花掉的錢是要不回來的——Day 26 寫到這裡就停了，
+            # 因為當時講不出它值多少。現在帳本查得到同一把 key 上次付過多少
+            burned = ledger.abandoned(key) if key else 0.0
+            log.warning("ask stream 客戶端中途斷線 已送出 %d 段／%d 字 "
+                        "約燒掉 %.4f 元 elapsed_ms=%.1f request_id=%s",
+                        sent, sent_chars, burned,
+                        (time.perf_counter() - t0) * 1000,
+                        errors.current_request_id())
+            raise
+
+        except Exception as exc:                          # noqa: BLE001
+            log.exception("ask stream 中途失敗 request_id=%s",
+                          errors.current_request_id())
+            yield streaming.to_sse("error", {
+                "code": "stream_failed",
+                "message": f"{type(exc).__name__}: {exc}",
+                "partial_answer": text or None,
+                "sent_chars": sent_chars,
+                "request_id": errors.current_request_id()})
+            return
+
+        finally:
+            # 關掉底下那個同步產生器，OpenAI 那條連線才會跟著收掉。
+            # 不關的話它會一直掛著直到被 GC，而且錢照算
+            if gen is not None:
+                gen.close()
+
+        total_ms = (time.perf_counter() - t0) * 1000
+        usage = _account(key, emb_tokens, in_tok, out_tok)
+        yield streaming.to_sse("done", {
+            "answer": text,
+            "usage": usage.model_dump(),
+            "timing": timing.breakdown(total_ms),
+            "first_token_ms": round(first_token_ms, 1) if first_token_ms else None,
+            "retriever": engine.name})
+
+        log.info("ask stream retriever=%s k=%s cached=%s cost_twd=%.4f "
+                 "first_token_ms=%s total_ms=%.1f request_id=%s",
+                 engine.name, req.k, usage.cached, usage.cost_twd,
+                 round(first_token_ms, 1) if first_token_ms else None,
+                 total_ms, errors.current_request_id())
+
+    return StreamingResponse(
+        events(), media_type="text/event-stream",
+        # 這兩個是給中間那些會幫你緩衝的東西看的。少了它們，
+        # nginx 之類的會把整串 SSE 攢起來一次送，串流就白做了
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+
+def _pull(gen):
+    """從同步產生器拉一段。拉完了回 (None, None)，
+    這樣呼叫端就不必在執行緒池那一層處理 StopIteration。"""
+    item = next(gen, None)
+    return item if item is not None else (None, None)
+
+
 def _run_pipeline(req: AskRequest, engine) -> tuple:
     """Day 14 那條寫死管線：算一次向量、查一次、問一次模型。"""
     vector, emb_tokens = embedder.get(req.use_cache).embed(req.question)
     with timing.stage("retrieve"):
-        hits = engine.search(np.asarray(vector), req.k)
+        hits = engine.search(np.asarray(vector), req.k,
+                             _where(req.source, req.chapter_no))
     messages = prompts.build_messages(
         req.question, [{"text": h.text, "meta": h.meta} for h in hits])
     with timing.stage("llm"):
         text, in_tok, out_tok = rag_core.chat(messages, use_cache=req.use_cache)
     citations = [Citation(article_no=h.article_no, title=h.title,
-                          similarity=round(h.similarity, 4), text=h.text)
+                          similarity=round(h.similarity, 4), text=h.text,
+                          source=h.source)
                  for h in hits]
-    return text, citations, Usage(
-        embedding_tokens=emb_tokens, input_tokens=in_tok, output_tokens=out_tok,
-        cached=(in_tok == 0 and out_tok == 0)), None
+    return (text, citations,
+            _account(ledger.chat_key(messages), emb_tokens, in_tok, out_tok), None)
+
+
+def _account(key: str, emb_tokens: int, in_tok: int, out_tok: int) -> Usage:
+    """把這次呼叫記進帳本，順便組出回應要的 usage。
+
+    命中與否只有一個判準：`rag_core.chat()` 命中時回 `(text, 0, 0)`。
+    那個 0 以前是資訊的終點（所以 Day 27 得考古），現在是查帳本的訊號。
+    """
+    if in_tok == 0 and out_tok == 0:
+        return Usage(embedding_tokens=emb_tokens, cached=True,
+                     cost_twd=ledger.cost_twd(rag_core.CHAT_MODEL, 0, 0, emb_tokens),
+                     avoided_twd=ledger.hit(key))
+    return Usage(embedding_tokens=emb_tokens, input_tokens=in_tok,
+                 output_tokens=out_tok, cached=False,
+                 cost_twd=round(ledger.record(key, rag_core.CHAT_MODEL,
+                                              in_tok, out_tok, emb_tokens), 6))
 
 
 def _run_agent(req: AskRequest, engine) -> tuple:
@@ -211,27 +467,144 @@ def _run_agent(req: AskRequest, engine) -> tuple:
     agent 查了好幾輪，所以回它查過的條號去重之後的結果，
     順序照它查到的順序，因為那就是它讀到的順序。
     """
+    limits = budget.resolve(req.max_steps, req.max_twd, req.max_wall_ms)
     result = agents.run(engine, req.question, req.k,
-                        use_cache=req.use_cache, self_check=req.self_check)
-    index, seen, citations = STATE["chunk_index"], set(), []
-    for no in result["article_nos"]:
-        if no in seen or no not in index:
+                        use_cache=req.use_cache, self_check=req.self_check,
+                        limits=limits, where=_where(req.source, req.chapter_no))
+    seen, citations = set(), []
+    # 轉接頭把（文件, 條號）成對記下來了，條號自己是有歧義的
+    for source, no in result.get("cited_pairs") or [
+            (None, n) for n in result["article_nos"]]:
+        entry = _chunk_entry(no, source)
+        if entry is None or (source, no) in seen:
             continue
-        seen.add(no)
-        entry = index[no]
+        seen.add((source, no))
         citations.append(Citation(article_no=no, title=entry["meta"]["title"],
-                                  similarity=0.0, text=entry["text"]))
+                                  similarity=0.0, text=entry["text"],
+                                  source=entry["meta"].get("source", "")))
     trace = AgentTrace(
         steps=result["steps"], searches=result["searches"],
         llm_calls=result["llm_calls"], queries=result["queries"],
         repeats=result["repeats"], hit_cap=result["hit_cap"],
         n_checks=result["n_checks"], flagged=result["flagged"],
-        revised=result["revised"])
+        revised=result["revised"],
+        stopped_reason=result.get("stopped_reason"),
+        stopped_at_step=result.get("stopped_at_step"))
+    # agent 的帳是逐次記的：一題打好幾次模型，其中幾次可能命中快取。
+    # `cached` 對 agent 不是布林——有的次命中、有的次沒有，所以看的是
+    # 「這一題有沒有真的付錢」，細目在 usage 的金額欄位裡
+    tally = result["ledger"]
     usage = Usage(embedding_tokens=result["embedding_tokens"],
                   input_tokens=result["input_tokens"],
                   output_tokens=result["output_tokens"],
-                  cached=False)      # agent 的 token 是離線重數的，不是 API 回報的
+                  cached=(tally["paid_calls"] == 0),
+                  cost_twd=round(tally["cost_twd"], 6),
+                  avoided_twd=(round(tally["avoided_twd"], 6)
+                               if tally["hits"] else None))
     return result["answer"], citations, usage, trace
+
+
+# -------------------------------------------------------------------- 檢索
+
+@app.post("/search")
+def search(req: SearchRequest, retriever: str | None = None) -> SearchResponse:
+    """只檢索，不問模型。
+
+    Day 24 到 Day 28 這支服務只有 `/ask` 一個入口，而它一定會叫模型。
+    要知道「這個問題撈得到哪幾條」，得連生成的錢一起付。檢索是一個獨立的能力，
+    這裡把它單獨開出來，順便讓過濾這件事有地方被看見。
+    """
+    _require_ready()
+    t0 = time.perf_counter()
+    engine = _retriever(retriever)
+    where = _where(req.source, req.chapter_no)
+    vector, emb_tokens = embedder.get(req.use_cache).embed(req.question)
+    with _INDEX_LOCK:
+        hits = engine.search(np.asarray(vector), req.k, where)
+    if req.min_similarity is not None:
+        hits = [h for h in hits if h.similarity >= req.min_similarity]
+    return SearchResponse(
+        hits=[Citation(article_no=h.article_no, title=h.title,
+                       similarity=round(h.similarity, 4), text=h.text,
+                       source=h.source) for h in hits],
+        retriever=engine.name, k=req.k,
+        filtered=bool(where) or req.min_similarity is not None,
+        embedding_tokens=emb_tokens,
+        elapsed_ms=round((time.perf_counter() - t0) * 1000, 2))
+
+
+@app.get("/sources")
+def list_sources() -> list[SourceSummary]:
+    """索引裡現在有哪幾份文件，各幾塊。
+
+    `/healthz` 只講得出總塊數。攝取過第二份文件之後，那個數字就不夠用了：
+    59 變成 137 的時候，沒有人講得出多出來的 78 塊是誰的。
+    """
+    _require_ready()
+    with _INDEX_LOCK:
+        got = STATE["collection"].get(include=["metadatas"])
+    grouped: dict[str, list[int]] = {}
+    for meta in got["metadatas"]:
+        meta = meta or {}
+        grouped.setdefault(str(meta.get("source", "")), []).append(
+            int(meta.get("article_no", 0)))
+    return [SourceSummary(source=name, chunks=len(nos),
+                          articles=sorted(set(nos)))
+            for name, nos in sorted(grouped.items())]
+
+
+@app.delete("/sources/{source}")
+def delete_source(source: str) -> DeleteResult:
+    """把一份文件從索引裡拿掉。
+
+    到今天為止這支服務只進不出：攝取錯一份文件，唯一的救法是砍掉整個
+    collection 重建，連對的那幾份一起賠進去。
+
+    刪完要重建 retriever，否則 `?retriever=numpy` 手上還是舊的矩陣，
+    刪掉的東西照樣被查得到（攝取那條路 Day 24 就踩過同一個坑）。
+    """
+    _require_ready()
+    store = STATE["store"]
+    with _INDEX_LOCK, store.exclusive():
+        collection = _collection()
+        before = collection.count()
+        got = collection.get(where={"source": {"$eq": source}},
+                             include=["metadatas"])
+        if not got["ids"]:
+            raise ServiceError(404, "source_not_found",
+                               f"索引裡沒有這份文件：{source}")
+        collection.delete(ids=got["ids"])
+        after = collection.count()
+    _rebuild_from_index()
+    log.info("delete source=%s removed=%s left=%s request_id=%s",
+             source, before - after, after, errors.current_request_id())
+    return DeleteResult(source=source, removed=before - after,
+                        chunks_left=after)
+
+
+def _rebuild_from_index() -> None:
+    """拿索引裡現在剩下的東西重建 retriever 與條號表。
+
+    跟 `_refresh()` 的差別是它不重讀原始語料：刪掉一份文件之後，
+    磁碟上那個 `.md` 還在，重讀就會把它放回來。
+    """
+    with _INDEX_LOCK:
+        collection = _collection()
+        got = collection.get(include=["documents", "metadatas", "embeddings"])
+        metadatas = [dict(m or {}) for m in got["metadatas"]]
+        chunks = [{"text": d} for d in got["documents"]]
+        # 全部刪光時 Chroma 回一個空 list，直接 asarray 會得到 shape (0,)，
+        # 那個形狀沒辦法跟 1536 維的問題向量相乘
+        vectors = (np.asarray(got["embeddings"], dtype=np.float32)
+                   if len(got["ids"]) else np.zeros((0, 1), dtype=np.float32))
+        STATE.update({
+            "collection": collection,
+            "chunks": collection.count(),
+            "retrievers": {"chroma": ChromaRetriever(_collection),
+                           "numpy": NumpyRetriever(vectors, chunks, metadatas)},
+            "chunk_index": {(str(m.get("source", "")), m["article_no"]):
+                            {"text": c["text"], "meta": m}
+                            for c, m in zip(chunks, metadatas)}})
 
 
 # -------------------------------------------------------------------- 攝取
@@ -256,8 +629,9 @@ def ingest_document(req: IngestRequest, background: BackgroundTasks) -> IngestJo
         """
         with _INDEX_LOCK, store.exclusive():
             collection = _collection()
-            metadatas = [chroma_store.article_metadata(c, articles)
-                         for c in chunks]
+            metadatas = _stamp(
+                [chroma_store.article_metadata(c, articles) for c in chunks],
+                source)
             collection.upsert(
                 ids=[ingest.chunk_id(source, m, c["text"])
                      for c, m in zip(chunks, metadatas)],

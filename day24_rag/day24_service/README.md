@@ -5,18 +5,19 @@
 
 ```
 day24_service/
-  main.py        FastAPI app 與四個端點
+  main.py        FastAPI app 與端點
   contracts.py   Pydantic 請求／回應契約（唯一需要給別人讀的檔案）
   timing.py      延遲分解的 middleware，跟 RAG 無關，可以直接抄走
-  retrievers.py  Retriever 介面 ＋ Chroma／numpy 兩個實作
+  retrievers.py  Retriever 介面 ＋ Chroma／numpy 兩個實作（含 metadata 過濾）
   embedder.py    算問題向量：走快取的 vs 真的打 API 的
   ingest.py      攝取走背景任務
   agents.py      把 Day 20／21 那支 agent 接進來（它一行都沒改）
+  budget.py      agent 的停損：步數／金額／時間三種上限
   config.py      設定，全部可以用 DAY24_* 環境變數覆蓋
   cache.py       常駐快取：把 rag_core 的整包讀寫換成上鎖＋原子換檔
   store.py       攝取 job 的狀態，存 SQLite（多個 worker 才查得到）
   errors.py      統一的錯誤形狀 ＋ 跟著請求跑的 request id
-  tests/         24 個測試，不打 API、不花錢
+  tests/         79 個測試，不打 API、不花錢
 ```
 
 ## 測試
@@ -102,6 +103,28 @@ curl -s -X POST http://127.0.0.1:8024/ask \
 `self_check=true` 是 Day 21 的 C2：沒自驗過想交卷會被退件。預設關，
 因為 Day 21 量過它救回 1 題、改壞 1 題，成本 ×2.0。
 
+### 停損（Day 28）
+
+`max_steps`／`max_twd`／`max_wall_ms` 三個選填欄位，只對 agent 有效，
+不給就是不設限。服務端也可以設硬上限（見「設定」），兩邊取緊的那個。
+
+```bash
+curl -s -X POST http://127.0.0.1:8024/ask   -H 'Content-Type: application/json'   -d '{"question":"公司有健身房嗎？","mode":"agent","max_steps":3}'
+```
+
+停下來一律回 200，不是錯誤：
+
+```json
+"agent": {"steps": 4, "hit_cap": true,
+          "stopped_reason": "steps", "stopped_at_step": 4}
+```
+
+三種上限停下來的樣子不一樣。步數上限走的是凍結 agent 自己那條強制作答的路，
+所以仍然有答案；金額與時間上限是在下一次模型呼叫之前拋例外，
+`answer` 會是 `null`，但已經查到的條文與已經花掉的錢照樣回給呼叫端。
+
+Day 28 量到：上限 3 步讓 28 題的帳單少 35%，答對的題數不變（24／28）。
+
 ## 攝取一份文件
 
 慢的事情丟背景。Day 22 量過，一份 20 頁、沒有文字層的 PDF 走離線 OCR 要 277 秒，
@@ -117,6 +140,47 @@ curl -s http://127.0.0.1:8024/documents/a23b9c87dd9b
 # → {"job_id":"a23b9c87dd9b","status":"done","chunks":59,"elapsed_ms":611.5}
 ```
 
+## 索引裡有哪幾份文件
+
+```bash
+curl -s http://127.0.0.1:8024/sources
+# → [{"source":"work_rules.md","chunks":59,"articles":[1,2,3,...]}]
+
+curl -s -X DELETE http://127.0.0.1:8024/sources/work_rules.md
+# → {"source":"work_rules.md","removed":59,"chunks_left":0}
+```
+
+`/healthz` 只講得出總塊數。攝取過第二份文件之後那個數字就不夠用了，
+59 變成 137 的時候沒有人講得出多出來的 78 塊是誰的。
+
+刪除會重建兩個 retriever。不重建的話 `?retriever=numpy` 手上還是舊的矩陣，
+刪掉的東西照樣被查得到。
+
+## 只檢索，不問模型
+
+```bash
+curl -s -X POST http://127.0.0.1:8024/search   -H 'Content-Type: application/json'   -d '{"question":"病假要附診斷證明嗎？","k":3,"chapter_no":8}'
+```
+
+```json
+{"hits": [{"article_no": 49, "similarity": 0.3062, "source": "work_rules.md", ...}],
+ "retriever": "chroma", "k": 3, "filtered": true, "elapsed_ms": 12.4}
+```
+
+過濾條件有三個：`source`（只查某一份文件）、`chapter_no`（只查某一章）、
+`min_similarity`（低於這個分數的不要，所以回傳條數可能少於 k）。
+前兩個也可以給 `/ask`，**包括 `mode=agent`**：凍結的 `agent_day21.py` 簽名裡
+沒有過濾這回事，條件由 `agents.py` 的轉接頭夾帶進每一次檢索。
+
+兩個 retriever 在同一個條件下要給出同一組結果，這是 `Retriever` 這個介面
+唯一有意義的檢查。Chroma 的 `where` 是先照 metadata 篩、再在剩下的向量裡找最近的；
+`NumpyRetriever` 自己補了同一個順序（把不符合的分數壓成負無限大再取 top-k），
+因為「第八章裡最相關的三條」跟「全庫最相關的三條裡剛好屬於第八章的」不是同一件事，
+後者很可能一條都不剩。
+
+服務只承諾兩個實作都做得到的東西：等值比對。Chroma 那套 `$in` / `$gt` 的完整語法
+沒有開出去，不然換一個向量庫就換不動了。
+
 ## 設定
 
 全部可以用環境變數覆蓋，前綴 `DAY24_`。不設就跟前 23 天的腳本一樣。
@@ -129,6 +193,9 @@ curl -s http://127.0.0.1:8024/documents/a23b9c87dd9b
 | `DAY24_JOB_DB` | `day24_jobs.sqlite3` | job 狀態存哪 |
 | `DAY24_RESIDENT_CACHE` | `1` | 快取常駐記憶體（關掉會退回會壞的版本） |
 | `DAY24_AGENT_CONCURRENCY` | `1` | 同時能跑幾個 agent 請求 |
+| `DAY24_AGENT_MAX_STEPS` | `0`（不設限） | agent 最多走幾步 |
+| `DAY24_AGENT_MAX_TWD` | `0`（不設限） | 一題最多花多少台幣 |
+| `DAY24_AGENT_MAX_WALL_MS` | `0`（不設限） | 一題最多跑多久 |
 | `DAY24_MIDDLEWARE` | `asgi` | 計時 middleware 的掛法 |
 
 ## 多個 worker
@@ -151,4 +218,8 @@ uvicorn day24_service.main:app --port 8024 --workers 3
 - **`agents.py` 用替換模組函式的方式計時**，那是行程層級的，所以 agent 請求目前
   被序列化成一次一個（`DAY24_AGENT_CONCURRENCY`）。正解是把 retriever 與 embedder
   注入 agent，但那要改 `agent_day21.py`，而它是 Day 21 那篇的證據。
+- **金額上限用的是離線重數的 token**（`agents._agent_tokens()`），不是 API 回報的，
+  而且是在下一次呼叫之前結算，所以實際花費會超過上限，最多一次呼叫的量。
+- **過濾只做等值比對。** 條號範圍、日期區間這類條件還沒開，
+  開之前要先想清楚 `NumpyRetriever` 那邊怎麼給出一樣的結果。
 - **索引在每個 worker 各建一份。** 語料大起來之後應該共用一份，或改用外部向量庫。

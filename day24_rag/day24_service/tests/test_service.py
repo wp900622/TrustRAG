@@ -33,13 +33,7 @@ from day24_service.main import app             # noqa: E402
 QUESTION = "病假連續請幾天以上需要附診斷證明？"
 
 
-@pytest.fixture(scope="module")
-def client():
-    db = Path(os.environ["DAY24_JOB_DB"])
-    for suffix in ("", "-wal", "-shm"):
-        Path(str(db) + suffix).unlink(missing_ok=True)
-    with TestClient(app) as c:
-        yield c
+# client fixture 在 conftest.py，test_streaming.py 也用它
 
 
 # ------------------------------------------------------------------ 健康

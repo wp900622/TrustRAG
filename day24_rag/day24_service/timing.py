@@ -89,6 +89,14 @@ class TimingMiddleware(BaseHTTPMiddleware):
         return response
 
 
+def _is_event_stream(message: dict) -> bool:
+    """這個回應是不是 SSE。在 ASGI 這一層只看得到 raw header 的 bytes。"""
+    for key, value in message.get("headers", []):
+        if key.lower() == b"content-type":
+            return value.lower().startswith(b"text/event-stream")
+    return False
+
+
 class TimingASGIMiddleware:
     """第二版：純 ASGI，少一層包裝。預設用這個。
 
@@ -110,13 +118,18 @@ class TimingASGIMiddleware:
 
         async def send_wrapper(message):
             if message["type"] == "http.response.start":
-                total = (time.perf_counter() - t0) * 1000
-                headers = MutableHeaders(scope=message)
-                headers.append("x-total-ms", f"{total:.2f}")
-                bucket = current()
-                for name in STAGE_NAMES:
-                    if bucket.get(name):
-                        headers.append(f"x-{name}-ms", f"{bucket[name]:.2f}")
+                # 串流不送計時 header。header 在第一個 byte 就出去了，
+                # 那時候什麼都還沒做——實測 x-total-ms 會是 2.88，
+                # 而真正的總時間是 50.45。寧可不給，也不要給錯的。
+                # 串流的數字在最後那個 done 事件裡。
+                if not _is_event_stream(message):
+                    total = (time.perf_counter() - t0) * 1000
+                    headers = MutableHeaders(scope=message)
+                    headers.append("x-total-ms", f"{total:.2f}")
+                    bucket = current()
+                    for name in STAGE_NAMES:
+                        if bucket.get(name):
+                            headers.append(f"x-{name}-ms", f"{bucket[name]:.2f}")
             await send(message)
 
         await self.app(scope, receive, send_wrapper)

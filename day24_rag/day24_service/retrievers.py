@@ -13,7 +13,7 @@
 兩個實作並排還有一個好處：今天要量「檢索佔延遲的幾成」，
 有第二個實作才知道量到的是 Chroma 的成本，還是這件事本身的成本。
 """
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Protocol, runtime_checkable
 
 import numpy as np
@@ -32,6 +32,12 @@ class Hit:
     prompt 要用到 `chapter`，而且 Day 14 的 chat 快取 key 就是整串 messages——
     這裡少帶一個欄位，prompt 就會差一個字，23 天的快取全部失效。"""
 
+    source: str = ""
+    """這一塊是哪份文件來的。
+
+    Day 29 加的。在那之前索引裡只有條號，兩份文件都有「第 3 條」的時候，
+    服務分不出誰是誰。預設空字串是為了讓舊的索引照樣讀得起來。"""
+
 
 @runtime_checkable
 class Retriever(Protocol):
@@ -39,7 +45,8 @@ class Retriever(Protocol):
 
     name: str
 
-    def search(self, query_vector: np.ndarray, k: int) -> list[Hit]:
+    def search(self, query_vector: np.ndarray, k: int,
+               where: dict | None = None) -> list[Hit]:
         ...
 
 
@@ -62,22 +69,33 @@ class ChromaRetriever:
     def __init__(self, resolve):
         self._resolve = resolve if callable(resolve) else (lambda: resolve)
 
-    def search(self, query_vector: np.ndarray, k: int) -> list[Hit]:
+    def search(self, query_vector: np.ndarray, k: int,
+               where: dict | None = None) -> list[Hit]:
+        """`where` 直接交給 Chroma。
+
+        它是先照 metadata 篩、再在剩下的向量裡找最近的 k 個，
+        所以「第三章裡最相關的三條」問得出來。這是 Day 29 之前這支服務
+        沒有用到、但資料庫本來就有的東西。
+        """
         try:
-            result = self._query(query_vector, k)
+            result = self._query(query_vector, k, where)
         except NotFoundError:
-            result = self._query(query_vector, k)      # 重拿一次 handle 再試
+            result = self._query(query_vector, k, where)   # 重拿 handle 再試
         return self._to_hits(result)
 
-    def _query(self, query_vector: np.ndarray, k: int) -> dict:
-        return self._resolve().query(
-            query_embeddings=[query_vector.tolist()], n_results=k,
-            include=["documents", "metadatas", "distances"])
+    def _query(self, query_vector: np.ndarray, k: int,
+               where: dict | None = None) -> dict:
+        kwargs = {"query_embeddings": [query_vector.tolist()], "n_results": k,
+                  "include": ["documents", "metadatas", "distances"]}
+        if where:
+            kwargs["where"] = where
+        return self._resolve().query(**kwargs)
 
     @staticmethod
     def _to_hits(result: dict) -> list[Hit]:
         return [Hit(article_no=meta["article_no"], title=meta["title"],
-                    text=doc, similarity=1.0 - dist, meta=meta)
+                    text=doc, similarity=1.0 - dist, meta=meta,
+                    source=str(meta.get("source", "")))
                 for doc, meta, dist in zip(result["documents"][0],
                                            result["metadatas"][0],
                                            result["distances"][0])]
@@ -99,12 +117,46 @@ class NumpyRetriever:
         self._texts = [c["text"] for c in chunks]
         self._metas = metadatas
 
-    def search(self, query_vector: np.ndarray, k: int) -> list[Hit]:
+    def search(self, query_vector: np.ndarray, k: int,
+               where: dict | None = None) -> list[Hit]:
+        """過濾這件事，資料庫免費給你，自己寫就得自己想清楚順序。
+
+        這裡是**先篩再算**：把不符合條件的那幾列的分數壓到負無限大，
+        再取前 k 個。算完再丟掉不合格的那種寫法會有一個隱藏的坑——
+        要的是「第三章裡最相關的三條」，不是「全庫最相關的三條裡剛好屬於第三章的」，
+        後者很可能一條都不剩。
+        """
+        if not self._texts:
+            # 索引被清空過（Day 29 的刪除）。空矩陣乘向量會炸，
+            # 而「庫裡什麼都沒有」的正確答案是沒有結果，不是 500
+            return []
         scores = self._matrix @ query_vector
-        top = np.argpartition(-scores, min(k, len(scores) - 1))[:k]
+        keep = self._mask(where)
+        if keep is not None:
+            if not keep.any():
+                return []
+            scores = np.where(keep, scores, -np.inf)
+        limit = min(k, int(keep.sum()) if keep is not None else len(scores))
+        top = np.argpartition(-scores, min(limit, len(scores) - 1))[:limit]
         top = top[np.argsort(-scores[top])]
         return [Hit(article_no=self._metas[i]["article_no"],
                     title=self._metas[i]["title"],
                     text=self._texts[i], similarity=float(scores[i]),
-                    meta=self._metas[i])
+                    meta=self._metas[i],
+                    source=str(self._metas[i].get("source", "")))
                 for i in top]
+
+    def _mask(self, where: dict | None):
+        """只支援等值比對，跟服務對外開放的過濾條件一樣。
+
+        刻意不去實作 Chroma 那套 `$and` / `$in` / `$gt` 的完整語法。
+        兩個實作要能互換，靠的是**服務只承諾兩邊都做得到的東西**，
+        而不是讓第二個實作去追第一個的功能表。
+        """
+        if not where:
+            return None
+        keep = np.ones(len(self._metas), dtype=bool)
+        for key, want in where.items():
+            value = want.get("$eq") if isinstance(want, dict) else want
+            keep &= np.array([m.get(key) == value for m in self._metas])
+        return keep

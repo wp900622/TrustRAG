@@ -23,6 +23,13 @@ def _int(name: str, default: int) -> int:
         return default
 
 
+def _float(name: str, default: float) -> float:
+    try:
+        return float(os.getenv(name, ""))
+    except ValueError:
+        return default
+
+
 def _bool(name: str, default: bool) -> bool:
     raw = os.getenv(name)
     return default if raw is None else raw.strip().lower() in {"1", "true", "yes"}
@@ -50,9 +57,20 @@ class Settings:
 
     # 觀測
     middleware: str = os.getenv("DAY24_MIDDLEWARE", "asgi").lower()
+    # 記帳：把每次呼叫的金額跟快取的 key 存在一起（Day 27）。
+    # flush_every 是「累積幾筆才落地」，命中可能每秒好幾次，
+    # 每次都寫檔就變成拿 I/O 換記帳
+    ledger_path: Path = Path(os.getenv("DAY24_LEDGER",
+                                       str(BASE_DIR / "usage_ledger.json")))
+    ledger_flush_every: int = _int("DAY24_LEDGER_FLUSH_EVERY", 20)
 
     # agent
     agent_max_concurrency: int = _int("DAY24_AGENT_CONCURRENCY", 1)
+    # 停損（Day 28）。三個都是 0＝不設限，所以不設環境變數時行為與 Day 24 相同。
+    # 呼叫端也可以在請求裡自己設，兩邊取緊的那個（budget.resolve）
+    agent_max_steps: int = _int("DAY24_AGENT_MAX_STEPS", 0)
+    agent_max_twd: float = _float("DAY24_AGENT_MAX_TWD", 0.0)
+    agent_max_wall_ms: float = _float("DAY24_AGENT_MAX_WALL_MS", 0.0)
 
     def resolve_document(self, raw: str) -> Path:
         """把使用者給的路徑解到 documents_root 底下，並擋掉跳出去的寫法。
