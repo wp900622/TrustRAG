@@ -93,8 +93,9 @@ async def lifespan(app: FastAPI):
         format="%(asctime)s %(levelname)s [%(name)s] %(message)s")
     # 快取換成常駐＋上鎖＋原子換檔的版本。不換的話並發下會讀到寫到一半的檔案
     if settings.resident_cache:
-        cache.install()
-        STATE["cache"] = cache.warm(rag_core.CACHE_PATH, rag_core.CHAT_CACHE_PATH)
+        backend = cache.install()
+        seeded = cache.warm(rag_core.CACHE_PATH, rag_core.CHAT_CACHE_PATH)
+        STATE["cache"] = {"backend": backend, **seeded}
     STATE["store"] = JobStore(settings.job_db)
     _build_index()
     STATE["ready"] = True

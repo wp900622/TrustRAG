@@ -26,3 +26,6 @@ uvicorn>=0.30
 httpx>=0.27
 # Day 24 的服務測試：不打 API，全部走既有快取
 pytest>=8.0
+# Day 25 起（選用）：設了 DAY24_REDIS_URL 才需要。
+# 常駐快取是每個 worker 各一份，Redis 讓所有 worker 共用同一份。
+redis>=5.0

@@ -1,0 +1,61 @@
+# GCE 上用的 compose。跟本機那份的唯一差別：
+# 不在機器上 build，直接拉 Artifact Registry 上建好的映像。
+#
+#     export IMAGE=asia-east1-docker.pkg.dev/<專案>/trustrag/api:<tag>
+#     docker compose -f docker-compose.gce.yml up -d
+#
+# 為什麼不共用本機那份再用 sed 改：build: 底下還有 args:，
+# 註解掉一行會留下孤兒 key，YAML 直接壞掉。兩份檔案比一行 sed 可靠。
+
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    expose:
+      - "6379"
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+      - --maxmemory
+      - "${REDIS_MAXMEMORY:-512mb}"
+      - --maxmemory-policy
+      - allkeys-lru
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  api:
+    # 沒有 build:，映像從 .env 的 IMAGE 進來。沒設就啟動失敗，
+    # 這比默默跑到一個舊版本好
+    image: "${IMAGE:?請在 .env 設 IMAGE=<region>-docker.pkg.dev/<專案>/trustrag/api:<tag>}"
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8024}:8024"
+    environment:
+      OPENAI_API_KEY: "${OPENAI_API_KEY:?請在 .env 裡設 OPENAI_API_KEY}"
+      DAY24_REDIS_URL: "redis://redis:6379/0"
+      DAY24_WORKERS: "${DAY24_WORKERS:-1}"
+      DAY24_RETRIEVER: "${DAY24_RETRIEVER:-chroma}"
+      DAY24_AGENT_CONCURRENCY: "${DAY24_AGENT_CONCURRENCY:-1}"
+    volumes:
+      - chroma-data:/app/chroma_db
+      - job-data:/data/jobs
+      - ./documents:/app/documents:ro
+    command:
+      - sh
+      - -c
+      - exec uvicorn day24_service.main:app --host 0.0.0.0 --port 8024
+        --workers ${DAY24_WORKERS:-1}
+
+volumes:
+  redis-data:
+  chroma-data:
+  job-data:

@@ -40,8 +40,13 @@ class Settings:
     job_db: Path = Path(os.getenv("DAY24_JOB_DB", str(BASE_DIR / "day24_jobs.sqlite3")))
     job_ttl_seconds: int = _int("DAY24_JOB_TTL", 7 * 24 * 3600)
 
-    # 快取：整包讀寫的檔案快取在並發下會壞，服務啟動時換成常駐版
+    # 快取：整包讀寫的檔案快取在並發下會壞，服務啟動時換掉它
     resident_cache: bool = _bool("DAY24_RESIDENT_CACHE", True)
+    # 設了就走 Redis（多個 worker 共用一份），沒設走行程內的常駐記憶體。
+    # 連不上會退回 memory 並留一行 warning，不會讓服務起不來。
+    redis_url: str = os.getenv("DAY24_REDIS_URL", "")
+    redis_prefix: str = os.getenv("DAY24_REDIS_PREFIX", "day24:")
+    redis_timeout: float = float(os.getenv("DAY24_REDIS_TIMEOUT", "2"))
 
     # 觀測
     middleware: str = os.getenv("DAY24_MIDDLEWARE", "asgi").lower()

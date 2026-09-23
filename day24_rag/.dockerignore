@@ -1,0 +1,53 @@
+# 只把服務跑得起來需要的東西送進 build context。
+# 這個資料夾裡有 11 MB 的 embeddings_cache.json 與一堆圖，
+# 不排掉的話每次 build 都要傳一遍。
+
+# 金鑰絕對不能進映像
+.env
+
+# 實驗與文章的產物
+*.md
+!work_rules.md
+day2*_draft*.md
+day2*_plan.md
+day2*_threads.md
+day2*_linkedin.md
+experiment_result*.md
+views_log.md
+*.png
+*.svg
+*.ps1
+run_experiment_day1[4-9].py
+run_experiment_day2*.py
+probe_day24.py
+make_*.py
+compare_*.py
+measure_cost.py
+review_labels_day18.py
+ask_demo.py
+build_db.py
+
+# 狀態與快取：由 volume 提供，不要烤進映像
+chroma_db/
+day24_jobs*.sqlite3*
+*.log
+*.json.tmp*
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 素材與大檔
+corpus_day2*/
+*.pdf
+ocr_cache_day22.json
+vision_cache_day2*.json
+agent_cache_day20.json
+runs_day2*.json
+chat_cache_day19.json
+answers_day19_gpt4o.json
+review_cache_day18.json
+probes_day18.json
+
+# 版控
+.git/
+.gitignore

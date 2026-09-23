@@ -1,0 +1,67 @@
+# TrustRAG 問答服務 ＋ Redis。
+#
+# 本機與 GCE 上跑的是同一份，差別只在 .env 裡的值。
+#
+#     docker compose up -d --build
+#     curl -s localhost:8024/healthz
+#
+# 停掉但保留資料：docker compose down
+# 連資料一起砍：  docker compose down -v   ← 索引與快取都會不見
+
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    # 不對外開 port。只有同一個 compose 網路裡的 api 連得到，
+    # 要在本機用 redis-cli 看就 docker compose exec redis redis-cli
+    expose:
+      - "6379"
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"                       # 重啟不掉資料
+      - --maxmemory
+      - "${REDIS_MAXMEMORY:-512mb}"
+      - --maxmemory-policy
+      - allkeys-lru                 # 滿了淘汰最久沒用的，快取本來就該這樣
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      args:
+        WITH_OCR: "${WITH_OCR:-0}"  # 要處理掃描 PDF 才開，映像會多約 250 MB
+    image: trustrag-api:latest
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8024}:8024"
+    environment:
+      # 金鑰只從環境進來，不進映像也不進版控
+      OPENAI_API_KEY: "${OPENAI_API_KEY:?請在 .env 裡設 OPENAI_API_KEY}"
+      DAY24_REDIS_URL: "redis://redis:6379/0"
+      DAY24_WORKERS: "${DAY24_WORKERS:-1}"
+      DAY24_RETRIEVER: "${DAY24_RETRIEVER:-chroma}"
+      DAY24_AGENT_CONCURRENCY: "${DAY24_AGENT_CONCURRENCY:-1}"
+    volumes:
+      - chroma-data:/app/chroma_db  # 向量庫。位置寫死在 chroma_store.py
+      - job-data:/data/jobs         # 攝取 job 的 SQLite
+      - ./documents:/app/documents:ro   # 要攝取的文件放這，唯讀掛進去
+    command:
+      - sh
+      - -c
+      - exec uvicorn day24_service.main:app --host 0.0.0.0 --port 8024
+        --workers ${DAY24_WORKERS:-1}
+
+volumes:
+  redis-data:
+  chroma-data:
+  job-data:
