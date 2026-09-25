@@ -17,7 +17,9 @@ day24_service/
   cache.py       常駐快取：把 rag_core 的整包讀寫換成上鎖＋原子換檔
   store.py       攝取 job 的狀態，存 SQLite（多個 worker 才查得到）
   errors.py      統一的錯誤形狀 ＋ 跟著請求跑的 request id
-  tests/         79 個測試，不打 API、不花錢
+  mcp_server.py  Day 30：把查規章／問一題交給別人的 agent（MCP，stdio）
+  static/        Day 30：網頁，掛在 /ui/。是 ../day30_web（Vue）build 出來的，不要手改
+  tests/         98 個測試（其中 8 個要有 Redis 才跑），不打 API、不花錢
 ```
 
 ## 測試
@@ -150,6 +152,11 @@ curl -s -X DELETE http://127.0.0.1:8024/sources/work_rules.md
 # → {"source":"work_rules.md","removed":59,"chunks_left":0}
 ```
 
+索引會記得攝取過什麼，重啟不會掉。Day 28 以前不是這樣：開機與攝取完都走
+Day 14 給實驗用的 `open_or_build()`，塊數不是 59 就整個砍掉重建，
+所以第二份文件活不過它自己的 `done`。現在服務用自己的 collection，
+只有第一次開（它還不存在）才種 `work_rules.md`。
+
 `/healthz` 只講得出總塊數。攝取過第二份文件之後那個數字就不夠用了，
 59 變成 137 的時候沒有人講得出多出來的 78 塊是誰的。
 
@@ -189,6 +196,7 @@ curl -s -X POST http://127.0.0.1:8024/search   -H 'Content-Type: application/jso
 | --- | --- | --- |
 | `DAY24_RETRIEVER` | `chroma` | 預設用哪個 retriever |
 | `DAY24_K` | `3` | 預設取幾條 |
+| `DAY24_COLLECTION` | `trustrag-service` | 服務自己的索引。跟實驗腳本的 `work-rules` 分開 |
 | `DAY24_DOCUMENTS_ROOT` | 專案目錄 | 攝取只能讀這底下的檔案 |
 | `DAY24_JOB_DB` | `day24_jobs.sqlite3` | job 狀態存哪 |
 | `DAY24_RESIDENT_CACHE` | `1` | 快取常駐記憶體（關掉會退回會壞的版本） |
@@ -212,6 +220,46 @@ uvicorn day24_service.main:app --port 8024 --workers 3
 - 攝取寫索引時用 `store.exclusive()` 跨行程互斥，`ChromaRetriever` 也不把
   collection handle 抓在手上——內嵌模式下別的 worker 重建之後，舊 handle 會失效
 
+## 交出去（Day 30）
+
+人用網頁：服務開著就是 <http://127.0.0.1:8024/ui/>。原始碼在 `../day30_web/`（Vite + Vue 3），
+pipeline 走 SSE（出處先出來），agent 等整包、顯示查了幾次與有沒有被攔下來。
+build 產物已經在 `static/` 裡，只跑後端不需要 Node。要改網頁：
+
+```bash
+cd day30_web
+npm install
+npm run dev      # http://localhost:5173/ui/，/ask 等端點由 Vite proxy 轉到 8024
+npm run build    # 輸出到 day24_service/static/
+```
+
+模型用 MCP。`mcp_server.py` 是這支服務的 HTTP 客戶端，不 import `main`，
+所以帳本、request id、`DAY24_AGENT_MAX_*` 硬上限對它一樣有效。
+掛進 Claude Desktop 的 `claude_desktop_config.json`：
+
+```json
+{
+  "mcpServers": {
+    "trustrag": {
+      "command": "python",
+      "args": ["-m", "day24_service.mcp_server"],
+      "cwd": "C:/path/to/TrustRAG/day24_rag",
+      "env": {"TRUSTRAG_URL": "http://127.0.0.1:8024",
+              "TRUSTRAG_MCP_SOURCE": "work_rules.md"}
+    }
+  }
+}
+```
+
+| 環境變數 | 預設 | 意思 |
+|---|---|---|
+| `TRUSTRAG_URL` | `http://127.0.0.1:8024` | 服務在哪 |
+| `TRUSTRAG_MCP_SOURCE` | 空（不篩） | 這個 MCP 看得到哪份文件。是權限，不開成工具參數 |
+| `TRUSTRAG_MCP_MAX_STEPS` | 4 | agent 模式的步數預設與上限，模型只能往下調 |
+| `TRUSTRAG_MCP_MAX_WALL_MS` | 20000 | agent 模式的時間上限 |
+
+`python smoke_day30.py` 用真的 MCP client 走一次 stdio（先開服務在 8030）。
+
 ## 還沒做的
 
 - **攝取收的是路徑，不是上傳的檔案。** 換成 `UploadFile` 的話，job 那一段不用改。
@@ -222,4 +270,11 @@ uvicorn day24_service.main:app --port 8024 --workers 3
   而且是在下一次呼叫之前結算，所以實際花費會超過上限，最多一次呼叫的量。
 - **過濾只做等值比對。** 條號範圍、日期區間這類條件還沒開，
   開之前要先想清楚 `NumpyRetriever` 那邊怎麼給出一樣的結果。
+- **改過字的條文，舊版本會留在索引裡。** chunk id 帶內容雜湊，改一個字就是新的一塊。
+  要清掉舊的，先 `DELETE /sources/{名字}` 再攝取一次。
+- **HTTP 這一側沒有認證。** MCP 走 stdio、跑在使用者自己的電腦上，
+  所以今天交出去的範圍是「自己的 agent」。要給別人的機器用，得先補認證與速率限制
+  （從 Day 25 順延到現在）。
+- **出處不等於依據。** 回的是檢索撈到的、或 agent 查過的條文，答案不一定用到。
+  MCP 與網頁都改了標籤，但契約裡還沒有「答案實際引用了哪幾條」這個欄位。
 - **索引在每個 worker 各建一份。** 語料大起來之後應該共用一份，或改用外部向量庫。

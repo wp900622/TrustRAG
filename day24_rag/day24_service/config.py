@@ -41,6 +41,9 @@ class Settings:
     default_retriever: str = os.getenv("DAY24_RETRIEVER", "chroma")
     default_k: int = _int("DAY24_K", 3)
     max_k: int = _int("DAY24_MAX_K", 15)
+    # 服務自己的 collection，跟實驗腳本那一個（`work-rules`）分開。
+    # 實驗要每次歸零才可重複，服務要記得昨天攝取過什麼，兩個需求是相反的
+    collection: str = os.getenv("DAY24_COLLECTION", "trustrag-service")
 
     # 攝取
     documents_root: Path = Path(os.getenv("DAY24_DOCUMENTS_ROOT", str(BASE_DIR)))

@@ -8,6 +8,7 @@
     GET  /documents        最近的攝取紀錄
     GET  /healthz          活著嗎：索引塊數、retriever、快取、版本
     GET  /readyz           可以收流量了嗎：索引建好了沒
+    GET  /ui/              Day 30：一頁給人用的網頁（模型用的在 mcp_server.py）
 
 檢索與生成的邏輯一個字都沒改（`chunkers` / `prompts` / `rag_core` 全部沿用），
 動的是它們外面那一層：設定、快取、狀態、錯誤、觀測。
@@ -23,16 +24,19 @@ import logging
 import threading
 import time
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 import numpy as np
 from fastapi import BackgroundTasks, FastAPI, Response
 from fastapi.responses import StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from starlette.concurrency import run_in_threadpool
 
 import chroma_store
-import pipeline
+import chunkers
 import prompts
 import rag_core
+from chromadb.errors import NotFoundError
 
 from . import (agents, budget, cache, embedder, errors, ingest, ledger,
                streaming, timing)
@@ -65,7 +69,7 @@ def _collection():
     Chroma 內嵌模式下，另一個 worker 把它砍掉重建之後，舊 handle 就指向
     一個不存在的 UUID。重拿很便宜（沒有網路，只是查一次名字）。
     """
-    return chroma_store.get_client().get_collection(chroma_store.COLLECTION)
+    return chroma_store.get_client().get_collection(settings.collection)
 
 
 def _stamp(metadatas: list[dict], source: str) -> list[dict]:
@@ -98,38 +102,69 @@ def _where(source: str | None, chapter_no: int | None) -> dict | None:
     return {"$and": [{k: v} for k, v in clauses.items()]}
 
 
-def _backfill_source(collection, source: str) -> int:
-    """舊索引裡的塊沒有 source，補寫一次。
+def _upsert(collection, source: str, chunks, articles, vectors) -> None:
+    """寫進索引只有這一條路：開機種第一份語料、攝取，都走這裡。
 
-    不補的話，`?source=` 對開機那 59 塊永遠回 0 筆——欄位不存在，
-    過濾條件當然一條都不符合。這是一次性的，補完之後每次攝取都會自己帶。
+    id 由「文件 + 條號 + 內容雜湊」算出來，同一份文件寫兩次是覆蓋不是追加。
+    Day 29 之前開機走的是 `chroma_store.rebuild()`，id 是 `art-{條號}`；
+    攝取走的是這一套。同一份文件在索引裡有兩種 id，所以攝取一次就從 59 塊
+    變成 118 塊，只是下一步會把整個庫砍掉重建，沒有人看見。
     """
-    got = collection.get(include=["metadatas"])
-    ids = [i for i, m in zip(got["ids"], got["metadatas"])
-           if not (m or {}).get("source")]
-    if not ids:
-        return 0
-    metas = [dict(m or {}, source=source)
-             for i, m in zip(got["ids"], got["metadatas"])
-             if not (m or {}).get("source")]
-    collection.update(ids=ids, metadatas=metas)
-    log.info("backfill source=%s chunks=%s", source, len(ids))
-    return len(ids)
+    metadatas = _stamp(
+        [chroma_store.article_metadata(c, articles) for c in chunks], source)
+    collection.upsert(
+        ids=[ingest.chunk_id(source, m, c["text"])
+             for c, m in zip(chunks, metadatas)],
+        embeddings=vectors.tolist(),
+        documents=[c["text"] for c in chunks],
+        metadatas=metadatas)
 
 
-def _refresh(collection=None, chunks=None, articles=None) -> None:
-    """重建 retriever 與條號索引。
+def _open_index():
+    """開服務自己的 collection。只有第一次（它還不存在）才種開機那份語料。
 
-    攝取完也要呼叫，否則 `?retriever=numpy` 還拿著舊的矩陣，查不到剛進來的東西。
+    Day 28 以前這裡呼叫的是 `pipeline.build_index()`，走到 Day 14 給實驗用的
+    `open_or_build()`：塊數不是 59 就當成半成品，砍掉重建。對實驗那是對的，
+    每一輪都要從同一個起點開始。對服務，那是在每次攝取完、每次重啟的時候，
+    把別人攝取進來的文件全部刪掉。
+
+    判斷的是「collection 在不在」，不是「開機那份在不在」：
+    有人用 DELETE /sources 把它拿掉了，重啟之後不該自己長回來。
+    """
+    client = chroma_store.get_client()
+    try:
+        return client.get_collection(settings.collection)
+    except NotFoundError:
+        pass
+    text = rag_core.load_document()
+    chunks = chunkers.chunk_by_structure(text)
+    articles = chunkers.parse_articles(text)
+    vectors, _tok, _hit = rag_core.get_embeddings([c["text"] for c in chunks])
+    collection = client.create_collection(
+        settings.collection, configuration={"hnsw": {"space": "cosine"}})
+    _upsert(collection, BASE_SOURCE, chunks, articles, vectors)
+    log.info("seeded collection=%s source=%s chunks=%s",
+             settings.collection, BASE_SOURCE, collection.count())
+    return collection
+
+
+def _refresh() -> None:
+    """拿索引裡現在有的東西，重建兩個 retriever 與條號表。
+
+    開機、攝取完、刪除完都呼叫這一支，而且只讀索引，不讀磁碟上的語料。
+    Day 28 以前攝取完呼叫的版本會重讀 `work_rules.md` 來建 numpy 的矩陣，
+    所以就算索引沒被砍，`?retriever=numpy` 也只看得到開機那一份。
+    兩個 retriever 的資料從同一個地方來，才談得上「兩邊結果一樣」。
     """
     with _INDEX_LOCK:
-        if collection is None:
-            collection, chunks, articles, _t, _c = pipeline.build_index()
-        vectors, _t, _c = rag_core.get_embeddings([c["text"] for c in chunks])
-        metadatas = _stamp(
-            [chroma_store.article_metadata(c, articles) for c in chunks],
-            BASE_SOURCE)
-        _backfill_source(collection, BASE_SOURCE)
+        collection = _collection()
+        got = collection.get(include=["documents", "metadatas", "embeddings"])
+        metadatas = [dict(m or {}) for m in got["metadatas"]]
+        chunks = [{"text": d} for d in got["documents"]]
+        # 全部刪光時 Chroma 回一個空 list，直接 asarray 會得到 shape (0,)，
+        # 那個形狀沒辦法跟 1536 維的問題向量相乘
+        vectors = (np.asarray(got["embeddings"], dtype=np.float32)
+                   if len(got["ids"]) else np.zeros((0, 1), dtype=np.float32))
         STATE.update({
             "collection": collection,
             "chunks": collection.count(),
@@ -138,15 +173,17 @@ def _refresh(collection=None, chunks=None, articles=None) -> None:
             # agent 回來的是一串條號，要能換回原文才組得出引用。
             # Day 29 起 key 是（文件, 條號）：兩份文件都有第 3 條的時候，
             # 只用條號當 key 會讓後進來的那份直接蓋掉前一份
-            "chunk_index": {(m["source"], m["article_no"]):
+            "chunk_index": {(str(m.get("source", "")), m["article_no"]):
                             {"text": c["text"], "meta": m}
                             for c, m in zip(chunks, metadatas)}})
 
 
 def _build_index() -> None:
     t0 = time.perf_counter()
-    collection, chunks, articles, _tok, _cached = pipeline.build_index()
-    _refresh(collection, chunks, articles)
+    # 兩個 worker 同時開機，只能有一個去建 collection
+    with STATE["store"].exclusive():
+        _open_index()
+    _refresh()
     STATE["boot_ms"] = round((time.perf_counter() - t0) * 1000, 1)
 
 
@@ -184,6 +221,9 @@ if settings.middleware == "asgi":
 elif settings.middleware == "base":
     app.add_middleware(timing.TimingMiddleware)
 errors.install(app)
+# 同源掛上來，網頁直接打 /ask，不必處理 CORS
+app.mount("/ui", StaticFiles(directory=Path(__file__).parent / "static", html=True),
+          name="ui")
 
 
 def _retriever(name: str | None) -> Retriever:
@@ -575,36 +615,11 @@ def delete_source(source: str) -> DeleteResult:
                                f"索引裡沒有這份文件：{source}")
         collection.delete(ids=got["ids"])
         after = collection.count()
-    _rebuild_from_index()
+    _refresh()
     log.info("delete source=%s removed=%s left=%s request_id=%s",
              source, before - after, after, errors.current_request_id())
     return DeleteResult(source=source, removed=before - after,
                         chunks_left=after)
-
-
-def _rebuild_from_index() -> None:
-    """拿索引裡現在剩下的東西重建 retriever 與條號表。
-
-    跟 `_refresh()` 的差別是它不重讀原始語料：刪掉一份文件之後，
-    磁碟上那個 `.md` 還在，重讀就會把它放回來。
-    """
-    with _INDEX_LOCK:
-        collection = _collection()
-        got = collection.get(include=["documents", "metadatas", "embeddings"])
-        metadatas = [dict(m or {}) for m in got["metadatas"]]
-        chunks = [{"text": d} for d in got["documents"]]
-        # 全部刪光時 Chroma 回一個空 list，直接 asarray 會得到 shape (0,)，
-        # 那個形狀沒辦法跟 1536 維的問題向量相乘
-        vectors = (np.asarray(got["embeddings"], dtype=np.float32)
-                   if len(got["ids"]) else np.zeros((0, 1), dtype=np.float32))
-        STATE.update({
-            "collection": collection,
-            "chunks": collection.count(),
-            "retrievers": {"chroma": ChromaRetriever(_collection),
-                           "numpy": NumpyRetriever(vectors, chunks, metadatas)},
-            "chunk_index": {(str(m.get("source", "")), m["article_no"]):
-                            {"text": c["text"], "meta": m}
-                            for c, m in zip(chunks, metadatas)}})
 
 
 # -------------------------------------------------------------------- 攝取
@@ -628,16 +643,7 @@ def ingest_document(req: IngestRequest, background: BackgroundTasks) -> IngestJo
         別的 worker——Chroma 內嵌模式不是設計給兩個行程同時寫的。
         """
         with _INDEX_LOCK, store.exclusive():
-            collection = _collection()
-            metadatas = _stamp(
-                [chroma_store.article_metadata(c, articles) for c in chunks],
-                source)
-            collection.upsert(
-                ids=[ingest.chunk_id(source, m, c["text"])
-                     for c, m in zip(chunks, metadatas)],
-                embeddings=vectors.tolist(),
-                documents=[c["text"] for c in chunks],
-                metadatas=metadatas)
+            _upsert(_collection(), source, chunks, articles, vectors)
 
     background.add_task(ingest.run, store, job["job_id"], upsert, _refresh)
     log.info("ingest queued job_id=%s path=%s request_id=%s",
